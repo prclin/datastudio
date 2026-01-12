@@ -21,6 +21,14 @@ export default defineConfig([
     },
     rules: {
       "react-refresh/only-export-components": 0,
+      "@typescript-eslint/no-unused-expressions": [
+        "error",
+        {
+          allowShortCircuit: true,
+          allowTernary: true,
+          allowTaggedTemplates: true,
+        },
+      ],
     },
   },
 ]);

@@ -8,7 +8,7 @@ const { Header, Content } = Layout;
 export const App: FC = () => {
   const navigate = useNavigate();
   const defaultSelected = useLocation().pathname.split("/")[1];
-  const items = views.map((x) => ({
+  const items = views.map(x => ({
     itemKey: x.name,
     icon: x.icon,
     text: x.name,

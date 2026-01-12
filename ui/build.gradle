@@ -1,0 +1,9 @@
+tasks.register("install",Exec){
+ group="pnpm"
+ commandLine "pnpm", "install"
+}
+
+tasks.register("serve",Exec){
+ group="pnpm"
+ commandLine "pnpm", "run", "dev"
+}
