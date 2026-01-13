@@ -4,24 +4,271 @@ import {
   Button,
   Dropdown,
   Form,
-  List,
   Space,
+  Table,
   Typography,
 } from "@douyinfe/semi-ui-19";
 import {
+  IconCenterLeftStroked,
+  IconChainStroked,
   IconCheckCircleStroked,
+  IconClockStroked,
   IconClose,
   IconConfigStroked,
   IconEyeClosedStroked,
   IconEyeOpenedStroked,
   IconFilterStroked,
+  IconLoopTextStroked,
   IconOrderedListStroked,
+  IconTextStroked,
+  IconUserStroked,
 } from "@douyinfe/semi-icons";
 import Section from "@douyinfe/semi-ui-19/lib/es/form/section";
 import { OptionProps } from "@douyinfe/semi-ui-19/lib/es/select";
+import { ColumnProps } from "@douyinfe/semi-ui-19/lib/es/table";
 
+const { Text } = Typography;
+
+const columns: ColumnProps[] = [
+  {
+    fixed: "left",
+    width: 426,
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconTextStroked />}
+        size={"small"}
+      >
+        任务标题
+      </Text>
+    ),
+    dataIndex: "title",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconUserStroked />}
+        size={"small"}
+      >
+        负责人
+      </Text>
+    ),
+    width: 120,
+    dataIndex: "executor",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconClockStroked />}
+        size={"small"}
+      >
+        开始时间
+      </Text>
+    ),
+    width: 180,
+    dataIndex: "start_time",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconClockStroked />}
+        size={"small"}
+      >
+        截止时间
+      </Text>
+    ),
+    width: 180,
+    dataIndex: "deadline",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconLoopTextStroked />}
+        size={"small"}
+      >
+        子任务进度
+      </Text>
+    ),
+    width: 80,
+    dataIndex: "subtask_progress",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconCenterLeftStroked />}
+        size={"small"}
+      >
+        任务来源
+      </Text>
+    ),
+    width: 140,
+    dataIndex: "source",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconUserStroked />}
+        size={"small"}
+      >
+        创建人
+      </Text>
+    ),
+    width: 120,
+    dataIndex: "creator",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconUserStroked />}
+        size={"small"}
+      >
+        分配人
+      </Text>
+    ),
+    width: 120,
+    dataIndex: "assignee",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconUserStroked />}
+        size={"small"}
+      >
+        关注人
+      </Text>
+    ),
+    width: 120,
+    dataIndex: "followers",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconClockStroked />}
+        size={"small"}
+      >
+        创建时间
+      </Text>
+    ),
+    width: 120,
+    dataIndex: "creation_time",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconClockStroked />}
+        size={"small"}
+      >
+        完成时间
+      </Text>
+    ),
+    width: 120,
+    dataIndex: "completion_time",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconClockStroked />}
+        size={"small"}
+      >
+        更新时间
+      </Text>
+    ),
+    width: 120,
+    dataIndex: "update_time",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconChainStroked />}
+        size={"small"}
+      >
+        任务 ID
+      </Text>
+    ),
+    width: 120,
+    dataIndex: "task_id",
+  },
+  {
+    title: (
+      <Text
+        ellipsis={{ showTooltip: true }}
+        icon={<IconCenterLeftStroked />}
+        size={"small"}
+      >
+        来源类别
+      </Text>
+    ),
+    width: 80,
+    dataIndex: "source_kind",
+  },
+];
+
+const tableData = [
+  {
+    title: "xxasd",
+    executor: "xxasd",
+    start_time: "xxasd",
+    deadline: "xxasd",
+    subtask_progress: "xxasd",
+    source: "xxasd",
+    creator: "xxasd",
+    assignee: "xxasd",
+    followers: "xxasd",
+    creation_time: "xxasd",
+    completion_time: "xxasd",
+    update_time: "xxasd",
+    task_id: "xxasd",
+    source_kind: "xxasd",
+    children: [
+      {
+        title: "xxss",
+        executor: "xxasd",
+        start_time: "xxasd",
+        deadline: "xxasd",
+        subtask_progress: "xxasd",
+        source: "xxasd",
+        creator: "xxasd",
+        assignee: "xxasd",
+        followers: "xxasd",
+        creation_time: "xxasd",
+        completion_time: "xxasd",
+        update_time: "xxasd",
+        task_id: "xxasd",
+        source_kind: "xxasd",
+      },
+    ],
+  },
+];
 export const Todo: FC = () => {
-  return <List header={<Header />} />;
+  return (
+    <>
+      <Table
+        resizable
+        sticky
+        pagination={false}
+        title={<Header />}
+        columns={columns}
+        dataSource={tableData}
+        rowKey={"title"}
+        onHeaderRow={() => ({
+          className:
+            "[&_.react-resizable-handle]:invisible [&:hover_.react-resizable-handle]:visible",
+        })}
+      />
+    </>
+  );
 };
 const Header: FC = () => {
   return (
