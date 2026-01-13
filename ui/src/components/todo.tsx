@@ -55,6 +55,8 @@ const TaskStatus: FC = () => {
         <Button
           theme={"borderless"}
           type={"tertiary"}
+          size={"small"}
+          contentClassName={"text-xs font-normal"}
           icon={<IconOrderedListStroked />}
         >
           {currentStatus}
@@ -80,11 +82,12 @@ const TaskFilter: FC = () => {
                   <Section
                     text={
                       <div className={"flex justify-between"}>
-                        筛选{" "}
+                        <span className={"text-sm font-normal"}>筛选</span>
                         <Button
                           theme={"borderless"}
                           type={"tertiary"}
                           size={"small"}
+                          contentClassName={"text-xs font-normal"}
                         >
                           清空
                         </Button>
@@ -100,8 +103,8 @@ const TaskFilter: FC = () => {
                   <Button
                     theme={"outline"}
                     type={"tertiary"}
-                    size={"small"}
                     onClick={() => add()}
+                    contentClassName={"font-normal text-semi-color-text-0"}
                   >
                     添加条件
                   </Button>
@@ -117,6 +120,8 @@ const TaskFilter: FC = () => {
           theme={"borderless"}
           type={"tertiary"}
           icon={<IconFilterStroked />}
+          size={"small"}
+          contentClassName={"text-xs font-normal"}
         >
           筛选
         </Button>
@@ -195,9 +200,8 @@ const FilterItem: FC<FilterItemProps> = ({ field, remove }) => {
     x => ({ label: x, value: x }) as OptionProps,
   );
   const kind = condition?.type;
-  const [operator, setOperator] = useState(
-    operatorOptions && operatorOptions[0].value,
-  );
+  const defaultOperator = operatorOptions && operatorOptions[0].value;
+  const [operator, setOperator] = useState(defaultOperator);
   return (
     <div className={"flex items-center space-x-2"}>
       <span>当</span>
@@ -222,7 +226,7 @@ const FilterItem: FC<FilterItemProps> = ({ field, remove }) => {
               className={"w-28"}
               zIndex={1060}
               optionList={operatorOptions}
-              initValue={operator}
+              initValue={defaultOperator}
               onChange={value => setOperator(value as string)}
             />
             <div className={"flex-1"}>
@@ -241,6 +245,7 @@ const FilterItem: FC<FilterItemProps> = ({ field, remove }) => {
                   zIndex={1060}
                   field={`${field}.value`}
                   type={operator == "between" ? "dateTimeRange" : "dateTime"}
+                  className={"w-full"}
                 />
               )}
             </div>
