@@ -7,3 +7,13 @@ tasks.register("serve",Exec){
  group="pnpm"
  commandLine "pnpm", "run", "dev"
 }
+
+tasks.register("lint", Exec) {
+ group = "pnpm"
+ commandLine "pnpm", "run", "lint"
+}
+
+tasks.register("format", Exec) {
+ group = "pnpm"
+ commandLine "pnpm", "run", "format"
+}

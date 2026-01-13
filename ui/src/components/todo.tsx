@@ -1,11 +1,11 @@
-import { FC, useState, useRef, RefObject } from "react";
+import { FC, RefObject, useRef, useState } from "react";
 import {
+  ArrayField,
   Button,
   Dropdown,
+  Form,
   List,
   Space,
-  Form,
-  ArrayField,
 } from "@douyinfe/semi-ui-19";
 import {
   IconCheckCircleStroked,
@@ -129,57 +129,57 @@ const conditions = [
   {
     title: "executor",
     operators: ["in", "not in", "is null", "in not null"],
-    value: Form.Select,
+    type: "select",
   },
   {
     title: "start_time",
     operators: ["=", "<", ">", "between", "is null", "in not null"],
-    value: Form.DatePicker,
+    type: "time",
   },
   {
     title: "deadline",
     operators: ["=", "<", ">", "between", "is null", "in not null"],
-    value: Form.DatePicker,
+    type: "time",
   },
   {
     title: "completion_time",
     operators: ["=", "<", ">", "between", "is null", "in not null"],
-    value: Form.DatePicker,
+    type: "time",
   },
   {
     title: "assignee",
     operators: ["in", "not in", "is null", "in not null"],
-    value: Form.Select,
+    type: "select",
   },
   {
     title: "followers",
     operators: ["in", "not in", "is null", "in not null"],
-    value: Form.Select,
+    type: "select",
   },
   {
     title: "creator",
     operators: ["in", "not in", "is null", "in not null"],
-    value: Form.Select,
+    type: "select",
   },
   {
     title: "source",
     operators: ["in", "not in"],
-    value: Form.Select,
+    type: "select",
   },
   {
     title: "source_kind",
     operators: ["in", "not in"],
-    value: Form.Select,
+    type: "select",
   },
   {
     title: "creation_time",
     operators: ["=", "<", ">", "between"],
-    value: Form.DatePicker,
+    type: "time",
   },
   {
     title: "update_time",
     operators: ["=", "<", ">", "between"],
-    value: Form.DatePicker,
+    type: "time",
   },
 ];
 
@@ -194,7 +194,10 @@ const FilterItem: FC<FilterItemProps> = ({ field, remove }) => {
   const operatorOptions = condition?.operators.map(
     x => ({ label: x, value: x }) as OptionProps,
   );
-  const defaultOperator = operatorOptions && operatorOptions[0].value;
+  const kind = condition?.type;
+  const [operator, setOperator] = useState(
+    operatorOptions && operatorOptions[0].value,
+  );
   return (
     <div className={"flex items-center space-x-2"}>
       <span>当</span>
@@ -219,14 +222,27 @@ const FilterItem: FC<FilterItemProps> = ({ field, remove }) => {
               className={"w-28"}
               zIndex={1060}
               optionList={operatorOptions}
-              initValue={defaultOperator}
+              initValue={operator}
+              onChange={value => setOperator(value as string)}
             />
             <div className={"flex-1"}>
-              <Form.Select
-                noLabel
-                field={`${field}.value`}
-                className={"w-full"}
-              />
+              {kind == "select" ? (
+                <Form.Select
+                  noLabel
+                  filter
+                  multiple
+                  zIndex={1060}
+                  field={`${field}.value`}
+                  className={"w-full"}
+                />
+              ) : (
+                <Form.DatePicker
+                  noLabel
+                  zIndex={1060}
+                  field={`${field}.value`}
+                  type={operator == "between" ? "dateTimeRange" : "dateTime"}
+                />
+              )}
             </div>
           </>
         )}
