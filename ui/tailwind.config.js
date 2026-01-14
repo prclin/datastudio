@@ -8,6 +8,7 @@ module.exports = {
       },
     },
     colors: {
+      transparent: "transparent",
       "semi-color-white": "var(--semi-color-white)",
       "semi-color-black": "var(--semi-color-black)",
       "semi-color-primary": "var(--semi-color-primary)",

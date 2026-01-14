@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { IconHomeStroked } from "@douyinfe/semi-icons";
 import { Layout } from "@douyinfe/semi-ui-19";
-import { Todo } from "../../components/todo.tsx";
+import { Todo } from "../../components/Todo";
 
 const { Content, Sider } = Layout;
 export const Workspace: FC = () => {
