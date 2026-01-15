@@ -1,6 +1,16 @@
 import { FC } from "react";
-import { Button, Table, Tooltip, Typography } from "@douyinfe/semi-ui-19";
 import {
+  Avatar,
+  Button,
+  DatePicker,
+  Progress,
+  Select,
+  Table,
+  Tooltip,
+  Typography,
+} from "@douyinfe/semi-ui-19";
+import {
+  IconCalendarStroked,
   IconCenterLeftStroked,
   IconChainStroked,
   IconClockStroked,
@@ -54,22 +64,25 @@ const columns: ColumnProps<Data>[] = [
       return (
         <div
           className={
-            "border border-transparent hover:border-semi-color-border px-2 flex items-center"
+            "border border-transparent hover:border-semi-color-border px-2"
           }
         >
-          <Tooltip
-            content={"添加负责人"}
-            className={"text-xs"}
-            trigger={"click"}
-          >
-            <div>
-              <Button
-                icon={<IconUserAdd className={"text-semi-color-text-3"} />}
-                theme={"borderless"}
-                size={"small"}
-              />
-            </div>
-          </Tooltip>
+          <Select
+            filter
+            searchPosition={"dropdown"}
+            className={"w-full h-full flex items-center"}
+            triggerRender={() => (
+              <Tooltip content={"添加负责人"} className={"text-xs"}>
+                <div>
+                  <Button
+                    icon={<IconUserAdd className={"text-semi-color-text-3"} />}
+                    theme={"borderless"}
+                    size={"small"}
+                  />
+                </div>
+              </Tooltip>
+            )}
+          />
         </div>
       );
     },
@@ -79,38 +92,141 @@ const columns: ColumnProps<Data>[] = [
     width: 180,
     dataIndex: "start_time",
     sorter: (a, b) => (a!.start_time > b!.start_time ? 1 : -1),
-    ellipsis: true,
+    render: () => {
+      return (
+        <div
+          className={
+            "border border-transparent hover:border-semi-color-border px-2"
+          }
+        >
+          <DatePicker
+            className={
+              "w-full h-full [&_.semi-datepicker-input]:flex [&_.semi-datepicker-input]:items-center [&_.semi-datepicker-input]:h-full"
+            }
+            triggerRender={() => (
+              <Tooltip content={"添加开始时间"} className={"text-xs"}>
+                <div>
+                  <Button
+                    icon={
+                      <IconCalendarStroked
+                        className={"text-semi-color-text-3"}
+                      />
+                    }
+                    theme={"borderless"}
+                    size={"small"}
+                  />
+                </div>
+              </Tooltip>
+            )}
+          />
+        </div>
+      );
+    },
   },
   {
     title: <TableTitle icon={<IconClockStroked />}>截止时间</TableTitle>,
     width: 180,
     dataIndex: "deadline",
     sorter: (a, b) => (a!.deadline > b!.deadline ? 1 : -1),
-    ellipsis: true,
+    render: () => {
+      return (
+        <div
+          className={
+            "border border-transparent hover:border-semi-color-border px-2"
+          }
+        >
+          <DatePicker
+            className={
+              "w-full h-full [&_.semi-datepicker-input]:flex [&_.semi-datepicker-input]:items-center [&_.semi-datepicker-input]:h-full"
+            }
+            triggerRender={() => (
+              <Tooltip content={"添加结束"} className={"text-xs"}>
+                <div>
+                  <Button
+                    icon={
+                      <IconCalendarStroked
+                        className={"text-semi-color-text-3"}
+                      />
+                    }
+                    theme={"borderless"}
+                    size={"small"}
+                  />
+                </div>
+              </Tooltip>
+            )}
+          />
+        </div>
+      );
+    },
   },
   {
     title: <TableTitle icon={<IconLoopTextStroked />}>子任务进度</TableTitle>,
     width: 80,
-    dataIndex: "subtask_progress",
-    ellipsis: true,
+    render: (_, record) => {
+      const succeeds = record.children?.filter(x => x.completed).length;
+      const total = record.children?.length || 1;
+      const percent = ((succeeds || 0) / (total || 1)) * 100;
+      return (
+        <div className={"flex items-center px-2"}>
+          {record.children ? (
+            <Tooltip
+              content={`${succeeds}/${total} ${percent}%`}
+              className={"text-xs"}
+            >
+              <div>
+                <Progress percent={percent} className={"w-6"} />
+              </div>
+            </Tooltip>
+          ) : (
+            "-"
+          )}
+        </div>
+      );
+    },
   },
   {
     title: <TableTitle icon={<IconCenterLeftStroked />}>任务来源</TableTitle>,
     width: 140,
     dataIndex: "source",
-    ellipsis: true,
+    render: () => <div className={"flex items-center px-2"}>-</div>,
   },
   {
     title: <TableTitle icon={<IconUserStroked />}>创建人</TableTitle>,
     width: 120,
     dataIndex: "creator",
-    ellipsis: true,
+    render: () => (
+      <div className={"flex items-center px-2"}>
+        <Button
+          icon={<Avatar size={"extra-extra-small"} />}
+          type={"tertiary"}
+          size={"small"}
+          className={
+            "rounded-xl font-normal text-semi-color-text-0 p-0 pl-0.5 pr-2"
+          }
+        >
+          创建人
+        </Button>
+      </div>
+    ),
   },
   {
     title: <TableTitle icon={<IconUserStroked />}>分配人</TableTitle>,
     width: 120,
     dataIndex: "assignee",
-    ellipsis: true,
+    render: () => (
+      <div className={"flex items-center px-2"}>
+        <Button
+          icon={<Avatar size={"extra-extra-small"} />}
+          type={"tertiary"}
+          size={"small"}
+          className={
+            "rounded-xl font-normal text-semi-color-text-0 p-0 pl-0.5 pr-2"
+          }
+        >
+          分配人
+        </Button>
+      </div>
+    ),
   },
   {
     title: <TableTitle icon={<IconUserStroked />}>关注人</TableTitle>,
@@ -159,7 +275,6 @@ const tableData: Data[] = [
     executor: "xxasd",
     start_time: "2025-12-31 00:00:01",
     deadline: "xxasd",
-    subtask_progress: "xxasd",
     source: "xxasd",
     creator: "xxasd",
     assignee: "xxasd",
@@ -176,7 +291,6 @@ const tableData: Data[] = [
         executor: "xxasd",
         start_time: "xxasd",
         deadline: "xxasd",
-        subtask_progress: "xxasd",
         source: "xxasd",
         creator: "xxasd",
         assignee: "xxasd",
@@ -188,6 +302,22 @@ const tableData: Data[] = [
         source_kind: "xxasd",
         completed: true,
       },
+      {
+        title: "王爱华 sku产品信asddd息制作表问题",
+        executor: "xxasd",
+        start_time: "xxasd",
+        deadline: "xxasd",
+        source: "xxasd",
+        creator: "xxasd",
+        assignee: "xxasd",
+        followers: "xxasd",
+        creation_time: "xxasd",
+        completion_time: "xxasd",
+        update_time: "xxasd",
+        task_id: "xxasd",
+        source_kind: "xxasd",
+        completed: false,
+      },
     ],
   },
   {
@@ -195,7 +325,6 @@ const tableData: Data[] = [
     executor: "xxasd",
     start_time: "2025-12-31 00:00:00",
     deadline: "xxasd",
-    subtask_progress: "xxasd",
     source: "xxasd",
     creator: "xxasd",
     assignee: "xxasd",
@@ -213,7 +342,6 @@ interface Data {
   executor: string;
   start_time: string;
   deadline: string;
-  subtask_progress: string;
   source: string;
   creator: string;
   assignee: string;

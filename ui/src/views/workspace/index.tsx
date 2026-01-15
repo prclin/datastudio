@@ -7,10 +7,10 @@ const { Content, Sider } = Layout;
 export const Workspace: FC = () => {
   return (
     <Layout className={"h-full"}>
-      <Content>
+      <Content className={"flex-[3]"}>
         <Todo />
       </Content>
-      <Sider>sider</Sider>
+      <Sider className={"flex-1"}>sider</Sider>
     </Layout>
   );
 };
