@@ -23,7 +23,7 @@ export const App: FC = () => {
           onSelect={({ itemKey }) => navigate(itemKey as string)}
         />
       </Header>
-      <Content>
+      <Content className={"bg-semi-color-fill-0"}>
         <Outlet />
       </Content>
     </Layout>

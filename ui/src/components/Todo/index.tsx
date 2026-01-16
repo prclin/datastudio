@@ -25,7 +25,7 @@ import { withDefaultProps } from "../../utils/component.tsx";
 import { TextProps } from "@douyinfe/semi-ui-19/lib/es/typography";
 import { Header } from "./Header";
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 const TableTitle = withDefaultProps<TextProps>(Text, {
   ellipsis: { showTooltip: true },
@@ -405,6 +405,38 @@ const tableData: Data[] = [
     source_kind: "xxasd",
     completed: false,
   },
+  {
+    title: "sss",
+    executor: "xxasd",
+    start_time: "2025-12-31 00:00:00",
+    deadline: "xxasd",
+    source: "xxasd",
+    creator: "xxasd",
+    assignee: "xxasd",
+    followers: "xxasd",
+    creation_time: "xxasd",
+    completion_time: "xxasd",
+    update_time: "xxasd",
+    task_id: "xxasd",
+    source_kind: "xxasd",
+    completed: false,
+  },
+  {
+    title: "sssasdasd",
+    executor: "xxasd",
+    start_time: "2025-12-31 00:00:00",
+    deadline: "xxasd",
+    source: "xxasd",
+    creator: "xxasd",
+    assignee: "xxasd",
+    followers: "xxasd",
+    creation_time: "xxasd",
+    completion_time: "xxasd",
+    update_time: "xxasd",
+    task_id: "xxasd",
+    source_kind: "xxasd",
+    completed: false,
+  },
 ];
 interface Data {
   title: string;
@@ -425,26 +457,32 @@ interface Data {
 }
 export const Todo: FC = () => {
   return (
-    <Table
-      resizable
-      sticky
-      pagination={false}
-      title={<Header />}
-      columns={columns}
-      dataSource={tableData}
-      rowKey={"title"}
-      onHeaderRow={() => ({
-        className: [
-          "[&_.react-resizable-handle]:invisible",
-          "[&:hover_.react-resizable-handle]:visible",
-          "[&_.semi-table-cell-fixed-left-last]:border-r-0",
-          "[&_.semi-table-row-head]:border-b-0",
-        ].join(" "),
-      })}
-      onRow={() => ({
-        className:
-          "[&_.semi-table-cell-fixed-left-last]:border-r-0 [&_td]:p-0 [&_td]:h-12 [&_td>:only-child]:h-full",
-      })}
-    />
+    <div>
+      <Title heading={6} className={"border-b pb-4 border-semi-color-border"}>
+        任务
+      </Title>
+      <Table
+        resizable
+        sticky
+        pagination={false}
+        title={<Header />}
+        className={"[&_.semi-table-body]:h-[217px]"}
+        columns={columns}
+        dataSource={tableData}
+        rowKey={"title"}
+        onHeaderRow={() => ({
+          className: [
+            "[&_.react-resizable-handle]:invisible",
+            "[&:hover_.react-resizable-handle]:visible",
+            "[&_.semi-table-cell-fixed-left-last]:border-r-0",
+            "[&_.semi-table-row-head]:border-b-0",
+          ].join(" "),
+        })}
+        onRow={() => ({
+          className:
+            "[&_.semi-table-cell-fixed-left-last]:border-r-0 [&_td]:p-0 [&_td]:h-12 [&_td>:only-child]:h-full",
+        })}
+      />
+    </div>
   );
 };
