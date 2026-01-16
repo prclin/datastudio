@@ -232,40 +232,109 @@ const columns: ColumnProps<Data>[] = [
     title: <TableTitle icon={<IconUserStroked />}>关注人</TableTitle>,
     width: 120,
     dataIndex: "followers",
-    ellipsis: true,
+    render: () => {
+      return (
+        <div
+          className={
+            "border border-transparent hover:border-semi-color-border px-2"
+          }
+        >
+          <Select
+            filter
+            searchPosition={"dropdown"}
+            className={"w-full h-full flex items-center"}
+            triggerRender={() => (
+              <Tooltip content={"添加负责人"} className={"text-xs"}>
+                <div>
+                  <Button
+                    icon={<IconUserAdd className={"text-semi-color-text-3"} />}
+                    theme={"borderless"}
+                    size={"small"}
+                  />
+                </div>
+              </Tooltip>
+            )}
+          />
+        </div>
+      );
+    },
   },
   {
     title: <TableTitle icon={<IconClockStroked />}>创建时间</TableTitle>,
     width: 120,
     dataIndex: "creation_time",
     sorter: (a, b) => (a!.creation_time > b!.creation_time ? 1 : -1),
-    ellipsis: true,
+    render: () => (
+      <div className={"px-2 flex items-center"}>
+        <Text ellipsis={{ showTooltip: true }} type={"secondary"}>
+          2025-12-01 00:00:00
+        </Text>
+      </div>
+    ),
   },
   {
     title: <TableTitle icon={<IconClockStroked />}>完成时间</TableTitle>,
     width: 120,
     dataIndex: "completion_time",
     sorter: (a, b) => (a!.completion_time > b!.completion_time ? 1 : -1),
-    ellipsis: true,
+    render: () => (
+      <div className={"px-2 flex items-center"}>
+        <Text ellipsis={{ showTooltip: true }} type={"secondary"}>
+          2025-12-01 00:00:00
+        </Text>
+      </div>
+    ),
   },
   {
     title: <TableTitle icon={<IconClockStroked />}>更新时间</TableTitle>,
     width: 120,
     dataIndex: "update_time",
     sorter: (a, b) => (a!.update_time > b!.update_time ? 1 : -1),
-    ellipsis: true,
+    render: () => (
+      <div className={"px-2 flex items-center"}>
+        <Text ellipsis={{ showTooltip: true }} type={"secondary"}>
+          2025-12-01 00:00:00
+        </Text>
+      </div>
+    ),
   },
   {
     title: <TableTitle icon={<IconChainStroked />}>任务 ID</TableTitle>,
     width: 120,
     dataIndex: "task_id",
-    ellipsis: true,
+    render: text => (
+      <div className={"px-2 flex items-center"}>
+        <Text
+          type={"secondary"}
+          copyable={{
+            content: "t1000120",
+            render: (_, doCopy) => {
+              return (
+                <Tooltip content={"点击复制"} className={"text-xs"}>
+                  <div>
+                    <Button
+                      onClick={doCopy}
+                      size={"small"}
+                      theme={"borderless"}
+                      type={"tertiary"}
+                      className={"p-0.5 font-normal"}
+                    >
+                      {text}
+                    </Button>
+                  </div>
+                </Tooltip>
+              );
+            },
+          }}
+        />
+      </div>
+    ),
   },
   {
     title: <TableTitle icon={<IconCenterLeftStroked />}>来源类别</TableTitle>,
     width: 80,
     dataIndex: "source_kind",
-    ellipsis: true,
+    render: () => <div className={"flex items-center"}>-</div>,
   },
 ];
 

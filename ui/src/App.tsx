@@ -14,7 +14,7 @@ export const App: FC = () => {
     text: x.name,
   }));
   return (
-    <Layout className={"h-full"}>
+    <Layout className={"h-full semi-light-scrollbar"}>
       <Header>
         <Nav
           mode={"horizontal"}
