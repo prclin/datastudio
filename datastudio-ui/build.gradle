@@ -1,0 +1,39 @@
+tasks.register("install",Exec){
+ group="pnpm"
+ commandLine "pnpm", "install"
+}
+
+tasks.register("setup-tsconfig", Exec) {
+ group = "npx"
+ dependsOn "install"
+ environment "NODE_NO_WARNINGS", "1"
+ commandLine "npx", "ts-node", "setup/tsconfig.ts", "setup-tsconfig"
+ finalizedBy "format"
+}
+
+tasks.register("setup-icon", Exec) {
+ group = "npx"
+ dependsOn "install"
+ commandLine "npx", "ts-node", "setup/icon-generator.ts"
+ finalizedBy "format"
+}
+
+tasks.register("lint", Exec) {
+ group = "pnpm"
+ commandLine "pnpm", "run", "lint"
+}
+
+tasks.register("format", Exec) {
+ group = "pnpm"
+ commandLine "pnpm", "run", "format"
+}
+
+tasks.register("serve", Exec) {
+ group = "pnpm"
+ commandLine "pnpm", "run", "dev"
+}
+
+tasks.register("build", Exec) {
+ group = "pnpm"
+ commandLine "pnpm", "run", "build"
+}

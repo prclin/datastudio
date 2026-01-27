@@ -1,0 +1,23 @@
+{
+  "id": "5114667",
+  "name": "datastudio",
+  "font_family": "iconfont",
+  "css_prefix_text": "",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "37138322",
+      "name": "Flink",
+      "font_class": "ApacheFlink",
+      "unicode": "e6d7",
+      "unicode_decimal": 59095
+    },
+    {
+      "icon_id": "37434655",
+      "name": "Spark",
+      "font_class": "ApacheSpark",
+      "unicode": "e78a",
+      "unicode_decimal": 59274
+    }
+  ]
+}
