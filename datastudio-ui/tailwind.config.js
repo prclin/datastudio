@@ -10,7 +10,9 @@ module.exports = {
   theme: {
     extend: {
       width: sizes,
+      maxWidth: sizes,
       height: sizes,
+      flexBasis: sizes,
     },
     colors: {
       transparent: "transparent",

@@ -19,6 +19,7 @@
     "noUnusedParameters": true,
     "paths": {
       "@components/*": ["src/components/*"],
+      "@i18n/*": ["src/i18n/*"],
       "@icons/*": ["src/icons/*"],
       "@routes/*": ["src/routes/*"],
       "@utils/*": ["src/utils/*"],
