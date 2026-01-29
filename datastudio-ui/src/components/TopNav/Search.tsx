@@ -1,6 +1,6 @@
-import { FC, HTMLProps, ReactNode, useRef } from "react";
+import { FC, HTMLProps, ReactNode, useRef, useState } from "react";
 import { Divider, Input, Radio, RadioGroup } from "@douyinfe/semi-ui-19";
-import { IconSearch } from "@douyinfe/semi-icons";
+import { IconSearch, IconTick } from "@douyinfe/semi-icons";
 import { useGlobal } from "@utils/context.tsx";
 import { RadioProps } from "@douyinfe/semi-ui-19/lib/es/radio";
 import { IconNotebook } from "@icons/IconNotebook.tsx";
@@ -25,6 +25,7 @@ const choices = [
 export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
   const { msg } = useGlobal();
   const search = useRef<HTMLInputElement>({} as HTMLInputElement);
+  const [kind, setKind] = useState<string>();
   return (
     <div {...props} className={["relative", props.className].join(" ")}>
       <Input
@@ -38,9 +39,19 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
         ref={search}
       />
       <div className={"absolute w-full top-8 bg-semi-color-bg-0"}>
-        <RadioGroup type={"pureCard"} className={"p-2"}>
+        <RadioGroup
+          type={"pureCard"}
+          className={"p-2"}
+          mode={"advanced"}
+          value={kind}
+          onChange={e => setKind(e.target.value)}
+        >
           {choices.map(x => (
-            <SearchRadio key={x.text} icon={x.icon} value={x.text}>
+            <SearchRadio
+              key={x.text}
+              icon={kind === x.text ? <IconTick /> : x.icon}
+              value={x.text}
+            >
               {x.text}
             </SearchRadio>
           ))}
