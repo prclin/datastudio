@@ -17,7 +17,9 @@ export const TopNav: FC = () => {
         />
         <Text
           strong
-          icon={<IconDatastudio className={"align-top"} />}
+          icon={
+            <IconDatastudio className={"align-top text-semi-color-primary"} />
+          }
           className={"text-base leading-4"}
         >
           datastudio

@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "10170888",
+      "name": "Pipeline",
+      "font_class": "Pipeline",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
+      "icon_id": "15203810",
+      "name": "Notebook",
+      "font_class": "Notebook",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "34453289",
+      "name": "Table",
+      "font_class": "Table",
+      "unicode": "e86c",
+      "unicode_decimal": 59500
+    },
+    {
       "icon_id": "24415141",
       "name": "datastudio",
       "font_class": "Datastudio",
