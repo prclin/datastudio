@@ -1,6 +1,6 @@
 import { FC, HTMLProps, ReactNode, useRef, useState } from "react";
 import { Divider, Input, Radio, RadioGroup, Space } from "@douyinfe/semi-ui-19";
-import { IconSearch, IconTick } from "@douyinfe/semi-icons";
+import { IconCrossStroked, IconSearch, IconTick } from "@douyinfe/semi-icons";
 import { useGlobal } from "@utils/context.tsx";
 import { RadioProps } from "@douyinfe/semi-ui-19/lib/es/radio";
 import { IconNotebook } from "@icons/IconNotebook.tsx";
@@ -33,12 +33,27 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
 
   const [value, setValue] = useState<string>("");
   const [kind, setKind] = useState<string>();
-
+  const onValueChange = (v: string) => {
+    setValue(v);
+    const currentKind = choices
+      .map(x => x.tag)
+      .map(x => ({ tag: x, index: v.search(`${x} `) }))
+      .filter(x => x.index >= 0)
+      .sort((a, b) => a.index - b.index)[0]?.tag;
+    setKind(currentKind);
+  };
   return (
     <div {...props} className={["relative", props.className].join(" ")}>
       <Input
-        showClear
         prefix={<IconSearch />}
+        suffix={
+          <IconCrossStroked
+            className={"cursor-pointer"}
+            onClick={() => {
+              onValueChange("");
+            }}
+          />
+        }
         placeholder={msg("top_search")}
         className={[
           "bg-semi-color-bg-0 z-10",
@@ -46,15 +61,7 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
         ].join(" ")}
         ref={search}
         value={value}
-        onChange={v => {
-          setValue(v);
-          const currentKind = choices
-            .map(x => x.tag)
-            .map(x => ({ tag: x, index: v.search(`${x} `) }))
-            .filter(x => x.index >= 0)
-            .sort((a, b) => a.index - b.index)[0]?.tag;
-          setKind(currentKind);
-        }}
+        onChange={onValueChange}
       />
       <div className={"absolute w-full top-8 bg-semi-color-bg-0"}>
         <RadioGroup
