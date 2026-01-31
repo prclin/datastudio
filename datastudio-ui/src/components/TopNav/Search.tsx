@@ -120,7 +120,7 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
               type={"tertiary"}
               className={"px-3 py-1.5 inline-block cursor-default"}
             >
-              {msg("recents")}
+              {msg("top_recents")}
             </Text>
             <RecentItem
               name={"a.ipynb"}

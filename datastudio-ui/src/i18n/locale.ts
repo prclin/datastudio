@@ -5,7 +5,9 @@ import semi_zh_CN from "@douyinfe/semi-ui-19/lib/es/locale/source/zh_CN";
 export interface Locale extends Record<string, string> {
   code: string;
   top_search: string;
-  recents: string;
+  top_recents: string;
+  top_settings: string;
+  top_logout: string;
 }
 
 export const messages = {
