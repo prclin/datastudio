@@ -9,7 +9,8 @@ import { GlobalProvider } from "@utils/context.tsx";
 const { Header, Content, Sider } = Layout;
 
 export const App: FC = () => {
-  const language = navigator.language;
+  //todo 设置全局语言
+  const language = "en-US";
 
   return (
     <LocaleProvider locale={semiMessages[language]}>

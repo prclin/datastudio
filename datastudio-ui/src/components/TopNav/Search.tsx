@@ -1,4 +1,4 @@
-import { FC, HTMLProps, ReactNode, useRef, useState } from "react";
+import { FC, HTMLProps, ReactNode, useEffect, useRef, useState } from "react";
 import { Divider, Input, Radio, RadioGroup, Space } from "@douyinfe/semi-ui-19";
 import { IconCrossStroked, IconSearch, IconTick } from "@douyinfe/semi-icons";
 import { useGlobal } from "@utils/context.tsx";
@@ -30,9 +30,20 @@ const choices = [
 export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
   const { msg } = useGlobal();
   const search = useRef<HTMLInputElement>({} as HTMLInputElement);
+  const container = useRef<HTMLDivElement>({} as HTMLDivElement);
 
   const [value, setValue] = useState<string>("");
   const [kind, setKind] = useState<string>();
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const handle = (e: PointerEvent) => {
+      if (!container.current.contains(e.target as Node)) setVisible(false);
+      else setVisible(true);
+    };
+    document.addEventListener("click", handle);
+
+    return () => document.removeEventListener("click", handle);
+  });
   const onValueChange = (v: string) => {
     setValue(v);
     const currentKind = choices
@@ -43,7 +54,13 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
     setKind(currentKind);
   };
   return (
-    <div {...props} className={["relative", props.className].join(" ")}>
+    <div
+      {...props}
+      className={["relative", visible && "shadow-md", props.className].join(
+        " ",
+      )}
+      ref={container}
+    >
       <Input
         prefix={<IconSearch />}
         suffix={
@@ -56,51 +73,63 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
         }
         placeholder={msg("top_search")}
         className={[
-          "bg-semi-color-bg-0 z-10",
+          "bg-semi-color-bg-0 z-10 rounded",
           "hover:border-semi-color-primary has-[:focus]:border-transparent",
         ].join(" ")}
         ref={search}
         value={value}
         onChange={onValueChange}
       />
-      <div className={"absolute w-full top-8 bg-semi-color-bg-0"}>
-        <RadioGroup
-          type={"pureCard"}
-          className={"p-2"}
-          mode={"advanced"}
-          value={kind}
-          onChange={e => {
-            const currentValue = e.target.value;
-            setKind(currentValue);
-            setValue(pre => {
-              const input = choices
-                .map(x => x.tag)
-                .reduce((x, y) => x.replaceAll(y, ""), pre)
-                .trim();
-              return currentValue ? `${currentValue} ${input}` : input;
-            });
-            search.current.focus();
-          }}
+      {visible && (
+        <div
+          className={
+            "absolute w-full top-8 bg-semi-color-bg-0 shadow-md rounded-b"
+          }
         >
-          {choices.map(x => (
-            <SearchRadio
-              key={x.text}
-              icon={kind === x.tag ? <IconTick /> : x.icon}
-              value={x.tag}
+          <RadioGroup
+            type={"pureCard"}
+            className={"p-2"}
+            mode={"advanced"}
+            value={kind}
+            onChange={e => {
+              const currentValue = e.target.value;
+              setKind(currentValue);
+              setValue(pre => {
+                const input = choices
+                  .map(x => x.tag)
+                  .reduce((x, y) => x.replaceAll(y, ""), pre)
+                  .trim();
+                return currentValue ? `${currentValue} ${input}` : input;
+              });
+              search.current.focus();
+            }}
+          >
+            {choices.map(x => (
+              <SearchRadio
+                key={x.text}
+                icon={kind === x.tag ? <IconTick /> : x.icon}
+                value={x.tag}
+              >
+                {x.text}
+              </SearchRadio>
+            ))}
+          </RadioGroup>
+          <Divider className={"mb-1 mx-2"} />
+          <div>
+            <Text
+              type={"tertiary"}
+              className={"px-3 py-1.5 inline-block cursor-default"}
             >
-              {x.text}
-            </SearchRadio>
-          ))}
-        </RadioGroup>
-        <Divider className={"mb-2 mx-2"} />
-        <div>
-          <RecentItem
-            name={"a.ipynb"}
-            path={"src/views"}
-            viewTime={"2026-01-30 17:00:00"}
-          />
+              {msg("recents")}
+            </Text>
+            <RecentItem
+              name={"a.ipynb"}
+              path={"src/views"}
+              viewTime={"2026-01-30 17:00:00"}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
