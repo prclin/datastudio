@@ -5,6 +5,7 @@ import { TopNav } from "@components/TopNav";
 import { IntlProvider } from "react-intl";
 import { messages, semiMessages } from "@i18n/locale.ts";
 import { GlobalProvider } from "@utils/context.tsx";
+import { SideNav } from "@components/SideNav";
 
 const { Header, Content, Sider } = Layout;
 
@@ -23,7 +24,9 @@ export const App: FC = () => {
               <TopNav />
             </Header>
             <Layout>
-              <Sider></Sider>
+              <Sider>
+                <SideNav />
+              </Sider>
               <Content>
                 <Outlet />
               </Content>
