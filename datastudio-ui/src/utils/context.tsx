@@ -2,7 +2,7 @@ import { createContext, FC, ReactNode, useContext } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Locale } from "@i18n/locale.ts";
 
-type LocaleKey = keyof Locale;
+export type LocaleKey = keyof Locale;
 interface GlobalContext {
   intl: IntlShape;
   msg: (id: LocaleKey) => string;

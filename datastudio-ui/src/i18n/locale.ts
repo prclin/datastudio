@@ -8,6 +8,8 @@ export interface Locale extends Record<string, string> {
   top_recents: string;
   top_settings: string;
   top_logout: string;
+  side_home: string;
+  side_studio: string;
 }
 
 export const messages = {

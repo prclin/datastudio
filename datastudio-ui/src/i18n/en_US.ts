@@ -6,6 +6,8 @@ const en_US: Locale = {
   top_recents: "Recents",
   top_settings: "Settings",
   top_logout: "Log out",
+  side_home: "Home",
+  side_studio: "Studio",
 };
 
 export default en_US;
