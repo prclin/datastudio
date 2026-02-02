@@ -22,13 +22,15 @@ import {
   IconUserStroked,
 } from "@douyinfe/semi-icons";
 import { ColumnProps } from "@douyinfe/semi-ui-19/lib/es/table";
-import { withDefaultProps } from "../../utils/component.tsx";
+import { withDefaultProps } from "@utils/component.tsx";
 import { TextProps } from "@douyinfe/semi-ui-19/lib/es/typography";
 import { Header } from "./Header";
 import { CardProps } from "@douyinfe/semi-ui-19/lib/es/card";
 
 const { Text } = Typography;
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 const TableTitle = withDefaultProps<TextProps>(Text, {
   ellipsis: { showTooltip: true },
   size: "small",

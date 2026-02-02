@@ -12,7 +12,7 @@ import { Search } from "@components/TopNav/Search.tsx";
 import { useGlobal } from "@utils/context.tsx";
 
 const { Text } = Typography;
-export const TopNav: FC = () => {
+export const TopNav: FC<{ onCollapse?: () => void }> = ({ onCollapse }) => {
   const { msg } = useGlobal();
   return (
     <nav className={"h-12 p-2 flex justify-between gap-2"}>
@@ -22,6 +22,7 @@ export const TopNav: FC = () => {
           theme={"borderless"}
           type={"tertiary"}
           className={"hover:text-semi-color-primary"}
+          onClick={onCollapse}
         />
         <Text
           strong

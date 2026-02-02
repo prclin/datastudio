@@ -8,6 +8,7 @@ const zh_CN: Locale = {
   top_logout: "登出",
   side_home: "主页",
   side_studio: "Studio",
+  side_new: "新建",
 };
 
 export default zh_CN;

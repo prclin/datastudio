@@ -8,6 +8,7 @@ const en_US: Locale = {
   top_logout: "Log out",
   side_home: "Home",
   side_studio: "Studio",
+  side_new: "New",
 };
 
 export default en_US;

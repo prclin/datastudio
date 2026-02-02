@@ -8,14 +8,14 @@ const dirs = fs
   .filter(item => item.isDirectory())
   .map(item => item.name);
 
-export const rspackAlias = Object.fromEntries(
-  dirs.map(x => [`@${x}`, path.resolve(`./src/${x}`)]),
-);
+export const rspackAlias = dirs
+  .map(x => ({ [`@${x}`]: path.resolve(`./src/${x}`) }))
+  .reduce((x, y) => ({ ...x, ...y }), { "@": path.resolve("./src") });
 
 if (process.argv[2] == "setup-tsconfig") {
-  const tsPaths = Object.fromEntries(
-    dirs.map(x => [`@${x}/*`, [`src/${x}/*`]]),
-  );
+  const tsPaths = dirs
+    .map(x => ({ [`@${x}/*`]: [`src/${x}/*`] }))
+    .reduce((x, y) => ({ ...x, ...y }), { "@/*": ["src/*"] });
   //写入ts路径别名
   const tsconfigPath = "tsconfig.json";
   const content = fs.readFileSync(tsconfigPath, "utf-8");

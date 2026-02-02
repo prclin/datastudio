@@ -10,6 +10,7 @@ export interface Locale extends Record<string, string> {
   top_logout: string;
   side_home: string;
   side_studio: string;
+  side_new: string;
 }
 
 export const messages = {

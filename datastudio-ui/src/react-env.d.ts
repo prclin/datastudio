@@ -1,8 +1,16 @@
-import { FC, ReactNode } from "react";
+import { ComponentType, ReactNode } from "react";
+
+interface View {
+  default: ComponentType;
+  order: number;
+  text: string;
+  icon: ReactNode;
+  path: string;
+}
 
 interface Context {
   keys: () => string[];
-  (path: string): { order?: number; icon?: ReactNode; default: FC };
+  (path: string): { default?: unknown };
 }
 declare global {
   interface ImportMeta {

@@ -1,35 +1,42 @@
 import { FC, ReactNode, useState } from "react";
 import { Button, Nav } from "@douyinfe/semi-ui-19";
-import { IconHomeStroked, IconPlus } from "@douyinfe/semi-icons";
+import { IconPlus } from "@douyinfe/semi-icons";
 import { withDefaultProps } from "@utils/component.tsx";
 import { NavItemProps } from "@douyinfe/semi-ui-19/lib/es/navigation";
-import { LocaleKey, useGlobal } from "@utils/context.tsx";
-import { IconDatastudio } from "@icons/IconDatastudio.tsx";
+import { useGlobal } from "@utils/context.tsx";
 
 const NavItem = withDefaultProps<NavItemProps>(Nav.Item, {
   className: [
-    "leading-4 py-1.5 rounded mb-0.5 font-normal",
+    "leading-4 py-1.5 rounded mb-0.5 font-normal [&_.semi-icon]:text-base",
     "[&_.semi-navigation-item-icon]:min-w-4 [&_.semi-navigation-item-icon]:mr-2",
     "hover:bg-semi-color-primary-light-hover hover:text-semi-color-primary-hover [&_.semi-navigation-item-icon]:text-inherit",
   ].join(" "),
 });
-const items: { key: string; text: LocaleKey; icon: ReactNode }[] = [
-  {
-    key: "home",
-    text: "side_home",
-    icon: <IconHomeStroked size={"default"} />,
-  },
-  {
-    key: "studio",
-    text: "side_studio",
-    icon: <IconDatastudio />,
-  },
-];
-export const SideNav: FC = () => {
+
+interface SideNavProps {
+  isOpen: boolean;
+  items?: SideNavItemProps[];
+  onItemClick?: (path: SideNavItemProps["path"]) => void;
+}
+interface SideNavItemProps {
+  text: string;
+  path: string;
+  icon: ReactNode;
+}
+export const SideNav: FC<SideNavProps> = ({
+  isOpen = true,
+  items,
+  onItemClick,
+}) => {
   const { msg } = useGlobal();
   const [selected, setSelected] = useState<(string | number)[]>(["home"]);
   return (
-    <nav className={"px-3 w-50"}>
+    <nav
+      className={[
+        "px-3 w-50 transition-all",
+        !isOpen && "w-0 px-0 pl-2 overflow-hidden",
+      ].join(" ")}
+    >
       <Nav
         className={"w-full border-none p-0 bg-transparent"}
         selectedKeys={selected}
@@ -47,16 +54,18 @@ export const SideNav: FC = () => {
               "border-semi-color-primary-light-active",
             ].join(" ")}
           >
-            New
+            {msg("side_new")}
           </Button>
         </Nav.Header>
-        {items.map(({ key, text, icon }) => (
+        {items?.map(({ path, text, icon }) => (
           <NavItem
-            itemKey={key}
-            text={msg(text)}
+            key={path}
+            itemKey={path}
+            text={text}
             icon={icon}
+            onClick={() => onItemClick && onItemClick(path)}
             className={
-              selected[0] == key
+              selected[0] == path
                 ? "text-semi-color-primary-hover font-bold bg-semi-color-primary-light-hover"
                 : undefined
             }
