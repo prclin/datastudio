@@ -26,7 +26,7 @@ export const App: FC = () => {
 };
 
 const AppLayout: FC = () => {
-  const { msg, navigate } = useGlobal();
+  const { msg, navigate, location } = useGlobal();
   const [open, setOpen] = useState<boolean>(true);
   const items = views.map(x => {
     const { default: _, order: _1, ...other } = x;
@@ -44,7 +44,12 @@ const AppLayout: FC = () => {
       </Header>
       <Layout>
         <Sider>
-          <SideNav isOpen={open} items={items} onItemClick={navigate} />
+          <SideNav
+            isOpen={open}
+            items={items}
+            onItemClick={navigate}
+            defaultSelected={location.pathname.split("/")[1]}
+          />
         </Sider>
         <Content className={"bg-semi-color-bg-0 rounded-lg"}>
           <Outlet />

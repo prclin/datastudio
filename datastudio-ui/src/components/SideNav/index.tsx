@@ -17,6 +17,7 @@ interface SideNavProps {
   isOpen: boolean;
   items?: SideNavItemProps[];
   onItemClick?: (path: SideNavItemProps["path"]) => void;
+  defaultSelected?: string;
 }
 interface SideNavItemProps {
   text: string;
@@ -27,9 +28,12 @@ export const SideNav: FC<SideNavProps> = ({
   isOpen = true,
   items,
   onItemClick,
+  defaultSelected = "",
 }) => {
   const { msg } = useGlobal();
-  const [selected, setSelected] = useState<(string | number)[]>(["home"]);
+  const [selected, setSelected] = useState<(string | number)[]>([
+    defaultSelected,
+  ]);
   return (
     <nav
       className={[

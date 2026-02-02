@@ -13,5 +13,5 @@ export const Home: FC = () => {
 export default Home;
 export const order = 1;
 export const text: LocaleKey = "side_home";
-export const path = "home";
+export const path = "";
 export const icon = <IconHomeStroked size={"small"} />;
