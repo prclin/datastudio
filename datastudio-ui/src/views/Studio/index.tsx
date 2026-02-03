@@ -4,7 +4,7 @@ import { Cell } from "@components/Notebook/Cell.tsx";
 
 export const Studio: FC = () => {
   return (
-    <div>
+    <div className={"p-2"}>
       <Cell />
     </div>
   );
