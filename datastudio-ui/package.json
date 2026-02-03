@@ -12,10 +12,13 @@
   "dependencies": {
     "@douyinfe/semi-icons": "^2.90.13",
     "@douyinfe/semi-ui-19": "^2.90.13",
+    "@monaco-editor/react": "^4.7.0",
     "@semi-bot/semi-theme-datastudio": "^1.0.1",
+    "monaco-editor": "^0.55.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "react-intl": "^8.1.1"
+    "react-intl": "^8.1.1",
+    "react-router": "^7.12.0"
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "^6.0.0",
@@ -33,11 +36,11 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "jsonc-parser": "^3.3.1",
+    "monaco-editor-webpack-plugin": "^7.1.1",
     "postcss": "^8.5.6",
     "postcss-loader": "^8.2.0",
     "prettier": "^3.7.3",
     "react-refresh": "^0.18.0",
-    "react-router": "^7.12.0",
     "sass": "^1.97.2",
     "sass-loader": "^16.0.6",
     "tailwindcss": "^3.4.19",

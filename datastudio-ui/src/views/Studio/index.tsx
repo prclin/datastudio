@@ -1,8 +1,13 @@
 import { FC } from "react";
 import { IconDatastudio } from "@icons/IconDatastudio.tsx";
+import { Cell } from "@components/Notebook/Cell.tsx";
 
 export const Studio: FC = () => {
-  return <div>studio</div>;
+  return (
+    <div>
+      <Cell />
+    </div>
+  );
 };
 
 export default Studio;
