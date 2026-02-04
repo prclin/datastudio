@@ -5,7 +5,7 @@ import { Cell } from "@components/Notebook/Cell.tsx";
 export const Studio: FC = () => {
   return (
     <div className={"p-2"}>
-      <Cell />
+      <Cell defaultValue={""} language={"sql"} path={"sd"} />
     </div>
   );
 };
