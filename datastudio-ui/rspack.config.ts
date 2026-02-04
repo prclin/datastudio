@@ -75,7 +75,7 @@ export default defineConfig({
       patterns: ["public"],
     }),
     new MonacoWebpackPlugin({
-      languages: ["sql", "python", "scala"],
+      languages: ["sql", "python", "scala", "markdown"],
     }),
   ],
   optimization: {

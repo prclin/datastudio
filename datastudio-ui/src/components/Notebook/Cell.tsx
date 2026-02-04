@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import { FC, forwardRef, useImperativeHandle, useRef, useState } from "react";
 import { Editor, loader } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import { editor } from "monaco-editor";
@@ -8,52 +8,119 @@ loader.config({ monaco });
 const defaultHeight = 20;
 
 interface CellProps {
-  defaultValue?: string;
-  language?: string;
+  cell_type?: "code" | "markdown";
+  execution_count?: number;
+  id?: string;
+  metadata?: {
+    editable?: boolean;
+    "jp-MarkdownHeadingCollapsed"?: boolean;
+    jupyter?: { outputs_hidden?: boolean; source_hidden?: boolean };
+  };
+  language?: "sql" | "python" | "scala" | "markdown";
   path?: string;
+  defaultValue?: string;
 }
 
-export const Cell: FC<CellProps> = ({ defaultValue = "", language, path }) => {
-  const [height, setHeight] = useState(
-    defaultValue.split("\n").length * defaultHeight,
-  );
+export const Cell: FC<CellProps> = ({
+  cell_type = "code",
+  execution_count,
+  id,
+  metadata,
+  language,
+  path,
+  defaultValue,
+}) => {
+  console.log(id, cell_type, metadata);
   const [collapsed, setCollapsed] = useState(false);
-  const containerRef = useRef<editor.IStandaloneCodeEditor>(undefined);
-  const onMount = (e: editor.IStandaloneCodeEditor) => {
-    containerRef.current = e;
-    e.onDidContentSizeChange(() => {
-      console.log(1);
-      const contentHeight = e.getContentHeight();
-      const width = e.getContainerDomNode().clientWidth;
-      setHeight(contentHeight);
-      requestAnimationFrame(() =>
-        e.layout({ height: contentHeight, width: width }),
-      );
-    });
-    e.onDidFocusEditorText(() => setCollapsed(false));
-  };
-
+  const codeRef = useRef<CodeRef>(null);
   return (
     <div
       className={
-        "p-1 flex items-stretch [&:has(:focus)_.collapsible]:bg-semi-color-primary-hover"
+        "p-1 flex items-stretch [&:has(:focus)_.collapser]:bg-semi-color-primary-hover"
       }
     >
+      <Collapser
+        onClick={() => {
+          setCollapsed(pre => !pre);
+          codeRef.current?.scrollToTop();
+        }}
+      />
+      <Prompt count={execution_count} />
+      <Code
+        className={"flex-1"}
+        ref={codeRef}
+        language={language}
+        path={path}
+        defaultValue={defaultValue}
+        collapsed={collapsed}
+        onFocus={() => setCollapsed(false)}
+      />
+    </div>
+  );
+};
+
+export const Collapser: FC<{ onClick: () => void }> = ({ onClick }) => {
+  return (
+    <div
+      className={"collapser w-2 hover:!bg-semi-color-primary-active"}
+      onClick={onClick}
+    ></div>
+  );
+};
+
+export const Prompt: FC<{ count?: number }> = ({ count }) => {
+  return (
+    <div
+      className={[
+        "whitespace-pre w-16 text-right p-1 text-sm",
+        "border border-transparent text-semi-color-text-3 cursor-move select-none",
+      ].join(" ")}
+    >
+      [ {count || " "} ] :
+    </div>
+  );
+};
+
+type CodeProps = Pick<CellProps, "path" | "language" | "defaultValue"> & {
+  onFocus?: () => void;
+  collapsed?: boolean;
+  className?: string;
+};
+interface CodeRef {
+  scrollToTop: () => void;
+}
+export const Code = forwardRef<CodeRef, CodeProps>(
+  ({ language, path, defaultValue, onFocus, collapsed, className }, ref) => {
+    const [height, setHeight] = useState(
+      (defaultValue?.split("\n").length || 1) * defaultHeight,
+    );
+    const editorRef = useRef<editor.IStandaloneCodeEditor>(undefined);
+
+    const onMount = (e: editor.IStandaloneCodeEditor) => {
+      editorRef.current = e;
+      e.onDidContentSizeChange(() => {
+        const contentHeight = e.getContentHeight();
+        const width = e.getContainerDomNode().clientWidth;
+        setHeight(contentHeight);
+        requestAnimationFrame(() =>
+          e.layout({ height: contentHeight, width: width }),
+        );
+      });
+      onFocus && e.onDidFocusEditorText(onFocus);
+    };
+
+    useImperativeHandle(ref, () => ({
+      scrollToTop: () => {
+        editorRef.current?.revealLine(1);
+      },
+    }));
+
+    return (
       <div
-        className={"collapsible w-2 hover:!bg-semi-color-primary-active"}
-        onClick={() => setCollapsed(pre => !pre)}
-      ></div>
-      <div
-        className={
-          "w-16 text-right p-1 text-sm border border-transparent text-semi-color-text-3 cursor-move"
-        }
-      >
-        [ 1 ] :
-      </div>
-      <div
-        className={
-          "flex-1 py-1 border has-[:focus]:border-semi-color-primary overflow-hidden"
-        }
+        className={[
+          "py-1 border has-[:focus]:border-semi-color-primary overflow-hidden",
+          className,
+        ].join(" ")}
       >
         <Editor
           language={language}
@@ -69,12 +136,12 @@ export const Cell: FC<CellProps> = ({ defaultValue = "", language, path }) => {
             lineHeight: defaultHeight,
             renderLineHighlight: "none",
             guides: {
-              indentation: false,
+              indentation: !collapsed,
             },
           }}
           onMount={onMount}
         />
       </div>
-    </div>
-  );
-};
+    );
+  },
+);

@@ -83,7 +83,7 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
       {visible && (
         <div
           className={
-            "absolute w-full top-8 bg-semi-color-bg-0 shadow-md rounded-b"
+            "absolute w-full top-8 bg-semi-color-bg-0 shadow-md rounded-b z-10"
           }
         >
           <RadioGroup
