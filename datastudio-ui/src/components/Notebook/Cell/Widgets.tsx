@@ -1,63 +1,14 @@
 import { FC, forwardRef, useImperativeHandle, useRef, useState } from "react";
+import { CellProps } from "@components/Notebook/Cell/index.tsx";
+
 import { Editor, loader } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import { editor } from "monaco-editor";
+
 // 加载使用npm包而不使用cdn
 loader.config({ monaco });
 
 const defaultHeight = 20;
-
-interface CellProps {
-  cell_type?: "code" | "markdown";
-  execution_count?: number;
-  id?: string;
-  metadata?: {
-    editable?: boolean;
-    "jp-MarkdownHeadingCollapsed"?: boolean;
-    jupyter?: { outputs_hidden?: boolean; source_hidden?: boolean };
-  };
-  language?: "sql" | "python" | "scala" | "markdown";
-  path?: string;
-  defaultValue?: string;
-}
-
-export const Cell: FC<CellProps> = ({
-  cell_type = "code",
-  execution_count,
-  id,
-  metadata,
-  language,
-  path,
-  defaultValue,
-}) => {
-  console.log(id, cell_type, metadata);
-  const [collapsed, setCollapsed] = useState(false);
-  const codeRef = useRef<CodeRef>(null);
-  return (
-    <div
-      className={
-        "p-1 flex items-stretch [&:has(:focus)_.collapser]:bg-semi-color-primary-hover"
-      }
-    >
-      <Collapser
-        onClick={() => {
-          setCollapsed(pre => !pre);
-          codeRef.current?.scrollToTop();
-        }}
-      />
-      <Prompt count={execution_count} />
-      <Code
-        className={"flex-1"}
-        ref={codeRef}
-        language={language}
-        path={path}
-        defaultValue={defaultValue}
-        collapsed={collapsed}
-        onFocus={() => setCollapsed(false)}
-      />
-    </div>
-  );
-};
 
 export const Collapser: FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
@@ -68,7 +19,11 @@ export const Collapser: FC<{ onClick: () => void }> = ({ onClick }) => {
   );
 };
 
-export const Prompt: FC<{ count?: number }> = ({ count }) => {
+export interface PromptProps {
+  count?: number;
+  hideCount?: boolean;
+}
+export const Prompt: FC<PromptProps> = ({ count, hideCount }) => {
   return (
     <div
       className={[
@@ -76,25 +31,32 @@ export const Prompt: FC<{ count?: number }> = ({ count }) => {
         "border border-transparent text-semi-color-text-3 cursor-move select-none",
       ].join(" ")}
     >
-      [ {count || " "} ] :
+      {!hideCount && `[ ${count || " "} ] :`}
     </div>
   );
 };
 
-type CodeProps = Pick<CellProps, "path" | "language" | "defaultValue"> & {
+type SourceProps = Pick<CellProps, "path" | "language"> & {
   onFocus?: () => void;
+  onBlur?: () => void;
   collapsed?: boolean;
   className?: string;
+  defaultValue?: string;
 };
-interface CodeRef {
+export interface SourceRef {
+  focus: () => void;
   scrollToTop: () => void;
+  getValue: () => string;
 }
-export const Code = forwardRef<CodeRef, CodeProps>(
-  ({ language, path, defaultValue, onFocus, collapsed, className }, ref) => {
+export const Source = forwardRef<SourceRef, SourceProps>(
+  (
+    { language, path, defaultValue, onFocus, collapsed, className, onBlur },
+    ref,
+  ) => {
     const [height, setHeight] = useState(
       (defaultValue?.split("\n").length || 1) * defaultHeight,
     );
-    const editorRef = useRef<editor.IStandaloneCodeEditor>(undefined);
+    const editorRef = useRef<editor.IStandaloneCodeEditor>(null);
 
     const onMount = (e: editor.IStandaloneCodeEditor) => {
       editorRef.current = e;
@@ -107,18 +69,25 @@ export const Code = forwardRef<CodeRef, CodeProps>(
         );
       });
       onFocus && e.onDidFocusEditorText(onFocus);
+      onBlur && e.onDidBlurEditorText(onBlur);
     };
 
     useImperativeHandle(ref, () => ({
+      focus: () => {
+        editorRef.current?.focus();
+      },
       scrollToTop: () => {
         editorRef.current?.revealLine(1);
       },
+      getValue: () => editorRef.current?.getValue() || "",
     }));
 
+    const isMarkdown = language === "markdown";
     return (
       <div
         className={[
-          "py-1 border has-[:focus]:border-semi-color-primary overflow-hidden",
+          "py-1 border has-[:focus]:border-semi-color-primary",
+          collapsed && "overflow-hidden",
           className,
         ].join(" ")}
       >
@@ -133,6 +102,8 @@ export const Code = forwardRef<CodeRef, CodeProps>(
             scrollbar: { vertical: "hidden" },
             overviewRulerLanes: 0,
             lineNumbersMinChars: 2,
+            lineNumbers: isMarkdown ? "off" : "on",
+            folding: !isMarkdown,
             lineHeight: defaultHeight,
             renderLineHighlight: "none",
             guides: {
