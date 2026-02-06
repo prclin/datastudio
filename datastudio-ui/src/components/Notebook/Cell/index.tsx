@@ -36,20 +36,30 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
   const isMarkdown = cell?.cell_type === "markdown";
   const [showMarkdown, setShowMarkdown] = useState(isMarkdown);
   const [value, setValue] = useState(cell?.source.join("\n"));
+  const radioRef = useRef<HTMLInputElement>(null);
   return (
     <div
       tabIndex={-1}
+      onMouseDown={() => {
+        if (radioRef.current) {
+          radioRef.current.checked = true;
+        }
+      }}
       className={
-        "group/cell focus:border-semi-color-primary border border-transparent p-1"
+        "relative group/cell focus:border-semi-color-primary border border-transparent p-1"
       }
     >
-      <div className={"relative"}>
-        <Actions
-          className={
-            "absolute top-1 right-20 z-10 invisible group-hover/cell:visible group-focus/cell:visible"
-          }
-        />
-      </div>
+      <Actions
+        className={
+          "absolute top-3 right-10 z-10 invisible group-hover/cell:visible group-focus/cell:visible"
+        }
+      />
+      <input
+        ref={radioRef}
+        type={"radio"}
+        name={"cell"}
+        className={"absolute hidden"}
+      />
       <CellPanel count={cell?.execution_count} hideCount={isMarkdown}>
         {(collapsed, setCollapsed) => {
           return (
@@ -116,7 +126,7 @@ const CellPanel: FC<CellPanelProps> = ({
     <div className={"p-1 flex items-stretch"}>
       <Collapser
         className={
-          "group-focus/cell:bg-semi-color-primary group-has-[:focus]/cell:bg-semi-color-primary"
+          "group-checked/cell:bg-semi-color-primary group-has-[:checked]/cell:bg-semi-color-primary"
         }
         onClick={() => setCollapsed(pre => !pre)}
       />
@@ -125,8 +135,8 @@ const CellPanel: FC<CellPanelProps> = ({
         hideCount={hideCount}
         className={
           kind === "code"
-            ? "group-has-[:focus]/cell:text-semi-color-primary group-focus/cell:text-semi-color-primary"
-            : "group-has-[:focus]/cell:text-semi-color-warning group-focus/cell:text-semi-color-warning"
+            ? "group-has-[:checked]/cell:text-semi-color-primary"
+            : "group-has-[:checked]/cell:text-semi-color-warning"
         }
       />
       <div className={"flex-1"}>
