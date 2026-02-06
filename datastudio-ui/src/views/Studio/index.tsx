@@ -1,33 +1,11 @@
 import { FC } from "react";
 import { IconDatastudio } from "@icons/IconDatastudio.tsx";
-import { Cell } from "@components/Notebook/Cell";
+import { Notebook } from "@components/Notebook";
 
 export const Studio: FC = () => {
   return (
     <div className={"p-2"}>
-      <Cell
-        language={"markdown"}
-        path={"sd"}
-        cell={{
-          cell_type: "markdown",
-          id: "",
-          metadata: {},
-          source: ["sd"],
-        }}
-      />
-      <Cell
-        language={"sql"}
-        path={"ass"}
-        cell={{
-          cell_type: "code",
-          id: "sad",
-          metadata: {},
-          source: [" sd"],
-          outputs: [
-            { output_type: "execute_result", data: { "text/plain": ["asd"] } },
-          ],
-        }}
-      />
+      <Notebook />
     </div>
   );
 };

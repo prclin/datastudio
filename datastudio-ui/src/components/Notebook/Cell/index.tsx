@@ -15,14 +15,18 @@ import {
   Source,
   SourceRef,
 } from "@components/Notebook/Cell/Widgets.tsx";
-import { Cell as _Cell } from "@components/Notebook/notebook";
+import { Cell as _Cell, NotebookMetadata } from "@components/Notebook/notebook";
 import { MarkdownRender } from "@douyinfe/semi-ui-19";
 // 加载使用npm包而不使用cdn
 loader.config({ monaco });
 
 export interface CellProps {
   cell?: _Cell;
-  language?: "sql" | "python" | "scala" | "markdown";
+  language?:
+    | NotebookMetadata["language_info"]["name"]
+    | "python"
+    | "scala"
+    | "markdown";
   path?: string;
 }
 
