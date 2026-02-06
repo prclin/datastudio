@@ -4,6 +4,10 @@ import { CellProps } from "@components/Notebook/Cell/index.tsx";
 import { Editor, loader } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import { editor } from "monaco-editor";
+import { Button, ButtonGroup } from "@douyinfe/semi-ui-19";
+import { IconDeleteStroked, IconPlusStroked } from "@douyinfe/semi-icons";
+import { withDefaultProps } from "@utils/component.tsx";
+import { ButtonProps } from "@douyinfe/semi-ui-19/lib/es/button";
 
 // 加载使用npm包而不使用cdn
 loader.config({ monaco });
@@ -125,3 +129,22 @@ export const Source = forwardRef<SourceRef, SourceProps>(
     );
   },
 );
+
+const ActionButton = withDefaultProps<ButtonProps>(Button, {
+  className: "hover:text-semi-color-primary",
+  onFocus: e => e.target.blur(),
+});
+
+export const Actions: FC<{ className?: string }> = ({ className }) => {
+  return (
+    <ButtonGroup
+      size={"small"}
+      theme={"borderless"}
+      type={"tertiary"}
+      className={["gap-2", className].join(" ")}
+    >
+      <ActionButton icon={<IconPlusStroked />} />
+      <ActionButton icon={<IconDeleteStroked />} />
+    </ButtonGroup>
+  );
+};

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Cell } from "@components/Notebook/Cell";
 import { Notebook as _Notebook } from "@components/Notebook/notebook";
+import { ToolBar } from "@components/Notebook/ToolBar";
 
 interface NotebookProps {
   notebook?: _Notebook;
@@ -42,17 +43,21 @@ const defaultNotebook: _Notebook = {
 export const Notebook: FC<NotebookProps> = ({ notebook = defaultNotebook }) => {
   return (
     <div>
-      {notebook.cells.map(cell => (
-        <Cell
-          language={
-            cell.cell_type === "markdown"
-              ? "markdown"
-              : notebook.metadata.language_info.name
-          }
-          path={cell.id}
-          cell={cell}
-        />
-      ))}
+      <ToolBar />
+      <div>
+        {notebook.cells.map(cell => (
+          <Cell
+            key={cell.id}
+            language={
+              cell.cell_type === "markdown"
+                ? "markdown"
+                : notebook.metadata.language_info.name
+            }
+            path={cell.id}
+            cell={cell}
+          />
+        ))}
+      </div>
     </div>
   );
 };

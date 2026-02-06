@@ -9,6 +9,7 @@ import {
 import { loader } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import {
+  Actions,
   Collapser,
   Prompt,
   PromptProps,
@@ -38,11 +39,17 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
   return (
     <div
       tabIndex={-1}
-      onFocus={() => console.log(111)}
       className={
         "group/cell focus:border-semi-color-primary border border-transparent p-1"
       }
     >
+      <div className={"relative"}>
+        <Actions
+          className={
+            "absolute top-1 right-20 z-10 invisible group-hover/cell:visible group-focus/cell:visible"
+          }
+        />
+      </div>
       <CellPanel count={cell?.execution_count} hideCount={isMarkdown}>
         {(collapsed, setCollapsed) => {
           return (
