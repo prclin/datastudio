@@ -10,10 +10,16 @@ loader.config({ monaco });
 
 const defaultHeight = 20;
 
-export const Collapser: FC<{ onClick: () => void }> = ({ onClick }) => {
+export const Collapser: FC<{ onClick?: () => void; className?: string }> = ({
+  onClick,
+  className,
+}) => {
   return (
     <div
-      className={"collapser w-2 hover:!bg-semi-color-primary-active"}
+      className={[
+        "collapser w-2 hover:!bg-semi-color-primary-active",
+        className,
+      ].join(" ")}
       onClick={onClick}
     ></div>
   );
@@ -22,13 +28,15 @@ export const Collapser: FC<{ onClick: () => void }> = ({ onClick }) => {
 export interface PromptProps {
   count?: number;
   hideCount?: boolean;
+  className?: string;
 }
-export const Prompt: FC<PromptProps> = ({ count, hideCount }) => {
+export const Prompt: FC<PromptProps> = ({ count, hideCount, className }) => {
   return (
     <div
       className={[
         "whitespace-pre w-16 text-right p-1 text-sm",
         "border border-transparent text-semi-color-text-3 cursor-move select-none",
+        className,
       ].join(" ")}
     >
       {!hideCount && `[ ${count || " "} ] :`}
@@ -96,6 +104,7 @@ export const Source = forwardRef<SourceRef, SourceProps>(
           path={path}
           defaultValue={defaultValue}
           height={collapsed ? defaultHeight : height}
+          loading={null}
           options={{
             scrollBeyondLastLine: false,
             minimap: { enabled: false },

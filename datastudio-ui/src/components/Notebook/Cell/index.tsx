@@ -32,7 +32,13 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
   const [showMarkdown, setShowMarkdown] = useState(isMarkdown);
   const [value, setValue] = useState(cell?.source.join("\n"));
   return (
-    <div>
+    <div
+      tabIndex={-1}
+      onFocus={() => console.log(111)}
+      className={
+        "group/cell focus:border-semi-color-primary border border-transparent p-1"
+      }
+    >
       <CellPanel count={cell?.execution_count} hideCount={isMarkdown}>
         {(collapsed, setCollapsed) => {
           return (
@@ -58,9 +64,7 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
                     setShowMarkdown(false);
                     sourceRef.current?.focus();
                   }}
-                  className={
-                    "py-1 px-2 border border-transparent hover:border-semi-color-primary"
-                  }
+                  className={"py-1 px-2 border border-transparent"}
                 >
                   <MarkdownRender raw={value} />
                 </div>
@@ -70,7 +74,7 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
         }}
       </CellPanel>
       {!isMarkdown && cell?.outputs && cell.outputs.length != 0 && (
-        <CellPanel count={cell?.execution_count}>
+        <CellPanel count={cell?.execution_count} kind={"outputs"}>
           {/* todo填充结果 */}
           <div>todo</div>
         </CellPanel>
@@ -79,7 +83,8 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
   );
 };
 
-type CellPanelProps = PromptProps & {
+type CellPanelProps = Omit<PromptProps, "className"> & {
+  kind?: "source" | "outputs";
   children?:
     | ReactNode
     | ((
@@ -88,17 +93,31 @@ type CellPanelProps = PromptProps & {
       ) => ReactNode);
 };
 
-const CellPanel: FC<CellPanelProps> = ({ count, hideCount, children }) => {
+const CellPanel: FC<CellPanelProps> = ({
+  count,
+  hideCount,
+  children,
+  kind = "code",
+}) => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div
-      className={
-        "p-1 flex items-stretch [&:has(:focus)_.collapser]:bg-semi-color-primary-hover"
-      }
-    >
-      <Collapser onClick={() => setCollapsed(pre => !pre)} />
-      <Prompt count={count} hideCount={hideCount} />
+    <div className={"p-1 flex items-stretch"}>
+      <Collapser
+        className={
+          "group-focus/cell:bg-semi-color-primary group-has-[:focus]/cell:bg-semi-color-primary"
+        }
+        onClick={() => setCollapsed(pre => !pre)}
+      />
+      <Prompt
+        count={count}
+        hideCount={hideCount}
+        className={
+          kind === "code"
+            ? "group-has-[:focus]/cell:text-semi-color-primary group-focus/cell:text-semi-color-primary"
+            : "group-has-[:focus]/cell:text-semi-color-warning group-focus/cell:text-semi-color-warning"
+        }
+      />
       <div className={"flex-1"}>
         {children && typeof children === "function"
           ? children(collapsed, setCollapsed)

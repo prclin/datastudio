@@ -18,7 +18,15 @@ export const Studio: FC = () => {
       <Cell
         language={"sql"}
         path={"ass"}
-        cell={{ cell_type: "code", id: "sad", metadata: {}, source: [" sd"] }}
+        cell={{
+          cell_type: "code",
+          id: "sad",
+          metadata: {},
+          source: [" sd"],
+          outputs: [
+            { output_type: "execute_result", data: { "text/plain": ["asd"] } },
+          ],
+        }}
       />
     </div>
   );
