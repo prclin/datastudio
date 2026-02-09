@@ -1,5 +1,5 @@
 import { Button, Dropdown, Space } from "@douyinfe/semi-ui-19";
-import { FC } from "react";
+import { FC, useState } from "react";
 import {
   IconChevronDown,
   IconClear,
@@ -13,7 +13,10 @@ const ToolButton = withDefaultProps(Button, {
   theme: "borderless",
   className: "hover:text-semi-color-primary",
 });
+
+const items = ["Python 3 (ipykernel)", "Spark 2.4.8", "Flink 1.18.1"];
 export const ToolBar: FC = () => {
+  const [kernel, setKernel] = useState("No Kernel");
   return (
     <div className={"px-2 flex justify-between"}>
       <Space>
@@ -22,13 +25,16 @@ export const ToolBar: FC = () => {
         <ToolButton icon={<IconFastForward />} />
       </Space>
       <Dropdown
+        clickToHide
         trigger={"click"}
         position={"bottomRight"}
         render={
           <Dropdown.Menu>
-            <Dropdown.Item>Python 3 (ipykernel)</Dropdown.Item>
-            <Dropdown.Item>Spark 2.4.8</Dropdown.Item>
-            <Dropdown.Item>Flink 1.18.1</Dropdown.Item>
+            {items.map(item => (
+              <Dropdown.Item onClick={() => setKernel(item)}>
+                {item}
+              </Dropdown.Item>
+            ))}
           </Dropdown.Menu>
         }
       >
@@ -39,7 +45,7 @@ export const ToolBar: FC = () => {
             icon={<IconChevronDown />}
             iconPosition={"right"}
           >
-            No Kernel
+            {kernel}
           </Button>
         </div>
       </Dropdown>
