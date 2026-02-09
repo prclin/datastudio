@@ -2,10 +2,9 @@ import { FC, ReactNode, useState } from "react";
 import { Button, Nav } from "@douyinfe/semi-ui-19";
 import { IconPlus } from "@douyinfe/semi-icons";
 import { withDefaultProps } from "@utils/component.tsx";
-import { NavItemProps } from "@douyinfe/semi-ui-19/lib/es/navigation";
 import { useGlobal } from "@utils/context.tsx";
 
-const NavItem = withDefaultProps<NavItemProps>(Nav.Item, {
+const NavItem = withDefaultProps(Nav.Item, {
   className: [
     "leading-4 py-1.5 rounded mb-0.5 font-normal [&_.semi-icon]:text-base",
     "[&_.semi-navigation-item-icon]:min-w-4 [&_.semi-navigation-item-icon]:mr-2",
