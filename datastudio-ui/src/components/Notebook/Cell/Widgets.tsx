@@ -1,4 +1,12 @@
-import { FC, forwardRef, useImperativeHandle, useRef, useState } from "react";
+import {
+  FC,
+  forwardRef,
+  HTMLAttributes,
+  ReactNode,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import { CellProps } from "@components/Notebook/Cell/index.tsx";
 
 import { Editor, loader } from "@monaco-editor/react";
@@ -13,9 +21,9 @@ loader.config({ monaco });
 
 const defaultHeight = 20;
 
-export const Collapser: FC<{ onClick?: () => void; className?: string }> = ({
-  onClick,
+export const Collapser: FC<HTMLAttributes<HTMLDivElement>> = ({
   className,
+  ...props
 }) => {
   return (
     <div
@@ -23,7 +31,7 @@ export const Collapser: FC<{ onClick?: () => void; className?: string }> = ({
         "collapser w-2 hover:!bg-semi-color-primary-active",
         className,
       ].join(" ")}
-      onClick={onClick}
+      {...props}
     ></div>
   );
 };
@@ -145,5 +153,40 @@ export const Actions: FC<{ className?: string }> = ({ className }) => {
       <ActionButton icon={<IconPlusStroked />} />
       <ActionButton icon={<IconDeleteStroked />} />
     </ButtonGroup>
+  );
+};
+
+type CellPanelProps = Omit<PromptProps, "className"> & {
+  kind?: "source" | "outputs";
+  onCollapserClick?: () => void;
+  children?: ReactNode;
+};
+
+export const CellPanel: FC<CellPanelProps> = ({
+  onCollapserClick,
+  count,
+  hideCount,
+  children,
+  kind = "code",
+}) => {
+  return (
+    <div className={"p-1 flex items-stretch"}>
+      <Collapser
+        className={
+          "group-checked/cell:bg-semi-color-primary group-has-[:checked]/cell:bg-semi-color-primary"
+        }
+        onClick={onCollapserClick}
+      />
+      <Prompt
+        count={count}
+        hideCount={hideCount}
+        className={
+          kind === "code"
+            ? "group-has-[:checked]/cell:text-semi-color-primary"
+            : "group-has-[:checked]/cell:text-semi-color-warning"
+        }
+      />
+      <div className={"flex-1"}>{children}</div>
+    </div>
   );
 };
