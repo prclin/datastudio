@@ -1,20 +1,13 @@
-import {
-  FC,
-  forwardRef,
-  HTMLAttributes,
-  ReactNode,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
+import { FC, forwardRef, HTMLAttributes, ReactNode, useImperativeHandle, useRef, useState } from "react";
 import { CellProps } from "@components/Notebook/Cell/index.tsx";
 
 import { Editor, loader } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import { editor } from "monaco-editor";
-import { Button, ButtonGroup } from "@douyinfe/semi-ui-19";
+import { Button, ButtonGroup, Divider } from "@douyinfe/semi-ui-19";
 import { IconDeleteStroked, IconPlusStroked } from "@douyinfe/semi-icons";
 import { withDefaultProps } from "@utils/component.tsx";
+import { DividerProps } from "@douyinfe/semi-ui-19/lib/es/divider";
 
 // 加载使用npm包而不使用cdn
 loader.config({ monaco });
@@ -188,5 +181,21 @@ export const CellPanel: FC<CellPanelProps> = ({
       />
       <div className={"flex-1"}>{children}</div>
     </div>
+  );
+};
+
+const DividerButton = withDefaultProps(Button, {
+  icon: <IconPlusStroked size={"small"} />,
+  type: "tertiary",
+  theme: "borderless",
+  size: "small",
+  className: "px-2 font-normal hover:text-semi-color-secondary",
+});
+export const CellDivider: FC<DividerProps> = props => {
+  return (
+    <Divider dashed {...props}>
+      <DividerButton>Code</DividerButton>
+      <DividerButton>Markdown</DividerButton>
+    </Divider>
   );
 };
