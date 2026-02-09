@@ -68,7 +68,6 @@ export default defineConfig({
     isDev ? new ReactRefreshRspackPlugin() : null,
     new SemiRspackPlugin({
       cssLayer: true,
-      // 定制主体暂时无效等待pr https://github.com/DouyinFE/semi-design/pull/3121合并后修复
       theme: "@semi-bot/semi-theme-datastudio",
     }),
     new CopyRspackPlugin({
