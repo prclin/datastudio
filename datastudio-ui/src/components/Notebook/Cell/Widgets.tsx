@@ -1,4 +1,12 @@
-import { FC, forwardRef, HTMLAttributes, ReactNode, useImperativeHandle, useRef, useState } from "react";
+import {
+  FC,
+  forwardRef,
+  HTMLAttributes,
+  ReactNode,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import { CellProps } from "@components/Notebook/Cell/index.tsx";
 
 import { Editor, loader } from "@monaco-editor/react";
@@ -8,6 +16,7 @@ import { Button, ButtonGroup, Divider } from "@douyinfe/semi-ui-19";
 import { IconDeleteStroked, IconPlusStroked } from "@douyinfe/semi-icons";
 import { withDefaultProps } from "@utils/component.tsx";
 import { DividerProps } from "@douyinfe/semi-ui-19/lib/es/divider";
+import { useNotebook } from "@components/Notebook";
 
 // 加载使用npm包而不使用cdn
 loader.config({ monaco });
@@ -191,11 +200,17 @@ const DividerButton = withDefaultProps(Button, {
   size: "small",
   className: "px-2 font-normal hover:text-semi-color-secondary",
 });
-export const CellDivider: FC<DividerProps> = props => {
+export const CellDivider: FC<DividerProps & { index: number }> = ({
+  index,
+  ...props
+}) => {
+  const { addCell } = useNotebook();
   return (
     <Divider dashed {...props}>
-      <DividerButton>Code</DividerButton>
-      <DividerButton>Markdown</DividerButton>
+      <DividerButton onClick={() => addCell("code", index)}>Code</DividerButton>
+      <DividerButton onClick={() => addCell("markdown", index)}>
+        Markdown
+      </DividerButton>
     </Divider>
   );
 };

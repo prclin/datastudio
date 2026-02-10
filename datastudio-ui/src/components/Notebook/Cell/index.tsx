@@ -81,7 +81,7 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
             }}
             className={"py-1 px-2 border border-transparent"}
           >
-            <MarkdownRender raw={value} />
+            <MarkdownRender raw={value == "" ? "type markdown here" : value} />
           </div>
         )}
       </CellPanel>
