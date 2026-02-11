@@ -54,6 +54,8 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
         count={cell?.execution_count}
         hideCount={isMarkdown}
         onCollapserClick={() => setSourceHidden(pre => !pre)}
+        collapserClassName={"group-has-[:checked]/cell:bg-semi-color-primary"}
+        promptClassName={"group-has-[:checked]/cell:text-semi-color-primary"}
       >
         {!showMarkdown ? (
           <Source
@@ -83,7 +85,13 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
         )}
       </CellPanel>
       {!isMarkdown && cell?.outputs && cell.outputs.length != 0 && (
-        <CellPanel count={cell?.execution_count} kind={"outputs"}>
+        <CellPanel
+          count={cell?.execution_count}
+          collapserClassName={"group-has-[:checked]/cell:bg-semi-color-primary"}
+          promptClassName={
+            "group-has-[:checked]/cell:text-semi-color-secondary"
+          }
+        >
           {/* todo填充结果 */}
           <div>todo</div>
         </CellPanel>

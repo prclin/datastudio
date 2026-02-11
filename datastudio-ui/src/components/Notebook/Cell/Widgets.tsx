@@ -18,7 +18,7 @@ export const Collapser: FC<HTMLAttributes<HTMLDivElement>> = ({
   return (
     <div
       className={[
-        "collapser w-2 hover:!bg-semi-color-primary-active",
+        "collapser w-2 hover:!bg-semi-color-primary-hover",
         className,
       ].join(" ")}
       {...props}
@@ -35,7 +35,7 @@ export const Prompt: FC<PromptProps> = ({ count, hideCount, className }) => {
   return (
     <div
       className={[
-        "whitespace-pre w-16 text-right p-1 text-sm",
+        "prompt whitespace-pre w-16 text-right p-1 text-sm",
         "border border-transparent text-semi-color-text-3 cursor-move select-none",
         className,
       ].join(" ")}
