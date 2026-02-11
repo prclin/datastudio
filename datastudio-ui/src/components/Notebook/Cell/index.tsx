@@ -1,14 +1,11 @@
 import { FC, useRef, useState } from "react";
 import { loader } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
-import {
-  Actions,
-  CellPanel,
-  Source,
-  SourceRef,
-} from "@components/Notebook/Cell/Widgets.tsx";
+import { Actions } from "@components/Notebook/Cell/Widgets.tsx";
 import { Cell as _Cell, NotebookMetadata } from "@components/Notebook/notebook";
 import { MarkdownRender } from "@douyinfe/semi-ui-19";
+import { CellPanel } from "@components/Notebook/Cell/Panel.tsx";
+import { Source, SourceRef } from "@components/Notebook/Cell/Source.tsx";
 // 加载使用npm包而不使用cdn
 loader.config({ monaco });
 

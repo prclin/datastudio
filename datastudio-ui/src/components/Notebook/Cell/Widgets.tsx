@@ -1,17 +1,7 @@
-import {
-  FC,
-  forwardRef,
-  HTMLAttributes,
-  ReactNode,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
-import { CellProps } from "@components/Notebook/Cell/index.tsx";
+import { FC, HTMLAttributes } from "react";
 
-import { Editor, loader } from "@monaco-editor/react";
+import { loader } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
-import { editor } from "monaco-editor";
 import { Button, ButtonGroup, Divider } from "@douyinfe/semi-ui-19";
 import { IconDeleteStroked, IconPlusStroked } from "@douyinfe/semi-icons";
 import { withDefaultProps } from "@utils/component.tsx";
@@ -20,8 +10,6 @@ import { useNotebook } from "@components/Notebook";
 
 // 加载使用npm包而不使用cdn
 loader.config({ monaco });
-
-const defaultHeight = 20;
 
 export const Collapser: FC<HTMLAttributes<HTMLDivElement>> = ({
   className,
@@ -57,88 +45,6 @@ export const Prompt: FC<PromptProps> = ({ count, hideCount, className }) => {
   );
 };
 
-type SourceProps = Pick<CellProps, "path" | "language"> & {
-  onFocus?: () => void;
-  onBlur?: () => void;
-  collapsed?: boolean;
-  className?: string;
-  defaultValue?: string;
-};
-export interface SourceRef {
-  focus: () => void;
-  scrollToTop: () => void;
-  getValue: () => string;
-}
-export const Source = forwardRef<SourceRef, SourceProps>(
-  (
-    { language, path, defaultValue, onFocus, collapsed, className, onBlur },
-    ref,
-  ) => {
-    const [height, setHeight] = useState(
-      (defaultValue?.split("\n").length || 1) * defaultHeight,
-    );
-    const editorRef = useRef<editor.IStandaloneCodeEditor>(null);
-
-    const onMount = (e: editor.IStandaloneCodeEditor) => {
-      editorRef.current = e;
-      e.onDidContentSizeChange(() => {
-        const contentHeight = e.getContentHeight();
-        const width = e.getContainerDomNode().clientWidth;
-        setHeight(contentHeight);
-        requestAnimationFrame(() =>
-          e.layout({ height: contentHeight, width: width }),
-        );
-      });
-      onFocus && e.onDidFocusEditorText(onFocus);
-      onBlur && e.onDidBlurEditorText(onBlur);
-    };
-
-    useImperativeHandle(ref, () => ({
-      focus: () => {
-        editorRef.current?.focus();
-      },
-      scrollToTop: () => {
-        editorRef.current?.revealLine(1);
-      },
-      getValue: () => editorRef.current?.getValue() || "",
-    }));
-
-    const isMarkdown = language === "markdown";
-    return (
-      <div
-        className={[
-          "py-1 border has-[:focus]:border-semi-color-primary",
-          collapsed && "overflow-hidden",
-          className,
-        ].join(" ")}
-      >
-        <Editor
-          language={language}
-          path={path}
-          defaultValue={defaultValue}
-          height={collapsed ? defaultHeight : height}
-          loading={null}
-          options={{
-            scrollBeyondLastLine: false,
-            minimap: { enabled: false },
-            scrollbar: { vertical: "hidden" },
-            overviewRulerLanes: 0,
-            lineNumbersMinChars: 2,
-            lineNumbers: isMarkdown ? "off" : "on",
-            folding: !isMarkdown,
-            lineHeight: defaultHeight,
-            renderLineHighlight: "none",
-            guides: {
-              indentation: !collapsed,
-            },
-          }}
-          onMount={onMount}
-        />
-      </div>
-    );
-  },
-);
-
 const ActionButton = withDefaultProps(Button, {
   className: "hover:text-semi-color-primary",
   onFocus: e => e.target.blur(),
@@ -155,41 +61,6 @@ export const Actions: FC<{ className?: string }> = ({ className }) => {
       <ActionButton icon={<IconPlusStroked />} />
       <ActionButton icon={<IconDeleteStroked />} />
     </ButtonGroup>
-  );
-};
-
-type CellPanelProps = Omit<PromptProps, "className"> & {
-  kind?: "source" | "outputs";
-  onCollapserClick?: () => void;
-  children?: ReactNode;
-};
-
-export const CellPanel: FC<CellPanelProps> = ({
-  onCollapserClick,
-  count,
-  hideCount,
-  children,
-  kind = "code",
-}) => {
-  return (
-    <div className={"p-1 flex items-stretch"}>
-      <Collapser
-        className={
-          "group-checked/cell:bg-semi-color-primary group-has-[:checked]/cell:bg-semi-color-primary"
-        }
-        onClick={onCollapserClick}
-      />
-      <Prompt
-        count={count}
-        hideCount={hideCount}
-        className={
-          kind === "code"
-            ? "group-has-[:checked]/cell:text-semi-color-primary"
-            : "group-has-[:checked]/cell:text-semi-color-warning"
-        }
-      />
-      <div className={"flex-1"}>{children}</div>
-    </div>
   );
 };
 
