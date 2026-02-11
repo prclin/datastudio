@@ -25,7 +25,7 @@ export const Source = forwardRef<SourceRef, SourceProps>(
       language,
       path,
       value,
-      defaultValue = "",
+      defaultValue,
       onChange,
       onFocus,
       collapsed,

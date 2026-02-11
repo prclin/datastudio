@@ -1,4 +1,4 @@
-import { createContext, FC, useContext, useState } from "react";
+import { createContext, FC, Fragment, useContext, useState } from "react";
 import { Cell } from "@components/Notebook/Cell";
 import {
   Cell as _Cell,
@@ -54,7 +54,7 @@ export const Notebook: FC<NotebookProps> = ({ notebook = defaultNotebook }) => {
         case "markdown":
           cell = {
             cell_type: "markdown",
-            id: "sdddd",
+            id: crypto.randomUUID(),
             metadata: {},
             source: [""],
           };
@@ -62,7 +62,7 @@ export const Notebook: FC<NotebookProps> = ({ notebook = defaultNotebook }) => {
         case "code":
           cell = {
             cell_type: "code",
-            id: "sddasfggasad",
+            id: crypto.randomUUID(),
             metadata: {},
             source: [""],
             outputs: [],
@@ -85,7 +85,7 @@ export const Notebook: FC<NotebookProps> = ({ notebook = defaultNotebook }) => {
         <div>
           <CellDivider index={0} className={"opacity-0 hover:opacity-100"} />
           {nb.cells.map((cell, index) => (
-            <div key={cell.id}>
+            <Fragment key={cell.id}>
               <Cell
                 language={
                   cell.cell_type === "markdown"
@@ -99,7 +99,7 @@ export const Notebook: FC<NotebookProps> = ({ notebook = defaultNotebook }) => {
                 index={index + 1}
                 className={"opacity-0 hover:opacity-100"}
               />
-            </div>
+            </Fragment>
           ))}
         </div>
       </div>

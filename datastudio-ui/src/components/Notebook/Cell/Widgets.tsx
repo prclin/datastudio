@@ -36,7 +36,7 @@ export const Prompt: FC<PromptProps> = ({ count, hideCount, className }) => {
     <div
       className={[
         "prompt whitespace-pre w-16 text-right p-1 text-sm",
-        "border border-transparent text-semi-color-text-3 cursor-move select-none",
+        "border border-transparent text-semi-color-text-3 select-none",
         className,
       ].join(" ")}
     >

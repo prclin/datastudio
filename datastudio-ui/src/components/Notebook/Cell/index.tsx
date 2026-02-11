@@ -55,7 +55,9 @@ export const Cell: FC<CellProps> = ({ cell, language, path }) => {
         hideCount={isMarkdown}
         onCollapserClick={() => setSourceHidden(pre => !pre)}
         collapserClassName={"group-has-[:checked]/cell:bg-semi-color-primary"}
-        promptClassName={"group-has-[:checked]/cell:text-semi-color-primary"}
+        promptClassName={
+          "group-has-[:checked]/cell:text-semi-color-primary cursor-move"
+        }
       >
         {!showMarkdown ? (
           <Source
