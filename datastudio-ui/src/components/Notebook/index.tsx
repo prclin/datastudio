@@ -50,7 +50,7 @@ export const Notebook: FC<NotebookProps> = ({ notebook = defaultNotebook }) => {
     const addCell = (
       kind: _Cell["cell_type"],
       position: "before" | "after",
-      id?: string,
+      id: string,
     ) => {
       setNb(pre => {
         let cell: _Cell;
@@ -83,7 +83,12 @@ export const Notebook: FC<NotebookProps> = ({ notebook = defaultNotebook }) => {
         return { ...pre, cells };
       });
     };
-    const deleteCell = () => {};
+    const deleteCell = (id: string) => {
+      setNb(pre => {
+        const cells = pre.cells.filter(cell => cell.id !== id);
+        return { ...pre, cells };
+      });
+    };
     return { addCell, deleteCell };
   }, [setNb]);
   return (
@@ -114,7 +119,7 @@ interface NotebookContext {
   addCell: (
     kind: _Cell["cell_type"],
     position: "before" | "after",
-    id?: string,
+    id: string,
   ) => void;
   deleteCell: (id: string) => void;
 }

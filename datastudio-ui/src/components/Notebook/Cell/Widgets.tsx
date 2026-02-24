@@ -50,7 +50,13 @@ const ActionButton = withDefaultProps(Button, {
   onFocus: e => e.target.blur(),
 });
 
-export const Actions: FC<{ className?: string }> = ({ className }) => {
+export interface ActionsProps {
+  className?: string;
+  onAdd?: () => void;
+  onDelete?: () => void;
+}
+
+export const Actions: FC<ActionsProps> = ({ className, onAdd, onDelete }) => {
   return (
     <ButtonGroup
       size={"small"}
@@ -58,8 +64,8 @@ export const Actions: FC<{ className?: string }> = ({ className }) => {
       type={"tertiary"}
       className={["gap-2", className].join(" ")}
     >
-      <ActionButton icon={<IconPlusStroked />} />
-      <ActionButton icon={<IconDeleteStroked />} />
+      <ActionButton icon={<IconPlusStroked />} onClick={onAdd} />
+      <ActionButton icon={<IconDeleteStroked />} onClick={onDelete} />
     </ButtonGroup>
   );
 };

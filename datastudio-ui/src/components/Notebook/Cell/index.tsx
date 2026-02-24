@@ -30,13 +30,13 @@ export const Cell: FC<CellProps> = memo(
     const [showMarkdown, setShowMarkdown] = useState(isMarkdown);
     const [value, setValue] = useState(cell?.source.join("\n"));
     const [sourceHidden, setSourceHidden] = useState(false);
-    const { addCell } = useNotebook();
+    const { addCell, deleteCell } = useNotebook();
     return (
       <div>
         {["top", "both"].includes(showDivider) && (
           <CellDivider
             className={"opacity-0 hover:opacity-100"}
-            onAdd={kind => addCell(kind, "before", cell?.id)}
+            onAdd={kind => addCell(kind, "before", cell!.id)}
           />
         )}
         <div
@@ -54,6 +54,8 @@ export const Cell: FC<CellProps> = memo(
             className={
               "absolute top-3 right-10 z-10 invisible group-hover/cell:visible group-focus/cell:visible"
             }
+            onAdd={() => addCell(cell?.cell_type || "code", "after", cell!.id)}
+            onDelete={() => deleteCell(cell!.id)}
           />
           <input
             ref={radioRef}
@@ -120,7 +122,7 @@ export const Cell: FC<CellProps> = memo(
         {["bottom", "both"].includes(showDivider) && (
           <CellDivider
             className={"opacity-0 hover:opacity-100"}
-            onAdd={kind => addCell(kind, "after", cell?.id)}
+            onAdd={kind => addCell(kind, "after", cell!.id)}
           />
         )}
       </div>
