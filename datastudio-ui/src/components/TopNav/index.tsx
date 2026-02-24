@@ -40,6 +40,7 @@ export const TopNav: FC<{ onCollapse?: () => void }> = ({ onCollapse }) => {
       <Space align={"center"} className={"grow-0 shrink basis-100 justify-end"}>
         <Dropdown
           trigger={"click"}
+          position={"bottomRight"}
           render={
             <Dropdown.Menu className={"px-2 w-70"}>
               <Dropdown.Title className={"leading-5 p-2"}>
