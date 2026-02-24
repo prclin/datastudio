@@ -1,5 +1,5 @@
 import { Button, Dropdown, Space } from "@douyinfe/semi-ui-19";
-import { FC, useState } from "react";
+import { FC, memo, useState } from "react";
 import {
   IconChevronDown,
   IconClear,
@@ -15,7 +15,7 @@ const ToolButton = withDefaultProps(Button, {
 });
 
 const items = ["Python 3 (ipykernel)", "Spark 2.4.8", "Flink 1.18.1"];
-export const ToolBar: FC = () => {
+export const ToolBar: FC = memo(() => {
   const [kernel, setKernel] = useState("No Kernel");
   return (
     <div className={"px-2 flex justify-between"}>
@@ -51,4 +51,4 @@ export const ToolBar: FC = () => {
       </Dropdown>
     </div>
   );
-};
+});

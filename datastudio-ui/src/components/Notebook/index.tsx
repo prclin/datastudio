@@ -1,11 +1,10 @@
-import { createContext, FC, Fragment, useContext, useState } from "react";
+import { createContext, FC, useContext, useMemo, useState } from "react";
 import { Cell } from "@components/Notebook/Cell";
 import {
   Cell as _Cell,
   Notebook as _Notebook,
 } from "@components/Notebook/notebook";
 import { ToolBar } from "@components/Notebook/ToolBar";
-import { CellDivider } from "@components/Notebook/Cell/Widgets.tsx";
 
 interface NotebookProps {
   notebook?: _Notebook;
@@ -47,59 +46,63 @@ const defaultNotebook: _Notebook = {
 
 export const Notebook: FC<NotebookProps> = ({ notebook = defaultNotebook }) => {
   const [nb, setNb] = useState(notebook);
-  const addCell = (kind: _Cell["cell_type"], index: number) => {
-    setNb(pre => {
-      let cell: _Cell;
-      switch (kind) {
-        case "markdown":
-          cell = {
-            cell_type: "markdown",
-            id: crypto.randomUUID(),
-            metadata: {},
-            source: [""],
-          };
-          break;
-        case "code":
-          cell = {
-            cell_type: "code",
-            id: crypto.randomUUID(),
-            metadata: {},
-            source: [""],
-            outputs: [],
-          };
-          break;
-      }
-      const cells = [
-        ...pre.cells.slice(0, index),
-        cell,
-        ...pre.cells.splice(index),
-      ];
-      return { ...pre, cells };
-    });
-  };
+  const context = useMemo(() => {
+    const addCell = (
+      kind: _Cell["cell_type"],
+      position: "before" | "after",
+      id?: string,
+    ) => {
+      setNb(pre => {
+        let cell: _Cell;
+        switch (kind) {
+          case "markdown":
+            cell = {
+              cell_type: "markdown",
+              id: crypto.randomUUID(),
+              metadata: {},
+              source: [""],
+            };
+            break;
+          case "code":
+            cell = {
+              cell_type: "code",
+              id: crypto.randomUUID(),
+              metadata: {},
+              source: [""],
+              outputs: [],
+            };
+            break;
+        }
+        let index = pre.cells.findIndex(item => item.id === id);
+        index = position === "after" ? index + 1 : index;
+        const cells = [
+          ...pre.cells.slice(0, index),
+          cell,
+          ...pre.cells.splice(index),
+        ];
+        return { ...pre, cells };
+      });
+    };
+    const deleteCell = () => {};
+    return { addCell, deleteCell };
+  }, [setNb]);
   return (
-    <Context.Provider value={{ addCell }}>
+    <Context.Provider value={context}>
       <div>
         <ToolBar />
-
         <div>
-          <CellDivider index={0} className={"opacity-0 hover:opacity-100"} />
           {nb.cells.map((cell, index) => (
-            <Fragment key={cell.id}>
-              <Cell
-                language={
-                  cell.cell_type === "markdown"
-                    ? "markdown"
-                    : nb.metadata.language_info.name
-                }
-                path={cell.id}
-                cell={cell}
-              />
-              <CellDivider
-                index={index + 1}
-                className={"opacity-0 hover:opacity-100"}
-              />
-            </Fragment>
+            <Cell
+              showDivider={index === 0 ? "both" : "bottom"}
+              key={cell.id}
+              language={
+                cell.cell_type === "markdown"
+                  ? "markdown"
+                  : nb.metadata.language_info.name
+              }
+              path={cell.id}
+              cell={cell}
+            />
           ))}
         </div>
       </div>
@@ -108,11 +111,17 @@ export const Notebook: FC<NotebookProps> = ({ notebook = defaultNotebook }) => {
 };
 
 interface NotebookContext {
-  addCell: (kind: _Cell["cell_type"], index: number) => void;
+  addCell: (
+    kind: _Cell["cell_type"],
+    position: "before" | "after",
+    id?: string,
+  ) => void;
+  deleteCell: (id: string) => void;
 }
 
 const Context = createContext<NotebookContext>({
   addCell: () => {},
+  deleteCell: () => {},
 });
 
 export const useNotebook = () => useContext(Context);
