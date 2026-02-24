@@ -36,8 +36,8 @@ export const SideNav: FC<SideNavProps> = ({
   return (
     <nav
       className={[
-        "px-3 w-50 transition-all",
-        !isOpen && "w-0 px-0 pl-2 overflow-hidden",
+        "transition-all overflow-hidden",
+        isOpen ? "px-3 w-50" : "w-0 px-0 pl-2",
       ].join(" ")}
     >
       <Nav
