@@ -76,7 +76,7 @@ export default defineConfig({
     new MonacoWebpackPlugin({
       languages: ["sql", "python", "scala", "markdown"],
     }),
-  ],
+  ].filter(Boolean),
   optimization: {
     minimizer: [
       new rspack.SwcJsMinimizerRspackPlugin(),
