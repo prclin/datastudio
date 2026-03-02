@@ -18,6 +18,13 @@ tasks.register("setup-icon", Exec) {
  finalizedBy "format"
 }
 
+tasks.register("setup-worker", Exec) {
+ group = "npx"
+ dependsOn "install"
+ commandLine "pnpm", "run", "setup:worker"
+ finalizedBy "format"
+}
+
 tasks.register("lint", Exec) {
  group = "pnpm"
  commandLine "pnpm", "run", "lint"

@@ -7,18 +7,30 @@
     "dev": "rspack dev",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "preview": "rspack preview"
+    "preview": "rspack preview",
+    "setup:worker": "rspack build --config setup/monaco-worker.ts"
   },
   "dependencies": {
+    "@codingame/monaco-vscode-api": "25.1.2",
+    "@codingame/monaco-vscode-configuration-service-override": "25.1.2",
+    "@codingame/monaco-vscode-editor-api": "25.1.2",
+    "@codingame/monaco-vscode-editor-service-override": "25.1.2",
+    "@codingame/monaco-vscode-extension-api": "25.1.2",
+    "@codingame/monaco-vscode-extensions-service-override": "25.1.2",
+    "@codingame/monaco-vscode-languages-service-override": "25.1.2",
+    "@codingame/monaco-vscode-localization-service-override": "25.1.2",
+    "@codingame/monaco-vscode-log-service-override": "25.1.2",
+    "@codingame/monaco-vscode-model-service-override": "25.1.2",
     "@douyinfe/semi-icons": "^2.90.13",
     "@douyinfe/semi-ui-19": "^2.90.13",
-    "@monaco-editor/react": "^4.7.0",
     "@semi-bot/semi-theme-datastudio": "^1.0.1",
-    "monaco-editor": "^0.55.1",
+    "@typefox/monaco-editor-react": "^7.7.0",
+    "monaco-languageclient": "^10.7.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-intl": "^8.1.1",
-    "react-router": "^7.12.0"
+    "react-router": "^7.12.0",
+    "vscode": "npm:@codingame/monaco-vscode-extension-api@25.1.2"
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "^6.0.0",
@@ -36,7 +48,6 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "jsonc-parser": "^3.3.1",
-    "monaco-editor-webpack-plugin": "^7.1.1",
     "postcss": "^8.5.6",
     "postcss-loader": "^8.2.0",
     "prettier": "^3.7.3",

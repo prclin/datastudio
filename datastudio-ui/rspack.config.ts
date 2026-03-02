@@ -3,11 +3,10 @@ import { CopyRspackPlugin, rspack, type SwcLoaderOptions } from "@rspack/core";
 import { ReactRefreshRspackPlugin } from "@rspack/plugin-react-refresh";
 import { SemiRspackPlugin } from "@douyinfe/semi-rspack-plugin";
 import { rspackAlias } from "./setup/tsconfig.ts";
-import MonacoWebpackPlugin from "monaco-editor-webpack-plugin";
 
 const isDev = process.env.NODE_ENV === "development";
 // Target browsers, see: https://github.com/browserslist/browserslist
-const targets = ["last 2 versions", "> 0.2%", "not dead", "Firefox ESR"];
+export const targets = ["last 2 versions", "> 0.2%", "not dead", "Firefox ESR"];
 
 export default defineConfig({
   devServer: {
@@ -36,7 +35,9 @@ export default defineConfig({
       {
         test: /\.(jsx?|tsx?)$/,
         // 由于rspack fast refresh与web worker冲突,开发时排除monaco editor
-        exclude: isDev ? /monaco-editor/ : undefined,
+        exclude: isDev
+          ? [/@codingame\/monaco-vscode-api/, /@rspack\/core\/hot/]
+          : undefined,
         use: [
           {
             loader: "builtin:swc-loader",
@@ -72,9 +73,6 @@ export default defineConfig({
     }),
     new CopyRspackPlugin({
       patterns: ["public"],
-    }),
-    new MonacoWebpackPlugin({
-      languages: ["sql", "python", "scala", "markdown"],
     }),
   ].filter(Boolean),
   optimization: {

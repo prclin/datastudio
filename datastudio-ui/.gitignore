@@ -16,3 +16,5 @@ dist/
 .idea
 
 src/icons/Icon*.tsx
+
+src/workers/editor.worker.js
