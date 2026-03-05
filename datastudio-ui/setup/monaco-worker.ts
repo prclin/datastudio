@@ -9,6 +9,10 @@ export default defineConfig({
   entry: {
     "editor.worker":
       "./node_modules/@codingame/monaco-vscode-editor-api/esm/vs/editor/editor.worker.js",
+    "search.worker":
+      "./node_modules/@codingame/monaco-vscode-search-service-override/worker.js",
+    "textmate.worker":
+      "./node_modules/@codingame/monaco-vscode-textmate-service-override/worker.js",
   },
   output: {
     filename: "[name].js",

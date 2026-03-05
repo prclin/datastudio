@@ -17,4 +17,4 @@ dist/
 
 src/icons/Icon*.tsx
 
-src/workers/editor.worker.js
+src/workers/*.worker.js
