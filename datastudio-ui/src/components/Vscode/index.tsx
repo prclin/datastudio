@@ -5,13 +5,9 @@ import {
   MonacoVscodeApiConfig,
 } from "monaco-languageclient/vscodeApiWrapper";
 import { EditorAppConfig } from "monaco-languageclient/editorApp";
-import type { ILogger } from "@codingame/monaco-vscode-log-service-override";
-import getLogServiceOverride from "@codingame/monaco-vscode-log-service-override";
-import {
-  defineDefaultWorkerLoaders,
-  useWorkerFactory,
-  Worker as _Worker,
-} from "monaco-languageclient/workerFactory";
+import getLogServiceOverride, {
+  ILogger,
+} from "@codingame/monaco-vscode-log-service-override";
 import getModelServiceOverride from "@codingame/monaco-vscode-model-service-override";
 import getNotificationServiceOverride from "@codingame/monaco-vscode-notifications-service-override";
 import getDialogsServiceOverride from "@codingame/monaco-vscode-dialogs-service-override";
@@ -123,6 +119,11 @@ import "@codingame/monaco-vscode-media-preview-default-extension";
 import "@codingame/monaco-vscode-ipynb-default-extension";
 import "@codingame/monaco-vscode-simple-browser-default-extension";
 import { LogLevel } from "@codingame/monaco-vscode-api/vscode/vs/platform/log/common/log";
+import {
+  defineDefaultWorkerLoaders,
+  useWorkerFactory,
+  Worker as _Worker,
+} from "monaco-languageclient/workerFactory";
 
 const configureDefaultWorkerFactory = (logger?: ILogger) => {
   const editorWorkerService = () =>
@@ -137,6 +138,11 @@ const configureDefaultWorkerFactory = (logger?: ILogger) => {
     new _Worker(new URL("../../workers/textmate.worker.js", import.meta.url), {
       type: "module",
     });
+  const extensionHostWorkerMain = () =>
+    new _Worker(new URL("../../workers/extension.worker.js", import.meta.url), {
+      type: "module",
+    });
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useWorkerFactory({
     workerLoaders: {
@@ -144,6 +150,7 @@ const configureDefaultWorkerFactory = (logger?: ILogger) => {
       editorWorkerService,
       LocalFileSearchWorker,
       TextMateWorker,
+      extensionHostWorkerMain,
     },
     logger,
   });
@@ -158,7 +165,7 @@ export const Vscode: FC = () => {
       await createIndexedDBProviders();
       const workspaceFile = vscode.Uri.from({
         scheme: "tmp",
-        path: "/test.code-workspace",
+        path: "/.code-workspace",
       });
       await initFile(
         workspaceFile,
@@ -176,7 +183,9 @@ export const Vscode: FC = () => {
   });
 
   return (
-    <div className={"[&_::before]:box-content [&_*]:box-content"}>
+    <div
+      className={"[&_::before]:box-content [&_.monaco-tl-twistie]:box-content"}
+    >
       <div ref={containerRef}>
         <div id="workbench-container">
           <div id="titleBar"></div>
@@ -222,7 +231,7 @@ const VscodeViews: FC<{ container: RefObject<HTMLDivElement | null> }> = ({
         workspace: {
           workspaceUri: vscode.Uri.from({
             scheme: "tmp",
-            path: "/test.code-workspace",
+            path: "/.code-workspace",
           }),
         },
         async open() {
@@ -231,10 +240,14 @@ const VscodeViews: FC<{ container: RefObject<HTMLDivElement | null> }> = ({
         },
       },
     },
+    advanced: {
+      enableExtHostWorker: true,
+    },
     userConfiguration: {
       json: JSON.stringify({
         "workbench.colorTheme": "Default Light Modern",
         "editor.wordBasedSuggestions": "off",
+        "window.menuBarVisibility": "classic",
       }),
     },
     serviceOverrides: {
@@ -316,7 +329,7 @@ const VscodeViews: FC<{ container: RefObject<HTMLDivElement | null> }> = ({
       vscodeApiConfig={vscodeApiConfig}
       editorAppConfig={editorAppConfig}
       onError={e => {
-        console.error(e);
+        console.error("错误", e);
       }}
     />
   );

@@ -13,6 +13,10 @@ export default defineConfig({
       "./node_modules/@codingame/monaco-vscode-search-service-override/worker.js",
     "textmate.worker":
       "./node_modules/@codingame/monaco-vscode-textmate-service-override/worker.js",
+    "notebook.worker":
+      "./node_modules/@codingame/monaco-vscode-notebook-service-override/worker.js",
+    "extension.worker":
+      "./node_modules/@codingame/monaco-vscode-api/workers/extensionHost.worker.js",
   },
   output: {
     filename: "[name].js",
