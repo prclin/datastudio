@@ -42,7 +42,7 @@ const AppLayout: FC = () => {
           }}
         />
       </Header>
-      <Layout>
+      <Layout className={"h-[calc(-48px+100vh)]"}>
         <Sider>
           <SideNav
             isOpen={open}

@@ -5,7 +5,7 @@ import { Vscode } from "@components/Vscode";
 
 export const Studio: FC = () => {
   return (
-    <div className={"p-2"}>
+    <div className={"p-2 h-full"}>
       <Vscode />
     </div>
   );

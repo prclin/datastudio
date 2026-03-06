@@ -185,10 +185,10 @@ export const Vscode: FC = () => {
   return (
     <div
       className={
-        "[&_::before]:box-content [&_.monaco-tl-twistie]:box-content relative"
+        "[&_::before]:box-content [&_.monaco-tl-twistie]:box-content relative h-full"
       }
     >
-      <div ref={containerRef}>
+      <div ref={containerRef} style={{ height: "100%" }}>
         <div id="workbench-container">
           <div id="titleBar"></div>
           <div id="banner"></div>
