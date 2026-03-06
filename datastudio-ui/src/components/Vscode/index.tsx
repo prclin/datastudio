@@ -184,7 +184,9 @@ export const Vscode: FC = () => {
 
   return (
     <div
-      className={"[&_::before]:box-content [&_.monaco-tl-twistie]:box-content"}
+      className={
+        "[&_::before]:box-content [&_.monaco-tl-twistie]:box-content relative"
+      }
     >
       <div ref={containerRef}>
         <div id="workbench-container">
