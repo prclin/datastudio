@@ -107,7 +107,6 @@
     "@codingame/monaco-vscode-model-service-override": "25.1.2",
     "@codingame/monaco-vscode-monarch-service-override": "25.1.2",
     "@codingame/monaco-vscode-multi-diff-editor-service-override": "25.1.2",
-    "@codingame/monaco-vscode-notebook-renderers-default-extension": "25.1.2",
     "@codingame/monaco-vscode-notebook-service-override": "25.1.2",
     "@codingame/monaco-vscode-notifications-service-override": "25.1.2",
     "@codingame/monaco-vscode-npm-default-extension": "25.1.2",
