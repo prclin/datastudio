@@ -36,7 +36,7 @@ export default defineConfig({
         test: /\.(jsx?|tsx?)$/,
         // 由于rspack fast refresh与web worker冲突,开发时排除monaco editor
         exclude: isDev
-          ? [/@codingame\/monaco-vscode-api/, /@rspack\/core\/hot/]
+          ? [/@codingame\/monaco-vscode/, /@rspack\/core\/hot/]
           : undefined,
         use: [
           {

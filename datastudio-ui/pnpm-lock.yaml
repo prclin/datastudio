@@ -296,6 +296,9 @@ importers:
       '@codingame/monaco-vscode-multi-diff-editor-service-override':
         specifier: 25.1.2
         version: 25.1.2
+      '@codingame/monaco-vscode-notebook-renderers-default-extension':
+        specifier: 25.1.2
+        version: 25.1.2
       '@codingame/monaco-vscode-notebook-service-override':
         specifier: 25.1.2
         version: 25.1.2
