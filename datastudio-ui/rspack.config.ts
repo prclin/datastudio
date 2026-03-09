@@ -33,6 +33,10 @@ export default defineConfig({
         type: "asset",
       },
       {
+        test: /\.vsix$/,
+        loader: "./setup/rspack.vsix.loader.ts",
+      },
+      {
         test: /\.(jsx?|tsx?)$/,
         // 由于rspack fast refresh与web worker冲突,开发时排除monaco editor
         exclude: isDev

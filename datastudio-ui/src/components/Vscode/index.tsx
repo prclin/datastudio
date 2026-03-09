@@ -125,6 +125,7 @@ import {
   useWorkerFactory,
   Worker as _Worker,
 } from "monaco-languageclient/workerFactory";
+import "./extensions/jupyter-web.vsix";
 
 const configureDefaultWorkerFactory = (logger?: ILogger) => {
   const editorWorkerService = () =>
