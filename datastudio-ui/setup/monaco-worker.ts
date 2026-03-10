@@ -17,6 +17,10 @@ export default defineConfig({
       "./node_modules/@codingame/monaco-vscode-notebook-service-override/worker.js",
     "extension.worker":
       "./node_modules/@codingame/monaco-vscode-api/workers/extensionHost.worker.js",
+    "output.worker":
+      "./node_modules/@codingame/monaco-vscode-output-service-override/worker.js",
+    "language-detection.worker":
+      "./node_modules/@codingame/monaco-vscode-language-detection-worker-service-override/worker.js",
   },
   output: {
     filename: "[name].js",

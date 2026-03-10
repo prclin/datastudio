@@ -8,34 +8,10 @@ importers:
 
   .:
     dependencies:
-      '@codingame/monaco-vscode-accessibility-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-ai-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-all-default-extensions':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-all-language-default-extensions':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-all-language-feature-default-extensions':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-api':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-assignment-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-authentication-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-base-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-bat-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-bulk-edit-service-override':
@@ -44,46 +20,13 @@ importers:
       '@codingame/monaco-vscode-chat-service-override':
         specifier: 25.1.2
         version: 25.1.2(@xterm/xterm@6.1.0-beta.97)
-      '@codingame/monaco-vscode-coffeescript-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-comments-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-configuration-editing-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-configuration-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-cpp-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-csharp-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-css-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-css-language-features-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-dart-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-debug-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-dialogs-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-diff-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-docker-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-dotenv-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-edit-sessions-service-override':
@@ -95,12 +38,6 @@ importers:
       '@codingame/monaco-vscode-editor-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-emmet-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-emmet-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-environment-service-override':
         specifier: 25.1.2
         version: 25.1.2
@@ -108,9 +45,6 @@ importers:
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-extension-api':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-extension-editing-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-extension-gallery-service-override':
@@ -122,64 +56,16 @@ importers:
       '@codingame/monaco-vscode-files-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-fsharp-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-git-base-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-github-authentication-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-go-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-groovy-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-handlebars-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-hlsl-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-host-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-html-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-html-language-features-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-image-resize-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-ini-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-interactive-service-override':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-ipynb-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-issue-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-java-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-javascript-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-json-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-json-language-features-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-julia-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-katex-common':
@@ -191,46 +77,7 @@ importers:
       '@codingame/monaco-vscode-language-detection-worker-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-cs':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-de':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-es':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-fr':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-it':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-ja':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-ko':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-pl':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-pt-br':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-qps-ploc':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-ru':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-tr':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-language-pack-zh-hans':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-language-pack-zh-hant':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-languages-service-override':
@@ -240,9 +87,6 @@ importers:
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-layout-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-less-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-lifecycle-service-override':
@@ -257,12 +101,6 @@ importers:
       '@codingame/monaco-vscode-log-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-lua-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-make-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-markdown-basics-default-extension':
         specifier: 25.1.2
         version: 25.1.2
@@ -275,25 +113,10 @@ importers:
       '@codingame/monaco-vscode-markers-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-mcp-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-media-preview-default-extension':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-merge-conflict-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-mermaid-chat-features-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-model-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-monarch-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-multi-diff-editor-service-override':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-notebook-renderers-default-extension':
@@ -305,43 +128,16 @@ importers:
       '@codingame/monaco-vscode-notifications-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-npm-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-objective-c-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-outline-service-override':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-output-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-performance-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-perl-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-php-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-policy-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-powershell-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-preferences-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-process-explorer-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-prompt-basics-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-pug-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-python-default-extension':
@@ -350,37 +146,10 @@ importers:
       '@codingame/monaco-vscode-quickaccess-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-r-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-razor-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-references-view-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-relauncher-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-remote-agent-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-restructuredtext-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-ruby-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-rust-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-scm-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-scss-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-search-result-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-search-service-override':
@@ -389,13 +158,7 @@ importers:
       '@codingame/monaco-vscode-secret-storage-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-shaderlab-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-share-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-shellscript-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-simple-browser-default-extension':
@@ -404,70 +167,16 @@ importers:
       '@codingame/monaco-vscode-snippets-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-speech-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-sql-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-standalone-css-language-features':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-standalone-html-language-features':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-standalone-json-language-features':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-standalone-languages':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-standalone-typescript-language-features':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-storage-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-survey-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-swift-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-task-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-telemetry-service-override':
-        specifier: 25.1.2
-        version: 25.1.2(tslib@2.8.1)
-      '@codingame/monaco-vscode-terminal-service-override':
-        specifier: 25.1.2
-        version: 25.1.2(@xterm/xterm@6.1.0-beta.97)
-      '@codingame/monaco-vscode-testing-service-override':
-        specifier: 25.1.2
-        version: 25.1.2(@xterm/xterm@6.1.0-beta.97)
       '@codingame/monaco-vscode-textmate-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-theme-abyss-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-theme-defaults-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-theme-kimbie-dark-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-theme-monokai-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-theme-monokai-dimmed-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-theme-quietlight-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-theme-red-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-theme-service-override':
@@ -476,37 +185,10 @@ importers:
       '@codingame/monaco-vscode-theme-seti-default-extension':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-theme-solarized-dark-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-theme-solarized-light-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-theme-tomorrow-night-blue-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-timeline-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-treesitter-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-typescript-basics-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-typescript-language-features-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-update-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-user-data-profile-service-override':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-user-data-sync-service-override':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-vb-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@codingame/monaco-vscode-view-banner-service-override':
@@ -539,16 +221,10 @@ importers:
       '@codingame/monaco-vscode-workspace-trust-service-override':
         specifier: 25.1.2
         version: 25.1.2
-      '@codingame/monaco-vscode-xml-default-extension':
-        specifier: 25.1.2
-        version: 25.1.2
       '@codingame/monaco-vscode-xterm-addons-common':
         specifier: 25.1.2
         version: 25.1.2(@xterm/xterm@6.1.0-beta.97)
       '@codingame/monaco-vscode-xterm-common':
-        specifier: 25.1.2
-        version: 25.1.2
-      '@codingame/monaco-vscode-yaml-default-extension':
         specifier: 25.1.2
         version: 25.1.2
       '@douyinfe/semi-icons':
@@ -678,6 +354,9 @@ importers:
       typescript-eslint:
         specifier: ^8.48.0
         version: 8.52.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.9.3)
+      util:
+        specifier: ^0.12.5
+        version: 0.12.5
       yauzl:
         specifier: ^3.2.0
         version: 3.2.0
@@ -759,35 +438,11 @@ packages:
     resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
     engines: {node: '>=6.9.0'}
 
-  '@codingame/monaco-vscode-accessibility-service-override@25.1.2':
-    resolution: {integrity: sha512-IML4SXPx49zFRLVSupG0lVjeNPlBVO6mlRIuY8c9jB6eMQfco84tGNlSYfu4VKKpmb8wDghq6IqX6JKW0mHHvw==}
-
-  '@codingame/monaco-vscode-ai-service-override@25.1.2':
-    resolution: {integrity: sha512-pvRffW5QI+9pIho3YWeTKxabjliXSubvvT/w+Y48wlrRNvFjgSMHF3IwTpuCTsFAes9fLuNTgww+tbcL+0Iz/A==}
-
-  '@codingame/monaco-vscode-all-default-extensions@25.1.2':
-    resolution: {integrity: sha512-LpG17iRA+SVVaiTmh/bblk8NvfQuu2+DVJ5HeXRkXvQR86Nu/RFwZ/NAGCyaY5hsNEFq5+tkP+oikj8AG9EyWA==}
-
-  '@codingame/monaco-vscode-all-language-default-extensions@25.1.2':
-    resolution: {integrity: sha512-RqWhBad7xSbqtMRR/5X/BXzZ4Rar4C0uacE6kFkYSb6vnc4xmrIoldVeeVmdmeE5KoZN5/4n03P57ieohu4E2g==}
-
-  '@codingame/monaco-vscode-all-language-feature-default-extensions@25.1.2':
-    resolution: {integrity: sha512-BBK6xzjIrEYEgRix0m6KGAi9/+NoRj3hkcrWI/YbdWxjsO1Taw1LQoQmW/T4+SbTMD/Rhj8gUvXjbU3caKkhpA==}
-
   '@codingame/monaco-vscode-api@25.1.2':
     resolution: {integrity: sha512-K04QcQA+Zb0KXucBAK/BGCT5dldiwIqdUbBQq7yuLvBLbof3cP1WSUuxasMHGYwM0MWyzIAsDtyAYMS7is8ZuA==}
 
-  '@codingame/monaco-vscode-assignment-service-override@25.1.2':
-    resolution: {integrity: sha512-YxAQGiN+khLJrYhcVqTiS+44Guw/kvVboOlameDzOIeH9btHWCXKJfZ9NhdlgTCHFUYyuxpbZ3sidN9tPUmsDA==}
-
-  '@codingame/monaco-vscode-authentication-service-override@25.1.2':
-    resolution: {integrity: sha512-mtlPazx1VKFn6w79k4CAxA2wvmClNRf/fLBhahmoUuAQXI8734lbDJPsMNsqBxA5NZ0DRDm4JIBVust3pxFNlQ==}
-
   '@codingame/monaco-vscode-base-service-override@25.1.2':
     resolution: {integrity: sha512-OwYs6h1ATUAeMmX+Q1c8esTG7GLMqniBs+fLEr1/9b/ciY485ArKo5UvrUxVPDtRNy/7F06vRW9IUCq9iKP14w==}
-
-  '@codingame/monaco-vscode-bat-default-extension@25.1.2':
-    resolution: {integrity: sha512-9wqbCfkuwcY7VFq5NJith5x/csA/I6sJ1kjNSU19l3mfVilSgWnUZf8YALHDRVwepbYLvtfTuBBUpGcu9xz3Jw==}
 
   '@codingame/monaco-vscode-bulk-edit-service-override@25.1.2':
     resolution: {integrity: sha512-+EfSzjiFakCf0IIJKPZrHVGioq5N8GBsp51bXuKBR5J/B58cUaJY0Dc12PNTSpgAusAGOppUIOSBqUk4F/7IaQ==}
@@ -795,50 +450,14 @@ packages:
   '@codingame/monaco-vscode-chat-service-override@25.1.2':
     resolution: {integrity: sha512-gT8dQCmTUeVkpJtDb5M5jSU/u89vnDht0YBG7zzeHyzQdWfVfgW8wKQDHpgp7wujuoh9uL+/h7xiLx8z1YOI8Q==}
 
-  '@codingame/monaco-vscode-clojure-default-extension@25.1.2':
-    resolution: {integrity: sha512-qAOuReu9rVzl8HY5A079HNX//74rpWTQcjiwPsIgc6LvuRgSz8L3kJ/i06EV3sNxE6KP+CE7QyjXKjaK3q/wmA==}
-
-  '@codingame/monaco-vscode-coffeescript-default-extension@25.1.2':
-    resolution: {integrity: sha512-kHFzjxFAX13/6hw/YLNdIfIRvRjhm6BYhvTcfH5GMF9eDq2nXmQF7OrAfcEroiyiMkh3Gq5LyszCJ99Tl8YX0g==}
-
-  '@codingame/monaco-vscode-comments-service-override@25.1.2':
-    resolution: {integrity: sha512-OIAE2XoKTrXFLDlk2ppietpOHlbUjSfnPh7xCpLAnrP5hL1jUEJP5CdHo8ABLU9Vdz9HC6Ajh8XqdiWqoUz2Uw==}
-
   '@codingame/monaco-vscode-configuration-editing-default-extension@25.1.2':
     resolution: {integrity: sha512-/WFxsjy7Gtab7Q/etjeHusW9kklRDkcN1Z5cxwm4/9WyhPNFFbcbnu4GL0L79O019nAc1D7ZEEFhSr8OfqBZUQ==}
 
   '@codingame/monaco-vscode-configuration-service-override@25.1.2':
     resolution: {integrity: sha512-oeoZ3WtM42zHA1IWHrx9UGEfE+TixE+G8Bl9M9bjgFj1EROnkB5yOfELwRYPo4WOEtcK1C5nvIvWIj/hL9MaLg==}
 
-  '@codingame/monaco-vscode-cpp-default-extension@25.1.2':
-    resolution: {integrity: sha512-L5pS+Ynrbml54+qTQkViWkwyM0ACqmZa01HaWx3ZIaV+zEZAm1f9Pge6NyjhdDJE6jTBMR+pCcJmoN0k/BImZw==}
-
-  '@codingame/monaco-vscode-csharp-default-extension@25.1.2':
-    resolution: {integrity: sha512-hwtwP3UhFhWJYqym430pDIEArtKzzJ8wpL0WeT7uhPn+DkraLr5/iVHnXWCAPZ1dT2Um/ZtKHuQpHwlFak+V8w==}
-
-  '@codingame/monaco-vscode-css-default-extension@25.1.2':
-    resolution: {integrity: sha512-myNdWeU/24hGde44RDaY9KKnwvAfewG6yKMfJQBQxR0sVmHU43XwgwagtL2H2p3perLPGv3X1/2Vo/YfD/sIAg==}
-
-  '@codingame/monaco-vscode-css-language-features-default-extension@25.1.2':
-    resolution: {integrity: sha512-EhUC9arj/Tsh0BxZQKulBSHxBZXDjUjR+xZ0wN5eyg4ryoucfnBzI8ifMbbgFOGS7YbOdQu5glhoKaLZdwEcyg==}
-
-  '@codingame/monaco-vscode-dart-default-extension@25.1.2':
-    resolution: {integrity: sha512-6m2iryDlX/Uyv0PHHFa3fLjphWIY0DpRtH9YBUqhwQ/hPyy7xaONfr+CjJ/yoPfd2qYz1CoSd7VKPPw1AEATwg==}
-
-  '@codingame/monaco-vscode-debug-service-override@25.1.2':
-    resolution: {integrity: sha512-0lEHs5X5TI3pOMsYbb+rLExwmhMDiSJJ3MnhkwzeaDrKKP/Z0+XGaH5ziRB0zrxiT/OqR52c3pvOcou5iiLRaw==}
-
   '@codingame/monaco-vscode-dialogs-service-override@25.1.2':
     resolution: {integrity: sha512-rf0frt4RfApdT97ZdYngVr0tLfHGud3JUn3FLKOk4prdAdv4xQ1FTS2jyRUdwsAbXWq8OGdqX8pV2ryFGQu3ug==}
-
-  '@codingame/monaco-vscode-diff-default-extension@25.1.2':
-    resolution: {integrity: sha512-U62lb8xsXe20dEls45QZeSD8WioBdGbAlzvzpbr4reoF98dQu7sKmsVhuMzz9iI9bJSkmcnCduRNimQBOT7ypQ==}
-
-  '@codingame/monaco-vscode-docker-default-extension@25.1.2':
-    resolution: {integrity: sha512-0YVGeVoE6ZUhRW+XLbXI+j7F/PkOPVRAYVWTz1nale3NgzlAPpfHYsoJpEeOr4ELMh54kZvj0vRnIYE5rWV9ew==}
-
-  '@codingame/monaco-vscode-dotenv-default-extension@25.1.2':
-    resolution: {integrity: sha512-q2Kw3wQx17zBcQKwIBlbBGRGccKLZZpJCVBHYWXNsWf/p9sWqFzoIIeDv3coG4Xt8sivSvhqWyBG49Vm0A3lew==}
 
   '@codingame/monaco-vscode-edit-sessions-service-override@25.1.2':
     resolution: {integrity: sha512-p9KTpbeXb1FhktIPM8jx5nOz/CwY5vjShbWwGTlzl5PVkeAtAljEEwh9NdY7nLWnIvkOEBO8uoI5maZlgb35Lw==}
@@ -849,12 +468,6 @@ packages:
   '@codingame/monaco-vscode-editor-service-override@25.1.2':
     resolution: {integrity: sha512-EadvDCyWdgxOPmaIvbcVVDNjTUYuKdjYWwKbPbbcTs9t4z1/DjdE7mV3ZdT6aGh5m6zkEEUOi143l27Y5eRt+Q==}
 
-  '@codingame/monaco-vscode-emmet-default-extension@25.1.2':
-    resolution: {integrity: sha512-7Z+puzvQZ4nuPOy3WqYuD+9s4FxHgwM+iOO2A6WHAIYpNdm7HUZdy6zcutEHR9DGGBwiRbZDFd8/Akr65dq1fg==}
-
-  '@codingame/monaco-vscode-emmet-service-override@25.1.2':
-    resolution: {integrity: sha512-W6OMS6fNjQKpEg1jjJY0LIa1vvNXvH9Yi7JZxbKEYdR2T1b+1+5g7R0oqudLPGIiXkMgWfkk4Q6dVide8zKuvA==}
-
   '@codingame/monaco-vscode-environment-service-override@25.1.2':
     resolution: {integrity: sha512-8GoD3lk0CN0dIMZOrZNS/i8RCaF1YSQ6nmrf+rqneOSHG9S382EnsZZD69d4+i7JnoeyttO7Kr9KH8WOhRV6OA==}
 
@@ -863,9 +476,6 @@ packages:
 
   '@codingame/monaco-vscode-extension-api@25.1.2':
     resolution: {integrity: sha512-SJW/YOhjo+9MXEyzMwQMUWdJVR3Llc6pTq5JQqs6Y30v73gTrpLqtzbd9FNdCuQR8S6bUk5ScH8GL4QrVuL5FA==}
-
-  '@codingame/monaco-vscode-extension-editing-default-extension@25.1.2':
-    resolution: {integrity: sha512-cXu+xI0DvACBsvERhPCwwGlFqzUZAb4F5osGJfb9/JzbkXPx77P16kJu5K0WbuF3EEIA9iiHbfD8x+AhNGhutg==}
 
   '@codingame/monaco-vscode-extension-gallery-service-override@25.1.2':
     resolution: {integrity: sha512-wrMVfkAGAXx8kn03Gxy3oFXQcgzKn6TZ7rpyMLa4zIUab9c8x+1CHBEVemG0KIRuWY1beQdXOxea3YdZx83C9A==}
@@ -876,65 +486,17 @@ packages:
   '@codingame/monaco-vscode-files-service-override@25.1.2':
     resolution: {integrity: sha512-TenLLAFIwY7keZFF8e3beUn7OVfnNINR5Noi4PVrjeeTcy6FuNH6Jghdul2JwpRAkvyJLdFMvomE2jlT6F03jQ==}
 
-  '@codingame/monaco-vscode-fsharp-default-extension@25.1.2':
-    resolution: {integrity: sha512-wiM6hZIQl+Wzeo2J/ZrX76mGVoPkUkga8CriPFOwHmWDJm2VWbFVkg2cS/FCtZ0B5y0FCraXRBt07zqMuPy3qw==}
-
-  '@codingame/monaco-vscode-git-base-default-extension@25.1.2':
-    resolution: {integrity: sha512-QL+2eNkXuUBwkHNcWbkanLnMi8+7WozAd1qcxga/Ts5QboK8gYFgKScPSG33C+XB/eLNCfGVQC29Nm16ZXrLHQ==}
-
-  '@codingame/monaco-vscode-github-authentication-default-extension@25.1.2':
-    resolution: {integrity: sha512-xzleF+Oylbj1YBPDRaryq4uRAg4YovEURI2EVq8qMtUne/xS5OfyonrlhW/o+RPZ3wu9gJA2grzX2s1njvj4Iw==}
-
-  '@codingame/monaco-vscode-go-default-extension@25.1.2':
-    resolution: {integrity: sha512-qALsgRSwsZW5g83wEiTIMThOtcYWIFUAgj1d56N44Q7h/nyvl6G4u0bVxIfv4W6Cj0uWXqKkzEgP/OOpV/bItw==}
-
-  '@codingame/monaco-vscode-groovy-default-extension@25.1.2':
-    resolution: {integrity: sha512-oDmUgs4DURf8TbMoLQsMy/EzpS0hkDMh780RZkKKjvc8Sr3nDW8ckIjJW1Ku6HrS2G2Z6LDd1KlhHmFGDKU5WQ==}
-
-  '@codingame/monaco-vscode-handlebars-default-extension@25.1.2':
-    resolution: {integrity: sha512-ah8zQDCEANLSyD+2u1IuAcKVMFujV3pY5gNg5d6b0DMxdUhO/cVEJgU0q1z5gxy8Sn/ADxFAYJ0xidv4tlcFzQ==}
-
-  '@codingame/monaco-vscode-hlsl-default-extension@25.1.2':
-    resolution: {integrity: sha512-PKRLCZZBvR5Thhze74r2MP5nikT7F9yhxadnMzZ1w3LiCS+GgEHZPTqnHRHPmys36pzisDInlTLlkdEizLX3Qg==}
-
   '@codingame/monaco-vscode-host-service-override@25.1.2':
     resolution: {integrity: sha512-lgaalpA9CUQW7i0bBwgBOK0DQNDvOo3QO3p6Rz6yVsHpgA4iMqq2d11dBDUKvuQSwIHPRu8CMHCqhQk/BQN/YA==}
 
-  '@codingame/monaco-vscode-html-default-extension@25.1.2':
-    resolution: {integrity: sha512-K6K3KOTA0wcJnip+bdtK2SkjG6c/gptJGIsmtzMY4/oL7e/3hcbSs941on98isxix6pLnMUwTu1agKcF8jQhqA==}
-
-  '@codingame/monaco-vscode-html-language-features-default-extension@25.1.2':
-    resolution: {integrity: sha512-OWnpzHHhPmr+29ACihh7Vj+JB7xQCwMeqeNdYmj2IM77olGPTW77Q9HkqMU5qoRASER2QDbtIhKY/MJRiITdUg==}
-
   '@codingame/monaco-vscode-image-resize-service-override@25.1.2':
     resolution: {integrity: sha512-Q7SJ03/HThcaRmyjlcfRLF46MK3AKCUaBOl0+fIJvyKZRG4Px8SmxNP9Ap2BmE0MzByoDJu71Y/l4hd8TQih0w==}
-
-  '@codingame/monaco-vscode-ini-default-extension@25.1.2':
-    resolution: {integrity: sha512-0wYQb9g1zlwcbYdKI2/S9Ylel9ZHiGSFEQePUBhPsEWjZXxqPyo2WxCTUDmqRBBXv2MDtv//8kLg9U2vyZy9hg==}
 
   '@codingame/monaco-vscode-interactive-service-override@25.1.2':
     resolution: {integrity: sha512-zj1q08ONNaL3iyXotorO7su6ZDwkieEpTl72YQ1XP6M28sEfmJ9auMTpEStTQDTHNPX7Gj59L7HOe88dAt3S2A==}
 
   '@codingame/monaco-vscode-ipynb-default-extension@25.1.2':
     resolution: {integrity: sha512-tmSYJPlKAeutwofdvI+qj6SRaIxMyumLJZbHuXYnMR8Lt/KRlZae0RtMZhE++Q4jokbPTCCwnqaPWj1DqM2t+A==}
-
-  '@codingame/monaco-vscode-issue-service-override@25.1.2':
-    resolution: {integrity: sha512-k/YR9jy4YTgrYT2vx/0cTB210x5TuReOEQJIuYswZcPtd+8RzNbaX1fxIcSdzhAHygtxCGMRL4T5+qiz6d1ouA==}
-
-  '@codingame/monaco-vscode-java-default-extension@25.1.2':
-    resolution: {integrity: sha512-9B+gEFghGxCuNb/PAHPUnjBbuNWm0FKpinxeuyBUUh92hOeVLxaKfjFsXAaf1I4q507LfEkufqxQndsQFFxskA==}
-
-  '@codingame/monaco-vscode-javascript-default-extension@25.1.2':
-    resolution: {integrity: sha512-SIrq+EfJ9Nk+aTjOXBPdp2+K242W6lAlGYjln/AnwNa+1h0roQ07efZNV0LBkVrwH4wmT9TmN/IXE2Boau37cQ==}
-
-  '@codingame/monaco-vscode-json-default-extension@25.1.2':
-    resolution: {integrity: sha512-lbzUZr8E2vg40bQFhWFq/qc0QqnRHKKWwCuxymkv0kpVgyXlS52EjjvrhvOo8TV/r7eLg+R0yHzF4IKWgltGrA==}
-
-  '@codingame/monaco-vscode-json-language-features-default-extension@25.1.2':
-    resolution: {integrity: sha512-c2YH16zJpkmsyNrZq1ukZuWx73PRFzG871GUsiWTETvEJlbG8deL9/MpgJK+C6Kao9SlX63iDkpCpcwjE3l72w==}
-
-  '@codingame/monaco-vscode-julia-default-extension@25.1.2':
-    resolution: {integrity: sha512-tH9ywUAfY41ZkxqA8CUM9+6SqedyxYHIyCs1BSYSfnYf1oD7X/x/qCmzi9jFWN3SctUWdMmCNiR9HqauTi+TMw==}
 
   '@codingame/monaco-vscode-katex-common@25.1.2':
     resolution: {integrity: sha512-AE6jOxKdd7o1GEzH6Fy/qZ0raG31C4fAbIiunzcvQaWPSK+wT0s301veUl9wg0dxpjcFhriZcOUNPdlPES+cVA==}
@@ -996,9 +558,6 @@ packages:
   '@codingame/monaco-vscode-layout-service-override@25.1.2':
     resolution: {integrity: sha512-SxBGcMK3RgkGtUn7ZDl7dCoyNW0CWFQ/bfSRYUY06A0IA4JNS5jq1lhof57d0WXewm+5l8w1Spr/vMsfx1c9ig==}
 
-  '@codingame/monaco-vscode-less-default-extension@25.1.2':
-    resolution: {integrity: sha512-f6tX9qOvyNjITl8cOIFXPvCTcAGhpR7Tl7yM9UmhVFrxjjpIfr1tE6Tf4xwsK/g5UFuUVfNYyvLzX/lWB+Vlrg==}
-
   '@codingame/monaco-vscode-lifecycle-service-override@25.1.2':
     resolution: {integrity: sha512-H3C26i654WU8mbPM6GUiCh5YAQbhlm6sC32mHVANUJpR1968pS66UFB5JTD4rslH5GOPzO9TUNPlvrI2g3PE8Q==}
 
@@ -1010,12 +569,6 @@ packages:
 
   '@codingame/monaco-vscode-log-service-override@25.1.2':
     resolution: {integrity: sha512-OoileAUtPAJ0j3RW31DFSxtOipy0EcFq+iIXEdGvoRlsQPZJ3o9ayjf1JvCXpxUjJ3QkmvQVhXsWNUFREjEFLg==}
-
-  '@codingame/monaco-vscode-lua-default-extension@25.1.2':
-    resolution: {integrity: sha512-I8vxjXS2VgIpJAh3d/iNmU9xPD77harMzXQC2x495wGXpPw6yjms4ddH81roYRXQCzcuFHWBo1SilG0RELpO9Q==}
-
-  '@codingame/monaco-vscode-make-default-extension@25.1.2':
-    resolution: {integrity: sha512-2iYrFa9tmjvGa/7TwX4VhBlE2b6EsG5GQNHopfa9zCo9ceBLSypy7L7xueidq0N91RDkB5VPlcQml+MINDpjQw==}
 
   '@codingame/monaco-vscode-markdown-basics-default-extension@25.1.2':
     resolution: {integrity: sha512-7zWs5J9172T7itiPKo7z+UVLmohqR+vF3HdgyjwUDAcG3dTnXbRox04CMNl/KK/Pzujju4ZsZDPzkhJvrPjR3w==}
@@ -1029,26 +582,14 @@ packages:
   '@codingame/monaco-vscode-markers-service-override@25.1.2':
     resolution: {integrity: sha512-7kwMNn8tgrZodPIoKCX9Ztf00anuMI648gk89p6XaqzTvUlB7Wwb+jsQq+hbqZpjH0WMIRnWs5nGQ3RLMEhhYw==}
 
-  '@codingame/monaco-vscode-mcp-service-override@25.1.2':
-    resolution: {integrity: sha512-Vl65zHRaTbULG6fK3KG8n5OreyHiXhTq5lVXZZMNlCA+sGWCR/L6RixLddARwk0Pzbd6plhlwhqXvBmh+UxvTg==}
-
   '@codingame/monaco-vscode-media-preview-default-extension@25.1.2':
     resolution: {integrity: sha512-f2gVnfInwiZsNIssJCMYU+v/YgWAtwwEWiG/tQGWy/LZJudcBdlZZUk2ajwA/zdgu3hzHoyaYFkJzwwRWTxK6Q==}
-
-  '@codingame/monaco-vscode-merge-conflict-default-extension@25.1.2':
-    resolution: {integrity: sha512-gp1oFwrKJO7kGERTYk0F3Rhz0LIHQBnhkw9NHU3fbcTKcX+xgHQ9FALQ6jf3zHImxjsVu8a0vCZCcg+fk45Pkw==}
-
-  '@codingame/monaco-vscode-mermaid-chat-features-default-extension@25.1.2':
-    resolution: {integrity: sha512-mBMCZOsJk0tvgAQCQbPhw8FzO7Qvos6qr0HFtoHJ4pK6LygRHsUlbH3cV8+04FThW4h3ZwjeKhXfxaFQrr98yA==}
 
   '@codingame/monaco-vscode-model-service-override@25.1.2':
     resolution: {integrity: sha512-MGz/eV1CxibLvnl6WzK6idUHJCXJOVepJvKM6Trkv5050vRe+f/o1TjCiG8PaznAypYqZvnwkTG0B7/OTizCpQ==}
 
   '@codingame/monaco-vscode-monarch-service-override@25.1.2':
     resolution: {integrity: sha512-akyNHOJQRS7YHyk6kf0Encnkt+shlR+bIB84UJRUHFgSeF8s5gkDkQuFJph0YeUDWJWat+yBLUSZx2nHomdbHQ==}
-
-  '@codingame/monaco-vscode-multi-diff-editor-service-override@25.1.2':
-    resolution: {integrity: sha512-YVCvN2EJpOQJgj3+qpBwdD44tKTNe2Mww+Sxr162kbC2Eg09C9p0fCjG3L+FQqJSgcBB3rQZmxVU83twoKmYLw==}
 
   '@codingame/monaco-vscode-notebook-renderers-default-extension@25.1.2':
     resolution: {integrity: sha512-viNYw8hvBYf06dLNm5niVoepLDZl+pHZvJ8pKfvXezqDvG8OhIjjk7q/k+gqc4qRRGeAgwkvy/OFdXouofc2gA==}
@@ -1059,44 +600,17 @@ packages:
   '@codingame/monaco-vscode-notifications-service-override@25.1.2':
     resolution: {integrity: sha512-JSYsRZ5/I7ly8+ZPNs8MTfpkP2V4xHq2TP81BXdiCvDYtORiKAIcBWOcTEGEjyUWAq1ChJD4wXzd0Fech5iT7Q==}
 
-  '@codingame/monaco-vscode-npm-default-extension@25.1.2':
-    resolution: {integrity: sha512-xAPWnp/rnrBP2Jl0CtSTfmESSGT5n6vZL3JKK67VgLLOTntNEAXsopGtifTu8UatX+3pklDMK8yWl8EMq1p+CQ==}
-
-  '@codingame/monaco-vscode-objective-c-default-extension@25.1.2':
-    resolution: {integrity: sha512-mk9xKf31ZmCTFQxp0r3nyIcQUOA44HHaJX1JeZQI+lWY5POyY1PREs1tAQ5S7UqFnbTwr6KSsuaknwcCMkYtfQ==}
-
   '@codingame/monaco-vscode-outline-service-override@25.1.2':
     resolution: {integrity: sha512-J+rigDc5lEOvyBniYCBh0HL6KrASN5g5FIgWm+q65ZNFcuH1itXBAr23HQcYt19ZtVC+xHNK+K5mkZ+NPLXGxA==}
 
   '@codingame/monaco-vscode-output-service-override@25.1.2':
     resolution: {integrity: sha512-Kp2+YshxGFxFv3zhBU6yfGzmqfy0hC4mw1kDad37o5e4xpx5yIV00sX5qOpMi0GveEgfV3Bl/Bh1dWS47EqEug==}
 
-  '@codingame/monaco-vscode-performance-service-override@25.1.2':
-    resolution: {integrity: sha512-R/ntEZSOYO/a4+1p1ZOHgYFMqbwPcPC0tbCG5A8iFtHIuK/Ybj1Tvk0sDMq6zollI5zwtVyoZPT/hxRNu6/w8A==}
-
-  '@codingame/monaco-vscode-perl-default-extension@25.1.2':
-    resolution: {integrity: sha512-flyaVZdX7dJkgVPBKeqWZL5yO846LdvZNIc0FfoU6lDy2/GFs3kkxgqlXqGZVpQXCk4HTv6kU1lR+fceJxKCUA==}
-
-  '@codingame/monaco-vscode-php-default-extension@25.1.2':
-    resolution: {integrity: sha512-YhM9ZeN5uRUPOjUu+1fV+sQEbUWBSAzcoBUmoOYVVxHqB3HdvMDNfDN8CynbijI3ZulJgYUQQc1/eD0pxoeO7Q==}
-
-  '@codingame/monaco-vscode-policy-service-override@25.1.2':
-    resolution: {integrity: sha512-o++qkhO5K/hpwyfmtorDWkZfrBsgN78FkdHW9BhH51owiLnDPBaxBbLBxnZVU3nZrXQH9kOFovhIjpW/G6HOZQ==}
-
-  '@codingame/monaco-vscode-powershell-default-extension@25.1.2':
-    resolution: {integrity: sha512-po93Taq8RySno8YLzP3pUoJuO35oUhjJ6SOwBg8UqA00k+c1EMlKrJ41vR02ksQs547UloLSwziizwxO36IUSw==}
-
   '@codingame/monaco-vscode-preferences-service-override@25.1.2':
     resolution: {integrity: sha512-lIci0vMZ5YJdN+H0pKE12t//wdzfz1zZ8RTRvkmLFEvmk8tUvid/0iMFHWoqBXmdXxmKr3kDLPKB63E0TJX5rQ==}
 
-  '@codingame/monaco-vscode-process-explorer-service-override@25.1.2':
-    resolution: {integrity: sha512-lyQqTwD5PDfHu1/dRK2oldTXL6oQaBL5Hpma2JpOdc28g8D+h7Uwf+bgzCnguiqIcsg+XTArIIWiB4Nk2iFsRA==}
-
   '@codingame/monaco-vscode-prompt-basics-default-extension@25.1.2':
     resolution: {integrity: sha512-hZW18UgkrXBmRrAgxYpNCzhcWFvg6VAri8SHM6syU+3fbDLfr/PdD0VxuJuqCL6Z+6jZYUHrD3RY9p/F+USDjA==}
-
-  '@codingame/monaco-vscode-pug-default-extension@25.1.2':
-    resolution: {integrity: sha512-ClNMozIddFgGr2VnQMTb03SG7V62ybU0BjK7dwB5lnd9gsB1Ur3IrSfCXcuRPrTNmx/ZulYMOJqBd5mMEo6XkA==}
 
   '@codingame/monaco-vscode-python-default-extension@25.1.2':
     resolution: {integrity: sha512-2W5pHtn2yOayGr7lcwQFNlbkyziaM7yK1Gq5cxFKXYgsReHTRAx+SN5xMachkms/mSnulH2rww+HbDW2zRHf0A==}
@@ -1104,38 +618,11 @@ packages:
   '@codingame/monaco-vscode-quickaccess-service-override@25.1.2':
     resolution: {integrity: sha512-7IIrXnwHiF3w9d9p9kspEUz/LCibMLUztmRpGdZQfFtWBJw043q7rk8V1O42KdXr1hVg9IR5vfffwjy9nbiiUg==}
 
-  '@codingame/monaco-vscode-r-default-extension@25.1.2':
-    resolution: {integrity: sha512-36NOAy4O1+XJCuCpWx9feqbq2Bpt319NdRV+Ab9zkifR6NFUiaZzoSjqJeAN54tOaLTmQnSTEbjwPECfa9skLg==}
-
-  '@codingame/monaco-vscode-razor-default-extension@25.1.2':
-    resolution: {integrity: sha512-WJMVeJgGPvYMaXlitQvn7cHN+0u+K8kiOm1llJwKZmY+HbsLkIo4riUEPpXhkWhTY/eRzxk/f2IZJRUUrrWsWg==}
-
   '@codingame/monaco-vscode-references-view-default-extension@25.1.2':
     resolution: {integrity: sha512-Rn4ChU9NPWxiu3ixBnKeU56eN5DJZ2JqbuffIidt0XlOR9hiCnY6k8aW0d2mPUcykNXzJ3hgrLKC9NQFGHuaBQ==}
 
   '@codingame/monaco-vscode-relauncher-service-override@25.1.2':
     resolution: {integrity: sha512-pH7IP34aRn4R84N+Lp1N92cMsYxUa8yJuEe+xnOZyVu1C+tEbF+AfSvmhaDBqSTqqNNHAVdFekTxIuKcG0wbgg==}
-
-  '@codingame/monaco-vscode-remote-agent-service-override@25.1.2':
-    resolution: {integrity: sha512-R4hUjflcD7VqizIXCn95awDF+GwQ//Y+1xxHEqIxPh9KzCKViV4XdZbkHg0/IBwrMzOiTo2azpVUOpfyvwc7Lg==}
-
-  '@codingame/monaco-vscode-restructuredtext-default-extension@25.1.2':
-    resolution: {integrity: sha512-wnzXqPoqunM/IkJk61ZPbYq5KBJD11BwwSNqfv9KvIHb+Ta5qSTcpDaJNtE4Lg9C33+hPbzEKrWfn8VRBGXJlw==}
-
-  '@codingame/monaco-vscode-ruby-default-extension@25.1.2':
-    resolution: {integrity: sha512-6O+0Jdg6JUNIt4t9orx95lt98mtavczkVdVrgBElq4KjFYhf4uCkH2FLJ4L4ujCwOMPWFYN8Z1q+u3Dc6hQHbQ==}
-
-  '@codingame/monaco-vscode-rust-default-extension@25.1.2':
-    resolution: {integrity: sha512-7FOdXtd2hqleG11OCcvjbpb2sweb8n0c+uPlg2gIyJrvuPdyX7+W2fgJQm+DtmfQN2+/LNeYz9EOxjBC43kL0w==}
-
-  '@codingame/monaco-vscode-scm-service-override@25.1.2':
-    resolution: {integrity: sha512-w8344/v0y1O4IV7HJMWtikjSWSaP+1u4vPoB9jlrb6gcPg1jhIAG+AeNd9aoAsGteptF1zvCHeCUIDeHCiOsKw==}
-
-  '@codingame/monaco-vscode-scss-default-extension@25.1.2':
-    resolution: {integrity: sha512-zdzijU+p3XiSfa6MiguTZU1B9tNWJaP7xRnO2LsTidVUlQwOPLKwm1sxkAHe7XsI++jU1mYJXVtsJQg5OTZpBQ==}
-
-  '@codingame/monaco-vscode-search-result-default-extension@25.1.2':
-    resolution: {integrity: sha512-fycVi25zmZrs7TI/DiLNNeGfFdx5xx/X+Ur3n09It88+akR9+CKk4Rg9+ezQ3k8FgPV3LXNLi+/ki/jX9/S6OQ==}
 
   '@codingame/monaco-vscode-search-service-override@25.1.2':
     resolution: {integrity: sha512-Dqw0MclN+kOvFQOV1Ihx4Z1L3u8JMvGWiex7mfU1BOIO6vY7H9C2mtPbzL2iBxqbC2CGxfq2X7/cc1LnhDth2w==}
@@ -1143,14 +630,8 @@ packages:
   '@codingame/monaco-vscode-secret-storage-service-override@25.1.2':
     resolution: {integrity: sha512-ljVVQjzPDbEq3j0Gob0i7TsOzjAjEpO5QuNTuzpb7vYJkp1dXs0rQiUJZ0nyCKmk8uZX6hGZZv1a7ZOatgmZJg==}
 
-  '@codingame/monaco-vscode-shaderlab-default-extension@25.1.2':
-    resolution: {integrity: sha512-CgUr1mdu/+e3eFUChJSF7yh0UnG3+8+GsZgIrraQUM1Z3PpbZUINcApxrfYFKIejkSKQRV/WGUk1sGQkhhXUow==}
-
   '@codingame/monaco-vscode-share-service-override@25.1.2':
     resolution: {integrity: sha512-OGUaTY7jSbmqnmgzW0It8dzay1BGXA0cGYcyjrPKZ0r/kk/1sDgpgNd6/X0WXKBwAORTMVB4l8tSp1A4PATPVQ==}
-
-  '@codingame/monaco-vscode-shellscript-default-extension@25.1.2':
-    resolution: {integrity: sha512-e916e5j5v+EDyAQL6kTvw1vrvG87M5VU4jM3LxkjIbf4rptNbvdeFeQJkNxHM6fquxusdJv5ufdfFO1xaFpwFw==}
 
   '@codingame/monaco-vscode-simple-browser-default-extension@25.1.2':
     resolution: {integrity: sha512-EXD6gqN/urGVHrQh++Il/TuiLSPTDkSuwXeUIg2C0k++v6FGgzG5rjKBk0Tzyzgk1gSV8TeKeRqJnj1gHoD0TA==}
@@ -1158,71 +639,17 @@ packages:
   '@codingame/monaco-vscode-snippets-service-override@25.1.2':
     resolution: {integrity: sha512-2FSARtoLi9t1JjGO8SWRKW2v9zN/Jb9Ctdbr0XCEGmIVS6Tq0vo+h9Rvd5VpO/iYh+sXHO/AG013d+yxp9c3uw==}
 
-  '@codingame/monaco-vscode-speech-service-override@25.1.2':
-    resolution: {integrity: sha512-DggtEn5JBq+4WOYj6UHNU57MKE/DiOfp+CTmx/PS6fYhr36Xnx4axmC7AdFn+cbW0AmA6S6z0iosqY4cBrLsuQ==}
-
   '@codingame/monaco-vscode-sql-default-extension@25.1.2':
     resolution: {integrity: sha512-FVLOR6TWJKJlOowyBlmUtStOoWiKasuC5KHf2Pj+wKvRRqyZA4uh7n9tONRyHAJBrQC86cuafG4o4Fo3SV8asw==}
-
-  '@codingame/monaco-vscode-standalone-css-language-features@25.1.2':
-    resolution: {integrity: sha512-ecwUGS50gqG3yEool0KfUyqVRhObvx32EbjbXH+tHI4XOWDZB4OUt0r8Gzj10qPMFwFM/qGE3EPGk9gHAmS1tA==}
-
-  '@codingame/monaco-vscode-standalone-html-language-features@25.1.2':
-    resolution: {integrity: sha512-9x8xNgTY5+woQfJy8TmSeyqL2t4sXGubSZxpOVZf+y8bQZJDzPrV5f6QnYySkTUIEbPZdlEzh4zqw+eEeV/W0A==}
-
-  '@codingame/monaco-vscode-standalone-json-language-features@25.1.2':
-    resolution: {integrity: sha512-d07FBwwv8IhJQRJ9DsHoMrPX23/6S05SS1qDx8Kr1s8Agg+yFI2OEZIcG40ZrMRcx2rdzWb2EQjt9hG+l6PCbg==}
-
-  '@codingame/monaco-vscode-standalone-languages@25.1.2':
-    resolution: {integrity: sha512-7BUGsU6xXv0Dt9YM9vKWJP99lxVZf5aZj872qQokRFQNZddXO1UKtKbs+LP2xUxlC5JqVuTNcxdM1/p9/X3rZw==}
-
-  '@codingame/monaco-vscode-standalone-typescript-language-features@25.1.2':
-    resolution: {integrity: sha512-G2oKD5jGzrD3vYKfZZF54DgtW3SMmA0qlttaWR5Vu0eSAvyghXp1mdvds3u7deXY/KRL8X34vanT7aNtB9wosA==}
 
   '@codingame/monaco-vscode-storage-service-override@25.1.2':
     resolution: {integrity: sha512-3KY8CcuWrGl0KSKc7pQh8oN5c+LRxW/tbtQ/oVoKr4xE8/deu44Tu4ZV9tE1KqGVySL7lcsVsPuq8T66EBnaVw==}
 
-  '@codingame/monaco-vscode-survey-service-override@25.1.2':
-    resolution: {integrity: sha512-xVjQyzw2b10jvK3MY4L1x05yEIC+SXPczmeK4ulTtItnLSCg6UQfNRjuKHSZszNPlFw9p2WSvftwQD8G9zPnZQ==}
-
-  '@codingame/monaco-vscode-swift-default-extension@25.1.2':
-    resolution: {integrity: sha512-ESuymJoF2qXEwsuuHXLT3nhlzhP+whMi78GoIfUn7OFhGZC0xEvNea+a6evMglKPggPCpErpJmVdKGAGtOU8ig==}
-
-  '@codingame/monaco-vscode-task-service-override@25.1.2':
-    resolution: {integrity: sha512-gHFcFeB0c4VQMOLh/SbhvMV6aJUjXLN/3kTkTfNOpq0FYFe+vDCyEI+hQ3n2Jn20SMgG2bBnYn1KjGltuyeZsw==}
-
-  '@codingame/monaco-vscode-telemetry-service-override@25.1.2':
-    resolution: {integrity: sha512-+KoeUd2CpJbt3S6oZJroQQ/EYbzY4JWWBlUQPW/W6PGrHbXmhe/cmovDm+AESRx9UetWkx5ojh12Nv9pYKB7zg==}
-
-  '@codingame/monaco-vscode-terminal-service-override@25.1.2':
-    resolution: {integrity: sha512-cnyadggTBHBCzZRssRA8LIGI2/Ne4+og6j7d24wFzAW6DwRwCiMhBh72dbpNqzVDyl7NqpSbnr7tDLPfZLqH/A==}
-
-  '@codingame/monaco-vscode-testing-service-override@25.1.2':
-    resolution: {integrity: sha512-1RbF5yfRqlLVAq9C02w+euV36oCIlVX5bFHydpxHJECc9c4eYg3AOVS4s9Bba9HZ/E/sZCezILsLnnBDMr4pcA==}
-
   '@codingame/monaco-vscode-textmate-service-override@25.1.2':
     resolution: {integrity: sha512-AL0FtSQBW+1vtoXYQvUqB2hfWojpK73Kq/n6KuNXxjLF/XBJ5FpeeZDfrBfwhWPPoHuBTsaFUCQy4L8xQgbVlA==}
 
-  '@codingame/monaco-vscode-theme-abyss-default-extension@25.1.2':
-    resolution: {integrity: sha512-54WqaNQS9sQ0cW8UZ+ervh44Y2qxUf76F0dnzDGxWtHTKSCQ8o1a2MIjd0qKR891Ly+A17m6L/KSXfDp3Zb/dw==}
-
   '@codingame/monaco-vscode-theme-defaults-default-extension@25.1.2':
     resolution: {integrity: sha512-0vTMFiC89YSDSmjFckuQBUKwRuFNtsILNO3k0PBiSLN/MW+VDItjJpiVLXC42+rUWlGgY2lYxOneGVa5slCV1w==}
-
-  '@codingame/monaco-vscode-theme-kimbie-dark-default-extension@25.1.2':
-    resolution: {integrity: sha512-61vZrEW9Pm1fZ8IFn8jg0rLRDqzUzM1DbY9IrejSY9JbKLILEzsJDFsv+oMcsXIdsYlhuVcAXTC6lJxi2sOvtQ==}
-
-  '@codingame/monaco-vscode-theme-monokai-default-extension@25.1.2':
-    resolution: {integrity: sha512-b01W8lEA2xR215sQcasUiI6jrRnDTPT/uaCQ9Wm77dBfBylo0MCh24m+v7nSnQ/EepE3UxugfN78C9SAooYFmw==}
-
-  '@codingame/monaco-vscode-theme-monokai-dimmed-default-extension@25.1.2':
-    resolution: {integrity: sha512-S6xiJgDNV5Yx9AS7G5lCbhS9xgge4/7lVtpYk9m5oYbZ/39SdGvBMjkSr/GfyByRynDapmil8Poszf+bVG6OUA==}
-
-  '@codingame/monaco-vscode-theme-quietlight-default-extension@25.1.2':
-    resolution: {integrity: sha512-5KYXxWA+ug9UmHGaJDMgt/e0aJtXiLypZPLsifpdEt27mr74OwNb6M5k+40BxyybuJZFK92oLnZcyCgbO97lxA==}
-
-  '@codingame/monaco-vscode-theme-red-default-extension@25.1.2':
-    resolution: {integrity: sha512-t6B2kaxjv+5EczssmCMPj66lZTmYpO5AHTIvisF7aqcPcoayKvC9D1MO8E5DQutDZ7+3QLUHqlOLgQOFoZP66Q==}
 
   '@codingame/monaco-vscode-theme-service-override@25.1.2':
     resolution: {integrity: sha512-hsTwl6YYTiheFuQMmCmiEGLIdIdgYaf8Z85XWyxe6YgPtDaYGnp0fGSOXKA9/bf0JtuynzoLKtUUfDupK/A7Tw==}
@@ -1230,38 +657,11 @@ packages:
   '@codingame/monaco-vscode-theme-seti-default-extension@25.1.2':
     resolution: {integrity: sha512-2sGoWu/6RQt0HG5NDvVd8H0woBo8TISgeor0974BoGYw/tfaPhBZ4dTqu4zwYckct65vFPW6h9uPFW1Xpzde2w==}
 
-  '@codingame/monaco-vscode-theme-solarized-dark-default-extension@25.1.2':
-    resolution: {integrity: sha512-uHMBnrsldB9rG3Pdg87SItiqDSMQ9MvX1WiXz1OAKDY+v+EptjcBQk9yWtYob2ZrmZxTkIMoh4k6faL1lxx6xA==}
-
-  '@codingame/monaco-vscode-theme-solarized-light-default-extension@25.1.2':
-    resolution: {integrity: sha512-YHWcqXl8QhcWVCnxGrr74/QiwuReFpy05x5RbYryb2Q74RVg85UELgxw/DA6dbiKdYlJ2IsTPw4V1ww618IBew==}
-
-  '@codingame/monaco-vscode-theme-tomorrow-night-blue-default-extension@25.1.2':
-    resolution: {integrity: sha512-06njVV8CJbQEIGMvn2I6Txw4j5Ej/0fNdI2rQCaIf1yq1I3ttcZ96WTkA0I3NpfrcGu8B07bjuyNUqkKgvfmxA==}
-
-  '@codingame/monaco-vscode-timeline-service-override@25.1.2':
-    resolution: {integrity: sha512-Gcyt01Fr7y/nhif89z3EZih5cy+m0FLCswp7Y0h790SaNTCM7KtG19HTgSkHl+4s3dZGLwQDtx+Ve/YLFN9cnw==}
-
-  '@codingame/monaco-vscode-treesitter-service-override@25.1.2':
-    resolution: {integrity: sha512-jzqgBNSWyVZORTN3Rrwa9h0QCnzIO11ESQkbqb0RwIsDbW0MqfkVehdmFYs5lIBHdXS2hgG3yNOMR4l4jWsTlQ==}
-
-  '@codingame/monaco-vscode-typescript-basics-default-extension@25.1.2':
-    resolution: {integrity: sha512-tGpGAvVsINHodqPtjZDEOkjXAKLWiCr90P/dNC7W8XghxUHzQHqYmAunkkcJXWcRluaXcNBvPGplm1GaQfn3lQ==}
-
-  '@codingame/monaco-vscode-typescript-language-features-default-extension@25.1.2':
-    resolution: {integrity: sha512-bifrfWg+392NVb5LZ9k5UlhlW9xyNTaHhgh/ZxmOBpjbkaiB80VnpS/SV0zF8R0IZYtDF+Be7PpVWnmrEIw0JA==}
-
-  '@codingame/monaco-vscode-update-service-override@25.1.2':
-    resolution: {integrity: sha512-TqA53V7SoKkzx36HYBiyCx7s9uILBQe59AW/iIBuZ2aDEYUMQKtBI3irZeVvMIrURfwsf3etmX5MRCfR1ACZog==}
-
   '@codingame/monaco-vscode-user-data-profile-service-override@25.1.2':
     resolution: {integrity: sha512-0gytGdZTZitb5ShtN8ZO3I1LJlAV8zpWl6kYQ4Nz1bx9IbPgnIay3ERE2gphRpaEfBdfLCDjd7ppHDKKAQ/fZw==}
 
   '@codingame/monaco-vscode-user-data-sync-service-override@25.1.2':
     resolution: {integrity: sha512-8gH1M0IAOvtdiCERZY/jrnt3BxegMRGSXqf6V8Zyl8khOV8Q7V2LILlVTLuPOWllKvKX/AJU3AXYvV7zueMxsw==}
-
-  '@codingame/monaco-vscode-vb-default-extension@25.1.2':
-    resolution: {integrity: sha512-gDCf+GhXjq4efL6reStsIivSLm3AX2PGxBKSSIrx+E4C6SJGH9NcGj9yIQKqYmLKJ4Esw5dsOQUvtR7lS5Qo2w==}
 
   '@codingame/monaco-vscode-view-banner-service-override@25.1.2':
     resolution: {integrity: sha512-zhujHd1PQ6rRXsC2OQGrx/282G2v3lpPFl9heDFGKzpdj5119SgcW+B9p/MwJ1qF3LJpuRRgefNiQtqC/KT1eA==}
@@ -1293,17 +693,11 @@ packages:
   '@codingame/monaco-vscode-workspace-trust-service-override@25.1.2':
     resolution: {integrity: sha512-0GUVxcHXiIdJPaIwvxs9pu+qBzwiezwfI7eZEyWFWLr2T8slTrolHGBTMZdwSdqICOSXY3nIcXf0ML7juKFr6A==}
 
-  '@codingame/monaco-vscode-xml-default-extension@25.1.2':
-    resolution: {integrity: sha512-0AOOpUcU+mgNu0jYSwvVjmBTSApG+NehCTsxu5iteffRScabYkodcjik0e4gLZbwvU4/XS7Yigg7UZpj8hzIyA==}
-
   '@codingame/monaco-vscode-xterm-addons-common@25.1.2':
     resolution: {integrity: sha512-4ysdUaH8Biv/vy/iVCgN+fSam3yI7WF8QdC5AYlT8uyS86AXIQe7p5aMB2gTfZsg6OpPMvlJ0pVe7Rdgh3cMBQ==}
 
   '@codingame/monaco-vscode-xterm-common@25.1.2':
     resolution: {integrity: sha512-QqEvo3epcVs5EAOq7xxBfCW2AUxaO89+WmZCYSUdhuk/1tQ5Jeq0w4TVo7zCjIFaVJyP/N1bmBXgcM7Y4PYWBw==}
-
-  '@codingame/monaco-vscode-yaml-default-extension@25.1.2':
-    resolution: {integrity: sha512-Tew43Zof0MiEJkaVD5pi0crAgZE+BoGsJR1T7KuzUQo77GEMBF4UyXkPS3ZPadBa51/F/G0Wa4gGCDgCWIHi+A==}
 
   '@codingame/vscode-languagedetection@1.0.23':
     resolution: {integrity: sha512-PqMisj1WEb1d9YtFapOjDQYACq8HD3f5/d+tFfZltsqAomGvoQxl7LBtftPUDT4zpvxls0IsJHiWrR/wvwyuzg==}
@@ -1633,23 +1027,6 @@ packages:
 
   '@mdx-js/mdx@3.1.1':
     resolution: {integrity: sha512-f6ZO2ifpwAQIpzGWaBQT2TXxPv6z3RBzQKpVftEWN78Vl/YweF1uwussDx8ECAXVtr3Rs89fKyG9YlzUs9DyGQ==}
-
-  '@microsoft/1ds-core-js@3.2.18':
-    resolution: {integrity: sha512-ytlFv3dfb8OGqvbZP8tSIlNvn3QNYxdsF0k6ikRMWSr6CmBxBi1sliaxc2Q5KuYOuaeWkd8WRm25Rx/UtHcyMg==}
-
-  '@microsoft/1ds-post-js@3.2.18':
-    resolution: {integrity: sha512-Tzjcja4SMyws3UP58kD2edFPNb7BJtx5uCgwf/PWXwDyfbUY1/crsTQdEyR98wy/vorvLDZdQlcL++VMChfYnQ==}
-
-  '@microsoft/applicationinsights-core-js@2.8.18':
-    resolution: {integrity: sha512-yPHRZFLpnEO0uSgFPM1BLMRRwjoten9YBbn4pJRbCT4PigLnj748knmWsMwXIdcehtkRTYz78kPYa/LWP7nvmA==}
-    peerDependencies:
-      tslib: '*'
-
-  '@microsoft/applicationinsights-shims@2.0.2':
-    resolution: {integrity: sha512-PoHEgsnmcqruLNHZ/amACqdJ6YYQpED0KSRe6J7gIJTtpZC1FfFU9b1fmDKDKtFoUSrPzEh1qzO3kmRZP0betg==}
-
-  '@microsoft/dynamicproto-js@1.1.11':
-    resolution: {integrity: sha512-gNw9z9LbqLV+WadZ6/MMrWwO3e0LuoUH1wve/1iPsBNbgqeVCiB0EZFNNj2lysxS2gkqoF9hmyVaG3MoM1BkxA==}
 
   '@module-federation/error-codes@0.22.0':
     resolution: {integrity: sha512-xF9SjnEy7vTdx+xekjPCV5cIHOGCkdn3pIxo9vU7gEZMIw0SvAEdsy6Uh17xaCpm8V0FWvR0SZoK9Ik6jGOaug==}
@@ -2157,12 +1534,6 @@ packages:
   '@vscode/iconv-lite-umd@0.7.1':
     resolution: {integrity: sha512-tK6k0DXFHW7q5+GGuGZO+phpAqpxO4WXl+BLc/8/uOk3RsM2ssAL3CQUQDb1TGfwltjsauhN6S4ghYZzs4sPFw==}
 
-  '@vscode/l10n@0.0.18':
-    resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
-
-  '@vscode/tree-sitter-wasm@0.3.0':
-    resolution: {integrity: sha512-4kjB1jgLyG9VimGfyJb1F8/GFdrx55atsBCH/9r2D/iZHAUDCvZ5zhWXB7sRQ2z2WkkuNYm/0pgQtUm1jhdf7A==}
-
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
 
@@ -2348,6 +1719,10 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
 
+  available-typed-arrays@1.0.7:
+    resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
+    engines: {node: '>= 0.4'}
+
   bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
 
@@ -2409,6 +1784,10 @@ packages:
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
+    engines: {node: '>= 0.4'}
+
+  call-bind@1.0.8:
+    resolution: {integrity: sha512-oKlSFMcMwpUg2ednkhQ454wfWiU/ul3CkJe/PEHcTKuiX6RpbehUiFMXu13HalGZxfUwCQzZG747YXBn1im9ww==}
     engines: {node: '>= 0.4'}
 
   call-bound@1.0.4:
@@ -2627,6 +2006,10 @@ packages:
   default-browser@5.4.0:
     resolution: {integrity: sha512-XDuvSq38Hr1MdN47EDvYtx3U0MTqpCEn+F6ft8z2vYDzMrvQhVp0ui9oQdqW3MvK3vqUETglt1tVGgjLuJ5izg==}
     engines: {node: '>=18'}
+
+  define-data-property@1.1.4:
+    resolution: {integrity: sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==}
+    engines: {node: '>= 0.4'}
 
   define-lazy-prop@3.0.0:
     resolution: {integrity: sha512-N+MeXYoqr3pOgn8xfyRPREN7gHakLYjhsHhWGT3fWAiL4IkAt0iDw14QiiEm2bE30c5XX5q0FtAA3CK5f9/BUg==}
@@ -2930,6 +2313,10 @@ packages:
       debug:
         optional: true
 
+  for-each@0.3.5:
+    resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
+    engines: {node: '>= 0.4'}
+
   forwarded@0.2.0:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
     engines: {node: '>= 0.6'}
@@ -2948,6 +2335,10 @@ packages:
 
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
+
+  generator-function@2.0.1:
+    resolution: {integrity: sha512-SFdFmIJi+ybC0vjlHN0ZGVGHc3lgE0DxPAT0djjVg+kjOnSqclqmj0KQ7ykTOLP6YxoqOvuAODGdcHJn+43q3g==}
+    engines: {node: '>= 0.4'}
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -3004,8 +2395,15 @@ packages:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
 
+  has-property-descriptors@1.0.2:
+    resolution: {integrity: sha512-55JNKuIW+vq4Ke1BjOTjM2YctQIvCT7GFzHwmfZPGo5wnrgkid0YQtnAleFSqumZm4az3n2BS+erby5ipJdgrg==}
+
   has-symbols@1.1.0:
     resolution: {integrity: sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ==}
+    engines: {node: '>= 0.4'}
+
+  has-tostringtag@1.0.2:
+    resolution: {integrity: sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==}
     engines: {node: '>= 0.4'}
 
   hasown@2.0.2:
@@ -3123,12 +2521,20 @@ packages:
   is-alphanumerical@2.0.1:
     resolution: {integrity: sha512-hmbYhX/9MUMF5uh7tOXyK/n0ZvWpad5caBA17GsC6vyuCqaWliRG5K1qS9inmUhEMaOBIW7/whAnSwveW/LtZw==}
 
+  is-arguments@1.2.0:
+    resolution: {integrity: sha512-7bVbi0huj/wrIAOzb8U1aszg9kdi3KN/CyU19CTI7tAoZYEZoL9yCDXpbXN+uPsuWnP02cyug1gleqq+TU+YCA==}
+    engines: {node: '>= 0.4'}
+
   is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
 
   is-binary-path@2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
     engines: {node: '>=8'}
+
+  is-callable@1.2.7:
+    resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
+    engines: {node: '>= 0.4'}
 
   is-core-module@2.16.1:
     resolution: {integrity: sha512-UfoeMA6fIJ8wTYFEUjelnaGI67v6+N7qXJEvQuIGa99l4xsCruSYOVSQ0uPANn4dAzm8lkYPaKLrrijLq7x23w==}
@@ -3145,6 +2551,10 @@ packages:
   is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
+
+  is-generator-function@1.1.2:
+    resolution: {integrity: sha512-upqt1SkGkODW9tsGNG5mtXTXtECizwtS2kA161M+gJPc1xdb/Ax629af6YrTwcOeQHbewrPNlE5Dx7kzvXTizA==}
+    engines: {node: '>= 0.4'}
 
   is-glob@4.0.3:
     resolution: {integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==}
@@ -3173,6 +2583,14 @@ packages:
   is-plain-obj@4.1.0:
     resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
     engines: {node: '>=12'}
+
+  is-regex@1.2.1:
+    resolution: {integrity: sha512-MjYsKHO5O7mCsmRGxWcLWheFqN9DJ/2TmngvjKXihe6efViPqc274+Fx/4fYj/r03+ESvBdTXK0V6tA3rgez1g==}
+    engines: {node: '>= 0.4'}
+
+  is-typed-array@1.1.15:
+    resolution: {integrity: sha512-p3EcsicXjit7SaskXHs1hA91QxgTw46Fv6EFKKGS5DRFLD8yKnohjF3hxoju94b/OcMZoQukzpPpBE9uLVKzgQ==}
+    engines: {node: '>= 0.4'}
 
   is-wsl@3.1.0:
     resolution: {integrity: sha512-UcVfVfaK4Sc4m7X3dUSoHoozQGBEFeDC+zVo06t98xe8CzHSZZBekNXH+tu0NalHolcJ/QAGqS46Hef7QXBIMw==}
@@ -3707,6 +3125,10 @@ packages:
     resolution: {integrity: sha512-TfySrs/5nm8fQJDcBDuUng3VOUKsd7S+zqvbOTiGXHfxX4wK31ard+hoNuvkicM/2YFzlpDgABOevKSsB4G/FA==}
     engines: {node: '>= 6'}
 
+  possible-typed-array-names@1.1.0:
+    resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
+    engines: {node: '>= 0.4'}
+
   postcss-import@15.1.0:
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
@@ -4051,6 +3473,10 @@ packages:
   safe-buffer@5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
 
+  safe-regex-test@1.1.0:
+    resolution: {integrity: sha512-x/+Cz4YrimQxQccJf5mKEbIa1NzeCRNI5Ecl/ekmlYaampdNLPalVyIcCZNNH3MvmqBugV5TMYZXv0ljslUlaw==}
+    engines: {node: '>= 0.4'}
+
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
@@ -4147,6 +3573,10 @@ packages:
 
   set-cookie-parser@2.7.2:
     resolution: {integrity: sha512-oeM1lpU/UvhTxw+g3cIfxXHyJRc/uidd3yK1P242gzHds0udQBYzs3y8j4gCCW+ZJ7ad0yctld8RYO+bdurlvw==}
+
+  set-function-length@1.2.2:
+    resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
+    engines: {node: '>= 0.4'}
 
   setprototypeof@1.1.0:
     resolution: {integrity: sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==}
@@ -4435,6 +3865,9 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  util@0.12.5:
+    resolution: {integrity: sha512-kZf/K6hEIrWHI6XqOFUiiMa+79wE/D8Q+NCNAWclkyg3b4d2k7s0QGepNjiABc+aR3N1PAyHL7p6UcLY6LmrnA==}
+
   utility-types@3.11.0:
     resolution: {integrity: sha512-6Z7Ma2aVEWisaL6TvBCy7P8rm2LQoPv6dJ7ecIaIixHcwfbJ0x7mWdbcwlIM5IGQxPZSFYeqRCqlOOeKoJYMkw==}
     engines: {node: '>= 4'}
@@ -4460,15 +3893,6 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  vscode-css-languageservice@6.2.14:
-    resolution: {integrity: sha512-5UPQ9Y1sUTnuMyaMBpO7LrBkqjhEJb5eAwdUlDp+Uez8lry+Tspnk3+3p2qWS4LlNsr4p3v9WkZxUf1ltgFpgw==}
-
-  vscode-html-languageservice@5.2.0:
-    resolution: {integrity: sha512-cdNMhyw57/SQzgUUGSIMQ66jikqEN6nBNyhx5YuOyj9310+eY9zw8Q0cXpiKzDX8aHYFewQEXRnigl06j/TVwQ==}
-
-  vscode-json-languageservice@5.3.11:
-    resolution: {integrity: sha512-WYS72Ymria3dn8ZbjtBbt5K71m05wY1Q6hpXV5JxUT0q75Ts0ljLmnZJAVpx8DjPgYbFD+Z8KHpWh2laKLUCtQ==}
-
   vscode-jsonrpc@8.2.0:
     resolution: {integrity: sha512-C+r0eKJUIfiDIfwJhria30+TYWPtuHJXHtI7J0YlOmKAo7ogxP20T0zxB7HZQIFhIyvoBPwWskjxrvAtfjyZfA==}
     engines: {node: '>=14.0.0'}
@@ -4484,17 +3908,8 @@ packages:
   vscode-languageserver-protocol@3.17.5:
     resolution: {integrity: sha512-mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg==}
 
-  vscode-languageserver-textdocument@1.0.12:
-    resolution: {integrity: sha512-cxWNPesCnQCcMPeenjKKsOCKQZ/L6Tv19DTRIGuLWe32lyzWhihGVJ/rcckZXJxfdKCFvRLS3fpBIsV/ZGX4zA==}
-
   vscode-languageserver-types@3.17.5:
     resolution: {integrity: sha512-Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg==}
-
-  vscode-uri@3.0.8:
-    resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
-
-  vscode-uri@3.1.0:
-    resolution: {integrity: sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==}
 
   vscode-ws-jsonrpc@3.5.0:
     resolution: {integrity: sha512-13ZDy7Od4AfEPK2HIfY3DtyRi4FVsvFql1yobVJrpIoHOKGGJpIjVvIJpMxkrHzCZzWlYlg+WEu2hrYkCTvM0Q==}
@@ -4558,6 +3973,10 @@ packages:
   websocket-extensions@0.1.4:
     resolution: {integrity: sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==}
     engines: {node: '>=0.8.0'}
+
+  which-typed-array@1.1.20:
+    resolution: {integrity: sha512-LYfpUkmqwl0h9A2HL09Mms427Q1RZWuOHsukfVcKRq9q95iQxdw0ix1JQrqbcDR9PH1QDwf5Qo8OZb5lksZ8Xg==}
+    engines: {node: '>= 0.4'}
 
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
@@ -4732,162 +4151,6 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@codingame/monaco-vscode-accessibility-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-      marked: 14.0.0
-
-  '@codingame/monaco-vscode-ai-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-all-default-extensions@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-bat-default-extension': 25.1.2
-      '@codingame/monaco-vscode-clojure-default-extension': 25.1.2
-      '@codingame/monaco-vscode-coffeescript-default-extension': 25.1.2
-      '@codingame/monaco-vscode-configuration-editing-default-extension': 25.1.2
-      '@codingame/monaco-vscode-cpp-default-extension': 25.1.2
-      '@codingame/monaco-vscode-csharp-default-extension': 25.1.2
-      '@codingame/monaco-vscode-css-default-extension': 25.1.2
-      '@codingame/monaco-vscode-css-language-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-dart-default-extension': 25.1.2
-      '@codingame/monaco-vscode-diff-default-extension': 25.1.2
-      '@codingame/monaco-vscode-docker-default-extension': 25.1.2
-      '@codingame/monaco-vscode-dotenv-default-extension': 25.1.2
-      '@codingame/monaco-vscode-emmet-default-extension': 25.1.2
-      '@codingame/monaco-vscode-extension-editing-default-extension': 25.1.2
-      '@codingame/monaco-vscode-fsharp-default-extension': 25.1.2
-      '@codingame/monaco-vscode-git-base-default-extension': 25.1.2
-      '@codingame/monaco-vscode-github-authentication-default-extension': 25.1.2
-      '@codingame/monaco-vscode-go-default-extension': 25.1.2
-      '@codingame/monaco-vscode-groovy-default-extension': 25.1.2
-      '@codingame/monaco-vscode-handlebars-default-extension': 25.1.2
-      '@codingame/monaco-vscode-hlsl-default-extension': 25.1.2
-      '@codingame/monaco-vscode-html-default-extension': 25.1.2
-      '@codingame/monaco-vscode-html-language-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-ini-default-extension': 25.1.2
-      '@codingame/monaco-vscode-ipynb-default-extension': 25.1.2
-      '@codingame/monaco-vscode-java-default-extension': 25.1.2
-      '@codingame/monaco-vscode-javascript-default-extension': 25.1.2
-      '@codingame/monaco-vscode-json-default-extension': 25.1.2
-      '@codingame/monaco-vscode-json-language-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-julia-default-extension': 25.1.2
-      '@codingame/monaco-vscode-latex-default-extension': 25.1.2
-      '@codingame/monaco-vscode-less-default-extension': 25.1.2
-      '@codingame/monaco-vscode-log-default-extension': 25.1.2
-      '@codingame/monaco-vscode-lua-default-extension': 25.1.2
-      '@codingame/monaco-vscode-make-default-extension': 25.1.2
-      '@codingame/monaco-vscode-markdown-basics-default-extension': 25.1.2
-      '@codingame/monaco-vscode-markdown-language-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-markdown-math-default-extension': 25.1.2
-      '@codingame/monaco-vscode-media-preview-default-extension': 25.1.2
-      '@codingame/monaco-vscode-merge-conflict-default-extension': 25.1.2
-      '@codingame/monaco-vscode-mermaid-chat-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-notebook-renderers-default-extension': 25.1.2
-      '@codingame/monaco-vscode-npm-default-extension': 25.1.2
-      '@codingame/monaco-vscode-objective-c-default-extension': 25.1.2
-      '@codingame/monaco-vscode-perl-default-extension': 25.1.2
-      '@codingame/monaco-vscode-php-default-extension': 25.1.2
-      '@codingame/monaco-vscode-powershell-default-extension': 25.1.2
-      '@codingame/monaco-vscode-prompt-basics-default-extension': 25.1.2
-      '@codingame/monaco-vscode-pug-default-extension': 25.1.2
-      '@codingame/monaco-vscode-python-default-extension': 25.1.2
-      '@codingame/monaco-vscode-r-default-extension': 25.1.2
-      '@codingame/monaco-vscode-razor-default-extension': 25.1.2
-      '@codingame/monaco-vscode-references-view-default-extension': 25.1.2
-      '@codingame/monaco-vscode-restructuredtext-default-extension': 25.1.2
-      '@codingame/monaco-vscode-ruby-default-extension': 25.1.2
-      '@codingame/monaco-vscode-rust-default-extension': 25.1.2
-      '@codingame/monaco-vscode-scss-default-extension': 25.1.2
-      '@codingame/monaco-vscode-search-result-default-extension': 25.1.2
-      '@codingame/monaco-vscode-shaderlab-default-extension': 25.1.2
-      '@codingame/monaco-vscode-shellscript-default-extension': 25.1.2
-      '@codingame/monaco-vscode-simple-browser-default-extension': 25.1.2
-      '@codingame/monaco-vscode-sql-default-extension': 25.1.2
-      '@codingame/monaco-vscode-swift-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-abyss-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-defaults-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-kimbie-dark-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-monokai-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-monokai-dimmed-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-quietlight-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-red-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-seti-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-solarized-dark-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-solarized-light-default-extension': 25.1.2
-      '@codingame/monaco-vscode-theme-tomorrow-night-blue-default-extension': 25.1.2
-      '@codingame/monaco-vscode-typescript-basics-default-extension': 25.1.2
-      '@codingame/monaco-vscode-typescript-language-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-vb-default-extension': 25.1.2
-      '@codingame/monaco-vscode-xml-default-extension': 25.1.2
-      '@codingame/monaco-vscode-yaml-default-extension': 25.1.2
-
-  '@codingame/monaco-vscode-all-language-default-extensions@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-bat-default-extension': 25.1.2
-      '@codingame/monaco-vscode-clojure-default-extension': 25.1.2
-      '@codingame/monaco-vscode-coffeescript-default-extension': 25.1.2
-      '@codingame/monaco-vscode-configuration-editing-default-extension': 25.1.2
-      '@codingame/monaco-vscode-cpp-default-extension': 25.1.2
-      '@codingame/monaco-vscode-csharp-default-extension': 25.1.2
-      '@codingame/monaco-vscode-css-default-extension': 25.1.2
-      '@codingame/monaco-vscode-dart-default-extension': 25.1.2
-      '@codingame/monaco-vscode-diff-default-extension': 25.1.2
-      '@codingame/monaco-vscode-docker-default-extension': 25.1.2
-      '@codingame/monaco-vscode-dotenv-default-extension': 25.1.2
-      '@codingame/monaco-vscode-extension-editing-default-extension': 25.1.2
-      '@codingame/monaco-vscode-fsharp-default-extension': 25.1.2
-      '@codingame/monaco-vscode-git-base-default-extension': 25.1.2
-      '@codingame/monaco-vscode-go-default-extension': 25.1.2
-      '@codingame/monaco-vscode-groovy-default-extension': 25.1.2
-      '@codingame/monaco-vscode-handlebars-default-extension': 25.1.2
-      '@codingame/monaco-vscode-hlsl-default-extension': 25.1.2
-      '@codingame/monaco-vscode-html-default-extension': 25.1.2
-      '@codingame/monaco-vscode-ini-default-extension': 25.1.2
-      '@codingame/monaco-vscode-java-default-extension': 25.1.2
-      '@codingame/monaco-vscode-javascript-default-extension': 25.1.2
-      '@codingame/monaco-vscode-json-default-extension': 25.1.2
-      '@codingame/monaco-vscode-julia-default-extension': 25.1.2
-      '@codingame/monaco-vscode-latex-default-extension': 25.1.2
-      '@codingame/monaco-vscode-less-default-extension': 25.1.2
-      '@codingame/monaco-vscode-log-default-extension': 25.1.2
-      '@codingame/monaco-vscode-lua-default-extension': 25.1.2
-      '@codingame/monaco-vscode-make-default-extension': 25.1.2
-      '@codingame/monaco-vscode-markdown-basics-default-extension': 25.1.2
-      '@codingame/monaco-vscode-markdown-math-default-extension': 25.1.2
-      '@codingame/monaco-vscode-npm-default-extension': 25.1.2
-      '@codingame/monaco-vscode-objective-c-default-extension': 25.1.2
-      '@codingame/monaco-vscode-perl-default-extension': 25.1.2
-      '@codingame/monaco-vscode-php-default-extension': 25.1.2
-      '@codingame/monaco-vscode-powershell-default-extension': 25.1.2
-      '@codingame/monaco-vscode-prompt-basics-default-extension': 25.1.2
-      '@codingame/monaco-vscode-pug-default-extension': 25.1.2
-      '@codingame/monaco-vscode-python-default-extension': 25.1.2
-      '@codingame/monaco-vscode-r-default-extension': 25.1.2
-      '@codingame/monaco-vscode-razor-default-extension': 25.1.2
-      '@codingame/monaco-vscode-restructuredtext-default-extension': 25.1.2
-      '@codingame/monaco-vscode-ruby-default-extension': 25.1.2
-      '@codingame/monaco-vscode-rust-default-extension': 25.1.2
-      '@codingame/monaco-vscode-scss-default-extension': 25.1.2
-      '@codingame/monaco-vscode-search-result-default-extension': 25.1.2
-      '@codingame/monaco-vscode-shaderlab-default-extension': 25.1.2
-      '@codingame/monaco-vscode-shellscript-default-extension': 25.1.2
-      '@codingame/monaco-vscode-sql-default-extension': 25.1.2
-      '@codingame/monaco-vscode-swift-default-extension': 25.1.2
-      '@codingame/monaco-vscode-typescript-basics-default-extension': 25.1.2
-      '@codingame/monaco-vscode-vb-default-extension': 25.1.2
-      '@codingame/monaco-vscode-xml-default-extension': 25.1.2
-      '@codingame/monaco-vscode-yaml-default-extension': 25.1.2
-
-  '@codingame/monaco-vscode-all-language-feature-default-extensions@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-css-language-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-html-language-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-json-language-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-markdown-language-features-default-extension': 25.1.2
-      '@codingame/monaco-vscode-typescript-language-features-default-extension': 25.1.2
-
   '@codingame/monaco-vscode-api@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-base-service-override': 25.1.2
@@ -4902,19 +4165,7 @@ snapshots:
       jschardet: 3.1.4
       marked: 14.0.0
 
-  '@codingame/monaco-vscode-assignment-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-authentication-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-base-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-bat-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -4931,18 +4182,6 @@ snapshots:
     transitivePeerDependencies:
       - '@xterm/xterm'
 
-  '@codingame/monaco-vscode-clojure-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-coffeescript-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-comments-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-configuration-editing-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
@@ -4952,43 +4191,7 @@ snapshots:
       '@codingame/monaco-vscode-api': 25.1.2
       '@codingame/monaco-vscode-files-service-override': 25.1.2
 
-  '@codingame/monaco-vscode-cpp-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-csharp-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-css-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-css-language-features-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-dart-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-debug-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-dialogs-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-diff-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-docker-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-dotenv-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5001,14 +4204,6 @@ snapshots:
       '@codingame/monaco-vscode-api': 25.1.2
 
   '@codingame/monaco-vscode-editor-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-emmet-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-emmet-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5025,10 +4220,6 @@ snapshots:
       '@codingame/monaco-vscode-api': 25.1.2
       '@codingame/monaco-vscode-extensions-service-override': 25.1.2
 
-  '@codingame/monaco-vscode-extension-editing-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-extension-gallery-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
@@ -5042,51 +4233,11 @@ snapshots:
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-fsharp-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-git-base-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-github-authentication-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-go-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-groovy-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-handlebars-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-hlsl-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-host-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-html-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-html-language-features-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-image-resize-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-ini-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5096,30 +4247,6 @@ snapshots:
       '@codingame/monaco-vscode-katex-common': 25.1.2
 
   '@codingame/monaco-vscode-ipynb-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-issue-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-java-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-javascript-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-json-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-json-language-features-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-julia-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5208,10 +4335,6 @@ snapshots:
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-less-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-lifecycle-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
@@ -5229,14 +4352,6 @@ snapshots:
       '@codingame/monaco-vscode-api': 25.1.2
       '@codingame/monaco-vscode-environment-service-override': 25.1.2
 
-  '@codingame/monaco-vscode-lua-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-make-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-markdown-basics-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
@@ -5253,19 +4368,7 @@ snapshots:
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-mcp-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-media-preview-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-merge-conflict-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-mermaid-chat-features-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5274,10 +4377,6 @@ snapshots:
       '@codingame/monaco-vscode-api': 25.1.2
 
   '@codingame/monaco-vscode-monarch-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-multi-diff-editor-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5294,14 +4393,6 @@ snapshots:
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-npm-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-objective-c-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-outline-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
@@ -5311,39 +4402,11 @@ snapshots:
       '@codingame/monaco-vscode-api': 25.1.2
       '@codingame/monaco-vscode-log-service-override': 25.1.2
 
-  '@codingame/monaco-vscode-performance-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-perl-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-php-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-policy-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-powershell-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-preferences-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-process-explorer-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-prompt-basics-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-pug-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5355,48 +4418,11 @@ snapshots:
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-r-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-razor-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-references-view-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
   '@codingame/monaco-vscode-relauncher-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-remote-agent-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-      '@codingame/monaco-vscode-environment-service-override': 25.1.2
-
-  '@codingame/monaco-vscode-restructuredtext-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-ruby-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-rust-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-scm-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-scss-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-search-result-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5408,15 +4434,7 @@ snapshots:
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-shaderlab-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-share-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-shellscript-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5429,115 +4447,20 @@ snapshots:
       '@codingame/monaco-vscode-api': 25.1.2
       '@codingame/monaco-vscode-files-service-override': 25.1.2
 
-  '@codingame/monaco-vscode-speech-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-sql-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-standalone-css-language-features@25.1.2':
-    dependencies:
-      monaco-editor: '@codingame/monaco-vscode-editor-api@25.1.2'
-      vscode-css-languageservice: 6.2.14
-      vscode-languageserver-textdocument: 1.0.12
-      vscode-languageserver-types: 3.17.5
-
-  '@codingame/monaco-vscode-standalone-html-language-features@25.1.2':
-    dependencies:
-      monaco-editor: '@codingame/monaco-vscode-editor-api@25.1.2'
-      vscode-html-languageservice: 5.2.0
-      vscode-languageserver-textdocument: 1.0.12
-      vscode-languageserver-types: 3.17.5
-
-  '@codingame/monaco-vscode-standalone-json-language-features@25.1.2':
-    dependencies:
-      jsonc-parser: 3.3.1
-      monaco-editor: '@codingame/monaco-vscode-editor-api@25.1.2'
-      vscode-json-languageservice: 5.3.11
-      vscode-languageserver-textdocument: 1.0.12
-      vscode-languageserver-types: 3.17.5
-      vscode-uri: 3.0.8
-
-  '@codingame/monaco-vscode-standalone-languages@25.1.2':
-    dependencies:
-      monaco-editor: '@codingame/monaco-vscode-editor-api@25.1.2'
-
-  '@codingame/monaco-vscode-standalone-typescript-language-features@25.1.2':
-    dependencies:
-      monaco-editor: '@codingame/monaco-vscode-editor-api@25.1.2'
-
   '@codingame/monaco-vscode-storage-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-survey-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-swift-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-task-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-telemetry-service-override@25.1.2(tslib@2.8.1)':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-      '@microsoft/1ds-core-js': 3.2.18(tslib@2.8.1)
-      '@microsoft/1ds-post-js': 3.2.18(tslib@2.8.1)
-    transitivePeerDependencies:
-      - tslib
-
-  '@codingame/monaco-vscode-terminal-service-override@25.1.2(@xterm/xterm@6.1.0-beta.97)':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-      '@codingame/monaco-vscode-xterm-addons-common': 25.1.2(@xterm/xterm@6.1.0-beta.97)
-      '@codingame/monaco-vscode-xterm-common': 25.1.2
-    transitivePeerDependencies:
-      - '@xterm/xterm'
-
-  '@codingame/monaco-vscode-testing-service-override@25.1.2(@xterm/xterm@6.1.0-beta.97)':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-      '@codingame/monaco-vscode-terminal-service-override': 25.1.2(@xterm/xterm@6.1.0-beta.97)
-      '@codingame/monaco-vscode-xterm-addons-common': 25.1.2(@xterm/xterm@6.1.0-beta.97)
-    transitivePeerDependencies:
-      - '@xterm/xterm'
 
   '@codingame/monaco-vscode-textmate-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
       '@codingame/monaco-vscode-files-service-override': 25.1.2
 
-  '@codingame/monaco-vscode-theme-abyss-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-theme-defaults-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-theme-kimbie-dark-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-theme-monokai-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-theme-monokai-dimmed-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-theme-quietlight-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-theme-red-default-extension@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
@@ -5550,39 +4473,6 @@ snapshots:
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-theme-solarized-dark-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-theme-solarized-light-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-theme-tomorrow-night-blue-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-timeline-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-treesitter-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-      '@vscode/tree-sitter-wasm': 0.3.0
-
-  '@codingame/monaco-vscode-typescript-basics-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-typescript-language-features-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
-  '@codingame/monaco-vscode-update-service-override@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-user-data-profile-service-override@25.1.2':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
@@ -5591,10 +4481,6 @@ snapshots:
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
       '@codingame/monaco-vscode-user-data-profile-service-override': 25.1.2
-
-  '@codingame/monaco-vscode-vb-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
 
   '@codingame/monaco-vscode-view-banner-service-override@25.1.2':
     dependencies:
@@ -5649,10 +4535,6 @@ snapshots:
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
 
-  '@codingame/monaco-vscode-xml-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
-
   '@codingame/monaco-vscode-xterm-addons-common@25.1.2(@xterm/xterm@6.1.0-beta.97)':
     dependencies:
       '@codingame/monaco-vscode-api': 25.1.2
@@ -5672,10 +4554,6 @@ snapshots:
       '@codingame/monaco-vscode-api': 25.1.2
       '@codingame/monaco-vscode-xterm-addons-common': 25.1.2(@xterm/xterm@6.1.0-beta.97)
       '@xterm/xterm': 6.1.0-beta.97
-
-  '@codingame/monaco-vscode-yaml-default-extension@25.1.2':
-    dependencies:
-      '@codingame/monaco-vscode-api': 25.1.2
 
   '@codingame/vscode-languagedetection@1.0.23': {}
 
@@ -6134,32 +5012,6 @@ snapshots:
       vfile: 6.0.3
     transitivePeerDependencies:
       - supports-color
-
-  '@microsoft/1ds-core-js@3.2.18(tslib@2.8.1)':
-    dependencies:
-      '@microsoft/applicationinsights-core-js': 2.8.18(tslib@2.8.1)
-      '@microsoft/applicationinsights-shims': 2.0.2
-      '@microsoft/dynamicproto-js': 1.1.11
-    transitivePeerDependencies:
-      - tslib
-
-  '@microsoft/1ds-post-js@3.2.18(tslib@2.8.1)':
-    dependencies:
-      '@microsoft/1ds-core-js': 3.2.18(tslib@2.8.1)
-      '@microsoft/applicationinsights-shims': 2.0.2
-      '@microsoft/dynamicproto-js': 1.1.11
-    transitivePeerDependencies:
-      - tslib
-
-  '@microsoft/applicationinsights-core-js@2.8.18(tslib@2.8.1)':
-    dependencies:
-      '@microsoft/applicationinsights-shims': 2.0.2
-      '@microsoft/dynamicproto-js': 1.1.11
-      tslib: 2.8.1
-
-  '@microsoft/applicationinsights-shims@2.0.2': {}
-
-  '@microsoft/dynamicproto-js@1.1.11': {}
 
   '@module-federation/error-codes@0.22.0': {}
 
@@ -6725,10 +5577,6 @@ snapshots:
 
   '@vscode/iconv-lite-umd@0.7.1': {}
 
-  '@vscode/l10n@0.0.18': {}
-
-  '@vscode/tree-sitter-wasm@0.3.0': {}
-
   '@webassemblyjs/ast@1.14.1':
     dependencies:
       '@webassemblyjs/helper-numbers': 1.13.2
@@ -6926,6 +5774,10 @@ snapshots:
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
 
+  available-typed-arrays@1.0.7:
+    dependencies:
+      possible-typed-array-names: 1.1.0
+
   bail@2.0.2: {}
 
   balanced-match@1.0.2: {}
@@ -6997,6 +5849,13 @@ snapshots:
     dependencies:
       es-errors: 1.3.0
       function-bind: 1.1.2
+
+  call-bind@1.0.8:
+    dependencies:
+      call-bind-apply-helpers: 1.0.2
+      es-define-property: 1.0.1
+      get-intrinsic: 1.3.0
+      set-function-length: 1.2.2
 
   call-bound@1.0.4:
     dependencies:
@@ -7181,6 +6040,12 @@ snapshots:
     dependencies:
       bundle-name: 4.1.0
       default-browser-id: 5.0.1
+
+  define-data-property@1.1.4:
+    dependencies:
+      es-define-property: 1.0.1
+      es-errors: 1.3.0
+      gopd: 1.2.0
 
   define-lazy-prop@3.0.0: {}
 
@@ -7520,6 +6385,10 @@ snapshots:
 
   follow-redirects@1.15.11: {}
 
+  for-each@0.3.5:
+    dependencies:
+      is-callable: 1.2.7
+
   forwarded@0.2.0: {}
 
   fraction.js@5.3.4: {}
@@ -7530,6 +6399,8 @@ snapshots:
     optional: true
 
   function-bind@1.1.2: {}
+
+  generator-function@2.0.1: {}
 
   gensync@1.0.0-beta.2: {}
 
@@ -7581,7 +6452,15 @@ snapshots:
 
   has-flag@4.0.0: {}
 
+  has-property-descriptors@1.0.2:
+    dependencies:
+      es-define-property: 1.0.1
+
   has-symbols@1.1.0: {}
+
+  has-tostringtag@1.0.2:
+    dependencies:
+      has-symbols: 1.1.0
 
   hasown@2.0.2:
     dependencies:
@@ -7739,11 +6618,18 @@ snapshots:
       is-alphabetical: 2.0.1
       is-decimal: 2.0.1
 
+  is-arguments@1.2.0:
+    dependencies:
+      call-bound: 1.0.4
+      has-tostringtag: 1.0.2
+
   is-arrayish@0.2.1: {}
 
   is-binary-path@2.1.0:
     dependencies:
       binary-extensions: 2.3.0
+
+  is-callable@1.2.7: {}
 
   is-core-module@2.16.1:
     dependencies:
@@ -7754,6 +6640,14 @@ snapshots:
   is-docker@3.0.0: {}
 
   is-extglob@2.1.1: {}
+
+  is-generator-function@1.1.2:
+    dependencies:
+      call-bound: 1.0.4
+      generator-function: 2.0.1
+      get-proto: 1.0.1
+      has-tostringtag: 1.0.2
+      safe-regex-test: 1.1.0
 
   is-glob@4.0.3:
     dependencies:
@@ -7772,6 +6666,17 @@ snapshots:
   is-plain-obj@3.0.0: {}
 
   is-plain-obj@4.1.0: {}
+
+  is-regex@1.2.1:
+    dependencies:
+      call-bound: 1.0.4
+      gopd: 1.2.0
+      has-tostringtag: 1.0.2
+      hasown: 2.0.2
+
+  is-typed-array@1.1.15:
+    dependencies:
+      which-typed-array: 1.1.20
 
   is-wsl@3.1.0:
     dependencies:
@@ -8557,6 +7462,8 @@ snapshots:
 
   pirates@4.0.7: {}
 
+  possible-typed-array-names@1.1.0: {}
+
   postcss-import@15.1.0(postcss@8.5.6):
     dependencies:
       postcss: 8.5.6
@@ -8976,6 +7883,12 @@ snapshots:
 
   safe-buffer@5.2.1: {}
 
+  safe-regex-test@1.1.0:
+    dependencies:
+      call-bound: 1.0.4
+      es-errors: 1.3.0
+      is-regex: 1.2.1
+
   safer-buffer@2.1.2: {}
 
   sass-loader@10.5.2(sass@1.97.2)(webpack@5.104.1):
@@ -9085,6 +7998,15 @@ snapshots:
       - supports-color
 
   set-cookie-parser@2.7.2: {}
+
+  set-function-length@1.2.2:
+    dependencies:
+      define-data-property: 1.1.4
+      es-errors: 1.3.0
+      function-bind: 1.1.2
+      get-intrinsic: 1.3.0
+      gopd: 1.2.0
+      has-property-descriptors: 1.0.2
 
   setprototypeof@1.1.0: {}
 
@@ -9413,6 +8335,14 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
+  util@0.12.5:
+    dependencies:
+      inherits: 2.0.4
+      is-arguments: 1.2.0
+      is-generator-function: 1.1.2
+      is-typed-array: 1.1.15
+      which-typed-array: 1.1.20
+
   utility-types@3.11.0: {}
 
   utils-merge@1.0.1: {}
@@ -9433,28 +8363,6 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vscode-css-languageservice@6.2.14:
-    dependencies:
-      '@vscode/l10n': 0.0.18
-      vscode-languageserver-textdocument: 1.0.12
-      vscode-languageserver-types: 3.17.5
-      vscode-uri: 3.1.0
-
-  vscode-html-languageservice@5.2.0:
-    dependencies:
-      '@vscode/l10n': 0.0.18
-      vscode-languageserver-textdocument: 1.0.12
-      vscode-languageserver-types: 3.17.5
-      vscode-uri: 3.1.0
-
-  vscode-json-languageservice@5.3.11:
-    dependencies:
-      '@vscode/l10n': 0.0.18
-      jsonc-parser: 3.3.1
-      vscode-languageserver-textdocument: 1.0.12
-      vscode-languageserver-types: 3.17.5
-      vscode-uri: 3.0.8
-
   vscode-jsonrpc@8.2.0: {}
 
   vscode-jsonrpc@8.2.1: {}
@@ -9470,13 +8378,7 @@ snapshots:
       vscode-jsonrpc: 8.2.0
       vscode-languageserver-types: 3.17.5
 
-  vscode-languageserver-textdocument@1.0.12: {}
-
   vscode-languageserver-types@3.17.5: {}
-
-  vscode-uri@3.0.8: {}
-
-  vscode-uri@3.1.0: {}
 
   vscode-ws-jsonrpc@3.5.0:
     dependencies:
@@ -9604,6 +8506,16 @@ snapshots:
       websocket-extensions: 0.1.4
 
   websocket-extensions@0.1.4: {}
+
+  which-typed-array@1.1.20:
+    dependencies:
+      available-typed-arrays: 1.0.7
+      call-bind: 1.0.8
+      call-bound: 1.0.4
+      for-each: 0.3.5
+      get-proto: 1.0.1
+      gopd: 1.2.0
+      has-tostringtag: 1.0.2
 
   which@2.0.2:
     dependencies:
