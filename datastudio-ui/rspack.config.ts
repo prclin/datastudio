@@ -9,6 +9,7 @@ const isDev = process.env.NODE_ENV === "development";
 export const targets = ["last 2 versions", "> 0.2%", "not dead", "Firefox ESR"];
 
 export default defineConfig({
+  output: { publicPath: "/" },
   devServer: {
     historyApiFallback: {
       rewrites: [{ from: /^\/$/, to: "/" }],
@@ -39,9 +40,7 @@ export default defineConfig({
       {
         test: /\.(jsx?|tsx?)$/,
         // 由于rspack fast refresh与web worker冲突,开发时排除monaco editor
-        exclude: isDev
-          ? [/@codingame\/monaco-vscode/, /@rspack\/core\/hot/]
-          : undefined,
+        exclude: isDev ? [/@codingame\/monaco-vscode/] : undefined,
         use: [
           {
             loader: "builtin:swc-loader",

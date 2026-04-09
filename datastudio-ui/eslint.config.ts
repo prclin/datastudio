@@ -4,14 +4,15 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import tseslint from "typescript-eslint";
+import { RuleDefinition } from "@eslint/core";
+import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
 
-const plugin = {
+const plugin: RuleDefinition = {
   meta: {
     type: "problem",
     docs: {
       description:
         "Require default export and specific named exports in TSX files",
-      category: "Best Practices",
       recommended: true,
     },
     schema: [], // no options
@@ -21,23 +22,23 @@ const plugin = {
     },
   },
   create: context => {
-    const requiredExports = ["order", "text", "path", "icon"];
+    const requiredExports = ["text", "icon"];
     let hasDefaultExport = false;
     const foundNamedExports = new Set();
 
     return {
-      ExportDefaultDeclaration(node) {
+      ExportDefaultDeclaration(_: TSESTree.ExportDefaultDeclaration) {
         hasDefaultExport = true;
       },
-      ExportNamedDeclaration(node) {
+      ExportNamedDeclaration(node: TSESTree.ExportNamedDeclaration) {
         if (
           node.declaration &&
-          node.declaration.type === "VariableDeclaration"
+          node.declaration.type === AST_NODE_TYPES.VariableDeclaration
         ) {
           for (const decl of node.declaration.declarations) {
-            if (decl.id && requiredExports.includes(decl.id.name)) {
-              foundNamedExports.add(decl.id.name);
-            }
+            const id = decl.id as TSESTree.Identifier;
+            if (id && requiredExports.includes(id.name))
+              foundNamedExports.add(id.name);
           }
         }
       },
@@ -69,13 +70,18 @@ export default defineConfig([
     files: ["**/*.{ts,tsx}"],
     extends: [
       js.configs.recommended,
-      tseslint.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.recommendedTypeChecked,
       reactHooks.configs.flat["recommended-latest"],
       reactRefresh.configs.recommended,
     ],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     rules: {
       "react-refresh/only-export-components": 0,
@@ -94,10 +100,11 @@ export default defineConfig([
           varsIgnorePattern: "^_",
         },
       ],
+      "@typescript-eslint/no-misused-promises": "off",
     },
   },
   {
-    files: ["src/views/*/index.tsx"],
+    files: ["src/views/**/index.tsx"],
     plugins: {
       custom: {
         rules: {

@@ -26,9 +26,7 @@ export const TopNav: FC<{ onCollapse?: () => void }> = ({ onCollapse }) => {
         />
         <Text
           strong
-          icon={
-            <IconDatastudio className={"align-top text-semi-color-primary"} />
-          }
+          icon={<IconDatastudio className={"align-top"} />}
           className={"text-base leading-4"}
         >
           datastudio
@@ -47,10 +45,10 @@ export const TopNav: FC<{ onCollapse?: () => void }> = ({ onCollapse }) => {
                 user@email.com
               </Dropdown.Title>
               <Dropdown.Item className={"p-2 my-1"}>
-                {msg("top_settings")}
+                {msg("top.settings")}
               </Dropdown.Item>
               <Dropdown.Item className={"p-2 my-1"}>
-                {msg("top_logout")}
+                {msg("top.logout")}
               </Dropdown.Item>
             </Dropdown.Menu>
           }

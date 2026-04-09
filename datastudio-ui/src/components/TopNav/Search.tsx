@@ -71,7 +71,7 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
             }}
           />
         }
-        placeholder={msg("top_search")}
+        placeholder={msg("top.search")}
         className={[
           "bg-semi-color-bg-0 z-10 rounded",
           "hover:border-semi-color-primary has-[:focus]:border-transparent",
@@ -92,7 +92,7 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
             mode={"advanced"}
             value={kind}
             onChange={e => {
-              const currentValue = e.target.value;
+              const currentValue = e.target.value as string;
               setKind(currentValue);
               setValue(pre => {
                 const input = choices
@@ -120,7 +120,7 @@ export const Search: FC<HTMLProps<HTMLDivElement>> = props => {
               type={"tertiary"}
               className={"px-3 py-1.5 inline-block cursor-default"}
             >
-              {msg("top_recents")}
+              {msg("top.recents")}
             </Text>
             <RecentItem
               name={"a.ipynb"}

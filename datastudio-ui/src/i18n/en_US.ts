@@ -1,14 +1,16 @@
-import { Locale } from "@i18n/locale.ts";
-
-const en_US: Locale = {
+const en_US = {
   code: "en-US",
-  top_search: "search notebooks...",
-  top_recents: "Recents",
-  top_settings: "Settings",
-  top_logout: "Log out",
-  side_home: "Home",
-  side_studio: "Studio",
-  side_new: "New",
+  "top.search": "search notebooks...",
+  "top.recents": "Recents",
+  "top.settings": "Settings",
+  "top.logout": "Log out",
+  "side.new": "New",
+  "views.home": "Home",
+  "views.studio": "Studio",
+  "views.engine-instance": "Engines",
+  "views.cluster-config": "Cluster Configuration",
+  "views.cluster-config.desc":
+    "Manage Spark and Flink cluster templates and runtime configurations",
 };
 
 export default en_US;

@@ -1,14 +1,13 @@
 import { createContext, FC, ReactNode, useContext } from "react";
 import { IntlShape, useIntl } from "react-intl";
-import { Locale } from "@i18n/locale.ts";
 import {
   Location,
   NavigateFunction,
   useLocation,
   useNavigate,
 } from "react-router";
+import { LocaleKey } from "@i18n/locale.ts";
 
-export type LocaleKey = keyof Locale;
 interface GlobalContext {
   intl: IntlShape;
   msg: (id: LocaleKey) => string;

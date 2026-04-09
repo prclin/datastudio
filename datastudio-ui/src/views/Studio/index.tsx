@@ -13,6 +13,6 @@ export const Studio: FC = () => {
 
 export default Studio;
 export const order = 2;
-export const text = "side_studio";
+export const text = "views.studio";
 export const icon = <IconDatastudio />;
-export const path = "studio";
+export const group = "SQL";

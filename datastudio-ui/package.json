@@ -98,6 +98,7 @@
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "^6.0.0",
     "@douyinfe/semi-rspack-plugin": "^2.91.0",
+    "@eslint/core": "^1.1.1",
     "@eslint/js": "^9.39.1",
     "@rspack/cli": "^1.7.1",
     "@rspack/core": "^1.7.1",
@@ -107,6 +108,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@types/yauzl": "^2.10.3",
+    "@typescript-eslint/utils": "^8.58.0",
     "autoprefixer": "^10.4.23",
     "css-url-parser": "^1.1.4",
     "eslint": "^9.39.1",
@@ -114,6 +116,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "fast-glob": "^3.3.3",
     "globals": "^16.5.0",
+    "jiti": "^2.6.1",
     "jsonc-parser": "^3.3.1",
     "memfs": "^4.56.11",
     "mime-types": "^3.0.2",

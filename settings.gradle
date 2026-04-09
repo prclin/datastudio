@@ -1,3 +1,10 @@
 rootProject.name = 'datastudio'
 
+dependencyResolutionManagement {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+}
+
 include "datastudio-ui"

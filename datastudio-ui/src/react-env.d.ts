@@ -1,11 +1,16 @@
 import { ComponentType, ReactNode } from "react";
 
 interface View {
+  key: string;
+  group?: string;
   default: ComponentType;
   order: number;
   text: string;
   icon: ReactNode;
   path: string;
+  children?: View[];
+  nested?: boolean;
+  level: number;
 }
 
 interface Context {
