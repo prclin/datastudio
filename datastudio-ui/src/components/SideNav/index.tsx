@@ -1,12 +1,15 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useMemo } from "react";
 import { Button, Nav, Space } from "@douyinfe/semi-ui-19";
 import { IconChevronRight, IconPlus } from "@douyinfe/semi-icons";
 import { withDefaultProps } from "@utils/component.tsx";
 import { useGlobal } from "@utils/context.tsx";
+import { LocaleKey } from "@i18n/locale.ts";
 
 const NavItem = withDefaultProps(Nav.Item, {
   className: [
     "h-fit leading-4 py-1.5 rounded mb-0.5 mt-0 font-normal [&_.semi-icon]:text-base",
+    "text-semi-color-text-1 [&.semi-navigation-item-selected]:text-semi-color-primary-hover",
+    "[&.semi-navigation-item-selected]:font-bold [&.semi-navigation-item-selected]:bg-semi-color-primary-light-hover",
     "[&_.semi-navigation-item-icon]:min-w-4 [&_.semi-navigation-item-icon]:mr-2",
     "hover:bg-semi-color-primary-light-hover hover:text-semi-color-primary-hover [&_.semi-navigation-item-icon]:text-inherit",
   ].join(" "),
@@ -19,21 +22,23 @@ interface SideNavProps {
 }
 interface SideNavItemProps {
   group?: string;
-  text: string;
+  text: LocaleKey;
   path: string;
   icon: ReactNode;
 }
 export const SideNav: FC<SideNavProps> = ({
   isOpen = true,
-  items,
+  items = [],
   onItemClick,
 }) => {
   const { msg, location } = useGlobal();
+  const { defaultOpenKeys, entries } = useMemo(() => {
+    const groups = Object.groupBy(items, x => x.group || "");
+    const defaultOpenKeys = Object.keys(groups).filter(x => x !== "");
+    const entries = Object.entries(groups);
+    return { defaultOpenKeys, entries };
+  }, [items]);
 
-  const groups = Object.groupBy(items!, x => x.group || "");
-  const [openedKeys, setOpenedKeys] = useState<(string | number)[]>(
-    Object.keys(groups).filter(x => x !== ""),
-  );
   return (
     <nav
       className={[
@@ -50,15 +55,10 @@ export const SideNav: FC<SideNavProps> = ({
           "hover:[&_.semi-navigation-sub-title]:text-semi-color-primary-hover hover:[&_.semi-navigation-sub-title]:bg-semi-color-primary-light-hover",
           "[&_.semi-navigation-sub-title_.semi-navigation-item-icon]:opacity-0 [&_.semi-navigation-item-sub]:mb-0",
         ].join(" ")}
-        openKeys={openedKeys}
-        onOpenChange={({ itemKey, isOpen }) => {
-          if (!itemKey) return;
-          setOpenedKeys(pre => {
-            const filtered = pre.filter(x => x !== itemKey);
-            if (isOpen) return [...filtered, itemKey];
-            else return filtered;
-          });
-        }}
+        defaultOpenKeys={defaultOpenKeys}
+        defaultSelectedKeys={[
+          items.findLast(item => location.pathname.startsWith(item.path))!.path,
+        ]}
       >
         <Nav.Header className={"p-0"}>
           <Button
@@ -75,47 +75,42 @@ export const SideNav: FC<SideNavProps> = ({
             {msg("side.new")}
           </Button>
         </Nav.Header>
-        {Object.entries(groups).map(([key, value]) => {
-          const items = value?.map(({ path, text, icon }) => (
+        {entries.map(([group, item]) => {
+          const subitems = item?.map(({ path, text, icon }) => (
             <NavItem
               key={path}
               itemKey={path}
-              text={text}
+              text={msg(text)}
               icon={icon}
               onClick={() => onItemClick && onItemClick(path)}
-              className={
-                location.pathname.split("/")[1] == path
-                  ? "text-semi-color-primary-hover font-bold bg-semi-color-primary-light-hover"
-                  : "text-semi-color-text-1"
-              }
             />
           ));
-          if (key)
+          if (group)
             return (
               <Nav.Sub
-                key={key}
-                itemKey={key}
+                key={group}
+                itemKey={group}
                 text={
                   <Space
                     className={
                       "text-semi-color-text-2 [.semi-navigation-sub-title:hover_&]:text-semi-color-primary-hover"
                     }
                   >
-                    <span>{key}</span>
+                    <span>{msg(group)}</span>
                     <IconChevronRight
                       size={"small"}
                       className={[
-                        "transition-[transform,opacity] duration-300 [.semi-navigation-sub-title:hover_&]:opacity-100",
-                        openedKeys.includes(key) ? "rotate-90 opacity-0" : "",
+                        "opacity-0 transition-[transform,opacity] duration-300 [.semi-navigation-sub-title:hover_&]:opacity-100",
+                        "[.semi-navigation-sub-title[aria-expanded=true]_&]:rotate-90 [.semi-navigation-sub-title[aria-expanded=false]_&]:opacity-100",
                       ].join(" ")}
                     />
                   </Space>
                 }
               >
-                {items}
+                {subitems}
               </Nav.Sub>
             );
-          else return items;
+          else return subitems;
         })}
       </Nav>
     </nav>

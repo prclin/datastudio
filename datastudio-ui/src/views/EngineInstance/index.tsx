@@ -1,9 +1,7 @@
 import { FC } from "react";
-import { IconDatastudio } from "@icons/IconDatastudio.tsx";
 import { EngineCard } from "@components/EngineCard";
-import { LocaleKey } from "@i18n/locale.ts";
 
-export const EngineInstance: FC = () => {
+export const Component: FC = () => {
   return (
     <div className={"p-2"}>
       <EngineCard />
@@ -11,8 +9,4 @@ export const EngineInstance: FC = () => {
   );
 };
 
-export default EngineInstance;
-export const order = 4;
-export const text: LocaleKey = "views.engine-instance";
-export const icon = <IconDatastudio />;
-export const group = "Infrastructure";
+Component.displayName = "EngineInstance";

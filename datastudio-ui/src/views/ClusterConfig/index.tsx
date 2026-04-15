@@ -1,6 +1,4 @@
 import { FC, useEffect, useRef } from "react";
-import { IconDatastudio } from "@icons/IconDatastudio.tsx";
-import { LocaleKey } from "@i18n/locale.ts";
 import {
   Button,
   Col,
@@ -32,7 +30,7 @@ const data = new Array(102).fill(0).map((_, index) => ({
   create_time: new Date().toLocaleString(),
   update_time: new Date().toLocaleString(),
 }));
-export const ClusterConfig: FC = () => {
+export const Component: FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const observer = new ResizeObserver(entries => {
@@ -163,10 +161,4 @@ export const ClusterConfig: FC = () => {
     </div>
   );
 };
-
-export default ClusterConfig;
-export const order = 3;
-export const text: LocaleKey = "views.cluster-config";
-export const icon = <IconDatastudio />;
-export const path = "cluster-config";
-export const group = "Infrastructure";
+Component.displayName = "ClusterConfig";
