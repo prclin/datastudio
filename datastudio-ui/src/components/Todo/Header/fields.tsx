@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Button, Dropdown, Typography } from "@douyinfe/semi-ui-19";
+import { Button, Dropdown, Typography } from "@douyinfe/semi-ui";
 import {
   IconConfigStroked,
   IconEyeClosedStroked,

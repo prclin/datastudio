@@ -1,12 +1,12 @@
 import { FC, HTMLProps, ReactNode, useEffect, useRef, useState } from "react";
-import { Divider, Input, Radio, RadioGroup, Space } from "@douyinfe/semi-ui-19";
+import { Divider, Input, Radio, RadioGroup, Space } from "@douyinfe/semi-ui";
 import { IconCrossStroked, IconSearch, IconTick } from "@douyinfe/semi-icons";
 import { useGlobal } from "@utils/context.tsx";
-import { RadioProps } from "@douyinfe/semi-ui-19/lib/es/radio";
+import { RadioProps } from "@douyinfe/semi-ui/lib/es/radio";
 import { IconNotebook } from "@icons/IconNotebook.tsx";
 import { IconTable } from "@icons/IconTable.tsx";
 import { IconPipeline } from "@icons/IconPipeline.tsx";
-import Text from "@douyinfe/semi-ui-19/lib/es/typography/text";
+import Text from "@douyinfe/semi-ui/lib/es/typography/text";
 import { FormattedRelativeTime } from "react-intl";
 
 const choices = [

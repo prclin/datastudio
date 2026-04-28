@@ -1,5 +1,5 @@
 import { FC, ReactNode, useMemo } from "react";
-import { Button, Nav, Space } from "@douyinfe/semi-ui-19";
+import { Button, Nav, Space } from "@douyinfe/semi-ui";
 import { IconChevronRight, IconPlus } from "@douyinfe/semi-icons";
 import { withDefaultProps } from "@utils/component.tsx";
 import { useGlobal } from "@utils/context.tsx";

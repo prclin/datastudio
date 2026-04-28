@@ -1,12 +1,6 @@
 import { FC } from "react";
 import { IconSonicStroked } from "@douyinfe/semi-icons";
-import {
-  Avatar,
-  Button,
-  Dropdown,
-  Space,
-  Typography,
-} from "@douyinfe/semi-ui-19";
+import { Avatar, Button, Dropdown, Space, Typography } from "@douyinfe/semi-ui";
 import { IconDatastudio } from "@icons/IconDatastudio.tsx";
 import { Search } from "@components/TopNav/Search.tsx";
 import { useGlobal } from "@utils/context.tsx";

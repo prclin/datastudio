@@ -9,7 +9,7 @@ import {
   Table,
   Tooltip,
   Typography,
-} from "@douyinfe/semi-ui-19";
+} from "@douyinfe/semi-ui";
 import {
   IconCalendarStroked,
   IconCenterLeftStroked,
@@ -21,10 +21,10 @@ import {
   IconUserAdd,
   IconUserStroked,
 } from "@douyinfe/semi-icons";
-import { ColumnProps } from "@douyinfe/semi-ui-19/lib/es/table";
+import { ColumnProps } from "@douyinfe/semi-ui/lib/es/table";
 import { withDefaultProps } from "@utils/component.tsx";
 import { Header } from "./Header";
-import { CardProps } from "@douyinfe/semi-ui-19/lib/es/card";
+import { CardProps } from "@douyinfe/semi-ui/lib/es/card";
 
 const { Text } = Typography;
 

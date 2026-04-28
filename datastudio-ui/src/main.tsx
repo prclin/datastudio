@@ -1,3 +1,4 @@
+import "@douyinfe/semi-ui/react19-adapter";
 import "@/index.css";
 import "@icons/iconfont.js";
 import ReactDOM from "react-dom/client";

@@ -8,17 +8,19 @@ import {
   Table,
   Tag,
   Typography,
-} from "@douyinfe/semi-ui-19";
+} from "@douyinfe/semi-ui";
 import { FormattedMessage } from "react-intl";
 import {
   IconDeleteStroked,
   IconEditStroked,
+  IconEyeOpenedStroked,
   IconPlus,
   IconSearch,
 } from "@douyinfe/semi-icons";
-import Column from "@douyinfe/semi-ui-19/lib/es/table/Column";
+import Column from "@douyinfe/semi-ui/lib/es/table/Column";
 import { IconApacheSpark } from "@icons/IconApacheSpark.tsx";
 import { IconApacheFlink } from "@icons/IconApacheFlink.tsx";
+import { useGlobal } from "@utils/context.tsx";
 
 const { Option } = Form.Select;
 
@@ -53,6 +55,7 @@ export const Component: FC = () => {
 
     return () => observer.disconnect();
   }, []);
+  const { navigate } = useGlobal();
   return (
     <div className={"h-full p-2 flex flex-col space-y-8"}>
       <Row type="flex" justify="space-between" align="middle">
@@ -69,7 +72,11 @@ export const Component: FC = () => {
             <Button theme={"outline"} type={"tertiary"}>
               Lunch Instance
             </Button>
-            <Button theme={"solid"} icon={<IconPlus />}>
+            <Button
+              theme={"solid"}
+              icon={<IconPlus />}
+              onClick={() => navigate("/cluster-config/creation")}
+            >
               New Config
             </Button>
           </Space>
@@ -151,6 +158,7 @@ export const Component: FC = () => {
             className={"w-32"}
             render={() => (
               <Space>
+                <Button size={"small"} icon={<IconEyeOpenedStroked />} />
                 <Button size={"small"} icon={<IconEditStroked />} />
                 <Button size={"small"} icon={<IconDeleteStroked />} />
               </Space>

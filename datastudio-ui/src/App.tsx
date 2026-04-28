@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Breadcrumb, Layout, LocaleProvider } from "@douyinfe/semi-ui-19";
+import { Breadcrumb, Layout, LocaleProvider } from "@douyinfe/semi-ui";
 import { Outlet } from "react-router";
 import { TopNav } from "@components/TopNav";
 import { SideNav } from "@components/SideNav";

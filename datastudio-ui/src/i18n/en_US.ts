@@ -10,6 +10,7 @@ const en_US = {
   "views.engine-instance": "Engines",
   "views.cluster-config": "Cluster Configuration",
   "views.cluster-config.creation": "Creation",
+  "views.cluster-config.creation.title": "Create Cluster Config",
   "views.cluster-config.desc":
     "Manage Spark and Flink cluster templates and runtime configurations",
   "views.group.infra": "Infrastructure",

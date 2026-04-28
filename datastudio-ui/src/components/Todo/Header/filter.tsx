@@ -1,14 +1,8 @@
 import { FC, RefObject, useRef, useState } from "react";
-import {
-  ArrayField,
-  Button,
-  Dropdown,
-  Form,
-  Space,
-} from "@douyinfe/semi-ui-19";
-import Section from "@douyinfe/semi-ui-19/lib/es/form/section";
+import { ArrayField, Button, Dropdown, Form, Space } from "@douyinfe/semi-ui";
+import Section from "@douyinfe/semi-ui/lib/es/form/section";
 import { IconClose, IconFilterStroked } from "@douyinfe/semi-icons";
-import { OptionProps } from "@douyinfe/semi-ui-19/lib/es/select";
+import { OptionProps } from "@douyinfe/semi-ui/lib/es/select";
 
 export const TaskFilter: FC = () => {
   const form = useRef<Form>(undefined);

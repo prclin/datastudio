@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Card, Tag } from "@douyinfe/semi-ui-19";
+import { Card, Tag } from "@douyinfe/semi-ui";
 import { IconApacheFlink } from "@icons/IconApacheFlink.tsx";
 
 export const EngineCard: FC = () => {

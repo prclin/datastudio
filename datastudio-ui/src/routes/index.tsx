@@ -4,72 +4,7 @@ import { IconHomeStroked } from "@douyinfe/semi-icons";
 import { ReactNode } from "react";
 import { LocaleKey } from "@i18n/locale.ts";
 import { IconDatastudio } from "@icons/IconDatastudio.tsx";
-import { RouteProps } from "@douyinfe/semi-ui-19/lib/es/breadcrumb";
-// //动态获取views下的一级导航
-// const context = import.meta.webpackContext("@views/", {
-//   regExp: /index\.tsx$/,
-// });
-//
-// const keyToPath = (key: string, start: number = 1, end: number = -1) => {
-//   return key
-//     .split("/")
-//     .slice(start, end)
-//     .map(x =>
-//       x
-//         .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
-//         .replace(/([A-Z])([A-Z][a-z])/g, "$1-$2")
-//         .toLowerCase(),
-//     )
-//     .join("/");
-// };
-// export const viewx: View[] = context
-//   .keys()
-//   .map(key => {
-//     const module = context(key) as View;
-//     console.log(module);
-//     let path = module.path;
-//     if (path === undefined)
-//       path = module.nested ? keyToPath(key, 2) : keyToPath(key);
-//     return {
-//       key,
-//       group: module.group,
-//       order: module.order || Number.MAX_VALUE,
-//       text: module.text,
-//       icon: module.icon || <IconTabsStroked />,
-//       path: path,
-//       default: module.default,
-//       nested: module.nested,
-//       level: key.split("/").slice(1, -1).length,
-//     };
-//   })
-//   .reduce((acc, view) => {
-//     let group = view.key.split("/").length - 3;
-//     if (!view.nested) group = 0;
-//
-//     (acc[group] ||= []).push(view);
-//     return acc;
-//   }, [] as View[][])
-//   .reduceRight((acc, views) => {
-//     const newAcc = [] as View[];
-//     for (const view of views) {
-//       view.children = acc.filter(x => {
-//         const keys = x.key.split("/");
-//         return view.key.split("/").every(y => keys.includes(y));
-//       });
-//       newAcc.push(view);
-//     }
-//     return newAcc.sort((x, y) => x.order - y.order);
-//   }, [] as View[])
-//   .sort((x, y) => x.order - y.order);
-//
-// const mapRoute = (views?: View[]): RouteObject[] => {
-//   if (!views) return [];
-//   return views.map(x => ({
-//     path: x.path,
-//     Component: x.default,
-//     children: mapRoute(x.children),
-//   }));
-// };
+import { RouteProps } from "@douyinfe/semi-ui/lib/es/breadcrumb";
 
 export type ViewObject = RouteObject & {
   order?: number;
@@ -170,7 +105,6 @@ while (tmpViews.some(view => (view.children?.length || 0) > 0)) {
 export const flattedViews = tmpViews.sort(
   (x, y) => (x.path?.length || 0) - (y.path?.length || 0),
 );
-console.log(flattedViews);
 export const navs = tmpViews.filter(
   x => x.path !== undefined && x.order && x.text && x.icon,
 ) as NavObject[];
