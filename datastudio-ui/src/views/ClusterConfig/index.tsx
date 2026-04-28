@@ -156,10 +156,20 @@ export const Component: FC = () => {
             title="actions"
             key="actions"
             className={"w-32"}
-            render={() => (
+            render={(_, record) => (
               <Space>
-                <Button size={"small"} icon={<IconEyeOpenedStroked />} />
-                <Button size={"small"} icon={<IconEditStroked />} />
+                <Button
+                  size={"small"}
+                  icon={<IconEyeOpenedStroked />}
+                  onClick={() =>
+                    navigate(`/cluster-config/${record.key}?action=detail`)
+                  }
+                />
+                <Button
+                  size={"small"}
+                  icon={<IconEditStroked />}
+                  onClick={() => navigate(`/cluster-config/${record.key}?action=edit`)}
+                />
                 <Button size={"small"} icon={<IconDeleteStroked />} />
               </Space>
             )}

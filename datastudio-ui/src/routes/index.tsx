@@ -67,6 +67,11 @@ export const views: Array<ViewObject> = [
             lazy: () => import("@views/ClusterConfig/Creation/index.tsx"),
             text: "views.cluster-config.creation",
           },
+          {
+            path: ":id",
+            lazy: () => import("@views/ClusterConfig/Detail/index.tsx"),
+            text: "views.cluster-config.detail",
+          },
         ],
       },
     ],
