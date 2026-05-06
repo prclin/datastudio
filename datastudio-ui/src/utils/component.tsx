@@ -1,10 +1,10 @@
 import { ComponentType, ReactNode } from "react";
 
 export function withDefaultProps<T extends { className?: string }>(
-  RawComponent: ComponentType<T>,
+  RawComponent: ComponentType<T> & { elementType?: string },
   defaultProps: T,
 ) {
-  return (props: T): ReactNode => {
+  const Component = (props: T): ReactNode => {
     const className = [defaultProps.className, props.className]
       .join(" ")
       .trim();
@@ -16,4 +16,6 @@ export function withDefaultProps<T extends { className?: string }>(
       />
     );
   };
+  Component.elementType = RawComponent.elementType;
+  return Component;
 }

@@ -23,7 +23,7 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const location = useLocation();
   // 获取国际化消息
   const msg = (id: LocaleKey): string => {
-    return intl.formatMessage({ id: id as string });
+    return intl.formatMessage({ id: id });
   };
   return (
     <Context.Provider value={{ intl, msg, navigate, location }}>

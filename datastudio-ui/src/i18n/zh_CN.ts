@@ -10,8 +10,11 @@ const zh_CN: Locale = {
   "views.home": "主页",
   "views.studio": "Studio",
   "views.engine-instance": "引擎实例",
+  "views.engine-instance.desc": "注册并管理支持 SQL 的计算引擎。",
+
   "views.cluster-config": "集群配置",
   "views.cluster-config.creation": "创建",
+  "views.cluster-config.creation.title": "创建集群配置",
   "views.cluster-config.detail": "详情",
   "views.cluster-config.detail.title": "集群配置详情",
   "views.cluster-config.detail.edit.title": "编辑集群配置",

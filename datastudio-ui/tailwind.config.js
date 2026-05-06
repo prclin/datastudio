@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       width: sizes,
       maxWidth: sizes,
+      maxHeight: sizes,
       height: sizes,
       flexBasis: sizes,
       colors: {

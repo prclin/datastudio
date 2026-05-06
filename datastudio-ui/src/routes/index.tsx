@@ -62,16 +62,6 @@ export const views: Array<ViewObject> = [
         group: "views.group.infra",
         children: [
           { index: true, lazy: () => import("@views/ClusterConfig/index.tsx") },
-          {
-            path: "creation",
-            lazy: () => import("@views/ClusterConfig/Creation/index.tsx"),
-            text: "views.cluster-config.creation",
-          },
-          {
-            path: ":id",
-            lazy: () => import("@views/ClusterConfig/Detail/index.tsx"),
-            text: "views.cluster-config.detail",
-          },
         ],
       },
     ],
