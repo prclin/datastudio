@@ -64,6 +64,16 @@ export const views: Array<ViewObject> = [
           { index: true, lazy: () => import("@views/ClusterConfig/index.tsx") },
         ],
       },
+      {
+        path: "task",
+        order: 6,
+        text: "views.task",
+        icon: <IconDatastudio />,
+        group: "views.group.ops",
+        children: [
+          { index: true, lazy: () => import("@views/Task/index.tsx") },
+        ],
+      },
     ],
   },
 ];

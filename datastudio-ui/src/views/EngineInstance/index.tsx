@@ -20,7 +20,6 @@ import {
   IconSearch,
 } from "@douyinfe/semi-icons";
 import { useTableResizeRef } from "@utils/hooks.tsx";
-import { ModalReactProps } from "@douyinfe/semi-ui/lib/es/modal";
 import {
   IllustrationIdle,
   IllustrationIdleDark,
@@ -212,7 +211,15 @@ export const Component: FC = () => {
           />
         </Table>
       </div>
-      <CreationModal visible={visible} onCancel={() => setVisible(false)} />
+      <Modal
+        visible={visible}
+        onCancel={() => setVisible(false)}
+        title={"Register New Engine"}
+        size={"medium"}
+        footerFill
+      >
+        <InstanceForm />
+      </Modal>
     </div>
   );
 };
@@ -222,72 +229,66 @@ Component.displayName = "EngineInstance";
 interface FormData {
   kind: string;
 }
-const CreationModal: FC<ModalReactProps> = props => {
+const InstanceForm: FC = () => {
   return (
-    <Modal {...props} title={"Register New Engine"} size={"medium"} footerFill>
-      <Form
-        initValues={{} as FormData}
-        className={"h-full [&_.semi-form-section-text]:text-sm"}
-        labelPosition={"inset"}
-      >
-        {({ values }) => (
-          <>
-            <Form.Section text={"Basic Info"}>
-              <Row gutter={16}>
-                <Col span={12}>
-                  <Form.Input
-                    field={"name"}
-                    initValue={"引擎-1"}
-                    size={"small"}
-                  />
-                </Col>
-                <Col span={12}>
-                  <Form.Select
-                    field={"kind"}
-                    size={"small"}
-                    className={"w-full"}
-                  >
-                    <Option value={1}>spark</Option>
-                    <Option value={2}>flink</Option>
-                  </Form.Select>
-                </Col>
-              </Row>
-              <Form.Input field={"description"} />
-            </Form.Section>
-            <Form.Section text={"Configuration"}>
-              {values.kind ? (
-                <>
-                  <Row gutter={16}>
-                    <Col span={12}>
-                      <Form.Input field={"host"} />
-                    </Col>
-                    <Form.Input field={"port"} />
-                    <Col span={12}></Col>
-                  </Row>
-                  <Form.Input field={"database"} />
-                  <Row gutter={16}>
-                    <Col span={12}>
-                      <Form.Input field={"username"} />
-                    </Col>
-                    <Col span={12}>
-                      <Form.Input field={"password"} mode={"password"} />
-                    </Col>
-                  </Row>
-                  <Typography.Text link underline>
-                    Test Connection
-                  </Typography.Text>
-                </>
-              ) : (
-                <Empty
-                  image={<IllustrationIdle />}
-                  darkModeImage={<IllustrationIdleDark />}
-                  description={"请先选择引擎"}
+    <Form
+      initValues={{} as FormData}
+      className={"h-full [&_.semi-form-section-text]:text-sm"}
+      labelPosition={"inset"}
+    >
+      {({ values }) => (
+        <>
+          <Form.Section text={"Basic Info"}>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Input
+                  field={"name"}
+                  initValue={"引擎-1"}
+                  size={"small"}
                 />
-              )}
-            </Form.Section>
-          </>
-        )}
-      </Form>
-    </Modal>
+              </Col>
+              <Col span={12}>
+                <Form.Select field={"kind"} size={"small"} className={"w-full"}>
+                  <Option value={1}>spark</Option>
+                  <Option value={2}>flink</Option>
+                </Form.Select>
+              </Col>
+            </Row>
+            <Form.Input field={"description"} />
+          </Form.Section>
+          <Form.Section text={"Configuration"}>
+            {values.kind ? (
+              <>
+                <Row gutter={16}>
+                  <Col span={12}>
+                    <Form.Input field={"host"} />
+                  </Col>
+                  <Form.Input field={"port"} />
+                  <Col span={12}></Col>
+                </Row>
+                <Form.Input field={"database"} />
+                <Row gutter={16}>
+                  <Col span={12}>
+                    <Form.Input field={"username"} />
+                  </Col>
+                  <Col span={12}>
+                    <Form.Input field={"password"} mode={"password"} />
+                  </Col>
+                </Row>
+                <Typography.Text link underline>
+                  Test Connection
+                </Typography.Text>
+              </>
+            ) : (
+              <Empty
+                image={<IllustrationIdle />}
+                darkModeImage={<IllustrationIdleDark />}
+                description={"请先选择引擎"}
+              />
+            )}
+          </Form.Section>
+        </>
+      )}
+    </Form>
   );
 };

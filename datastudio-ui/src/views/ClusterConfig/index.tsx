@@ -162,7 +162,7 @@ export const Component: FC = () => {
         title={"Register New Engine"}
         size={"large"}
         className={
-          "[&_.semi-modal-body]:h-100 [&_.semi-modal-body]:overflow-hidden"
+          "[&_.semi-modal-body]:h-120 [&_.semi-modal-body]:overflow-hidden"
         }
         visible={visible}
         onCancel={() => setVisible(false)}
@@ -274,7 +274,7 @@ const ConfigForm: FC = () => {
         labelPosition={"inset"}
       >
         <Row gutter={16} className={"h-full [&_.semi-col]:h-full"}>
-          <Col span={15} className={"flex flex-col space-y-8"}>
+          <Col span={16} className={"flex flex-col space-y-8"}>
             <Section text={"Basic Info"} className={"cluster-config-basic"}>
               <Row gutter={16}>
                 <Col span={12}>
@@ -345,7 +345,7 @@ const ConfigForm: FC = () => {
               </div>
             </Section>
           </Col>
-          <Col span={9}>
+          <Col span={8}>
             <Section text="Artifacts" className={"cluster-config-artifacts"}>
               <Typography.Text type={"tertiary"}>
                 Upload required JAR files and configuration bundles for executor

@@ -18,7 +18,10 @@ const en_US = {
   "views.cluster-config.detail.edit.title": "Edit Cluster Config",
   "views.cluster-config.desc":
     "Manage Spark and Flink cluster templates and runtime configurations",
+  "views.task": "Task Overview",
+  "views.task.desc": "View all engine tasks and create new tasks.",
   "views.group.infra": "Infrastructure",
+  "views.group.ops": "Operations",
 };
 
 export default en_US;

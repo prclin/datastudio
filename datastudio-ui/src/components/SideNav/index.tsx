@@ -17,14 +17,15 @@ const NavItem = withDefaultProps(Nav.Item, {
 
 interface SideNavProps {
   isOpen: boolean;
-  items?: SideNavItemProps[];
-  onItemClick?: (path: SideNavItemProps["path"]) => void;
+  items?: SideNavItem[];
+  onItemClick?: (path: SideNavItem["path"]) => void;
 }
-interface SideNavItemProps {
+interface SideNavItem {
   group?: string;
   text: LocaleKey;
   path: string;
   icon: ReactNode;
+  order?: number;
 }
 export const SideNav: FC<SideNavProps> = ({
   isOpen = true,
@@ -35,7 +36,11 @@ export const SideNav: FC<SideNavProps> = ({
   const { defaultOpenKeys, entries } = useMemo(() => {
     const groups = Object.groupBy(items, x => x.group || "");
     const defaultOpenKeys = Object.keys(groups).filter(x => x !== "");
-    const entries = Object.entries(groups);
+    const entries = Object.entries(groups).sort(
+      ([_1, x], [_2, y]) =>
+        Math.min(...x!.map(i => i.order || Number.MAX_VALUE)) -
+        Math.min(...y!.map(i => i.order || Number.MAX_VALUE)),
+    );
     return { defaultOpenKeys, entries };
   }, [items]);
 

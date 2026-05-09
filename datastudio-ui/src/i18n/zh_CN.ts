@@ -19,7 +19,10 @@ const zh_CN: Locale = {
   "views.cluster-config.detail.title": "集群配置详情",
   "views.cluster-config.detail.edit.title": "编辑集群配置",
   "views.cluster-config.desc": "管理 Spark and Flink 集群模板和运行时配置",
+  "views.task": "任务总览",
+  "views.task.desc": "查看所有引擎任务并创建新任务。",
   "views.group.infra": "基础设施",
+  "views.group.ops": "运维",
 };
 
 export default zh_CN;
