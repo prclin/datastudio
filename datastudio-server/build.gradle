@@ -1,0 +1,38 @@
+plugins {
+  id 'java'
+  id 'org.springframework.boot' version '4.0.3'
+  id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'io.github.prclin'
+version = '1.0.0-SNAPSHOT'
+description = 'datastudio-server'
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
+}
+
+def $versions = [
+lombok: "1.18.44",
+]
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+  compileOnly("org.projectlombok:lombok:${$versions.lombok}")
+  annotationProcessor("org.projectlombok:lombok:${$versions.lombok}")
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  testCompileOnly("org.projectlombok:lombok:${$versions.lombok}")
+  testAnnotationProcessor("org.projectlombok:lombok:${$versions.lombok}")
+}
+
+springBoot {
+  buildInfo()
+}
+
+test {
+  useJUnitPlatform()
+}

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: datastudio-server
+server:
+  port: 8083

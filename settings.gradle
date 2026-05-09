@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 
 include "datastudio-ui"
+include "datastudio-server"
