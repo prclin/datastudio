@@ -1,6 +1,7 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration;
 
 
+import io.github.prclin.datastudio.server.facade.http.JupyterController;
 import io.github.prclin.datastudio.server.infrastructure.configuration.converter.StringToEnumConverterFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
@@ -18,7 +19,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
-        configurer.addPathPrefix("/api", clazz -> clazz.isAnnotationPresent(RestController.class));
+        configurer.addPathPrefix("/api", clazz -> clazz.isAnnotationPresent(RestController.class) && !clazz.equals(JupyterController.class));
     }
 
     @Override
