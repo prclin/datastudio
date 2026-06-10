@@ -19,6 +19,7 @@ import {
   IconMinusCircle,
   IconPlus,
   IconPlusCircle,
+  IconPulse,
   IconSearch,
 } from "@douyinfe/semi-icons";
 import { IconApacheSpark } from "@icons/IconApacheSpark.tsx";
@@ -41,7 +42,7 @@ export const Component: FC = () => {
   const onCell = () => ({ className: "py-3" });
   const [visible, setVisible] = useState(false);
   return (
-    <div className={"h-full p-2 flex flex-col space-y-8"}>
+    <div className={"h-full p-2 flex flex-col space-y-4 bg-semi-color-bg-0"}>
       <Row type="flex" justify="space-between" align="middle">
         <Col span={18}>
           <Typography.Title heading={3}>
@@ -53,9 +54,6 @@ export const Component: FC = () => {
         </Col>
         <Col span={6}>
           <Space className={"w-full justify-end"}>
-            <Button theme={"outline"} type={"tertiary"}>
-              Lunch Instance
-            </Button>
             <Button
               theme={"solid"}
               icon={<IconPlus />}
@@ -66,11 +64,7 @@ export const Component: FC = () => {
           </Space>
         </Col>
       </Row>
-      <Form
-        layout={"horizontal"}
-        className={"first:[&_.semi-form-field-main>*]:bg-semi-color-bg-0"}
-        labelPosition={"inset"}
-      >
+      <Form layout={"horizontal"} className={""} labelPosition={"inset"}>
         <Form.Input
           field="name"
           noLabel
@@ -96,15 +90,14 @@ export const Component: FC = () => {
           sticky={true}
           dataSource={data}
           rowSelection={{ className: "py-3" }}
-          onHeaderRow={() => ({
-            className: "[&_.semi-table-row-head]:bg-semi-color-fill-1",
-          })}
           pagination={{
             showSizeChanger: true,
             popoverPosition: "topLeft",
             pageSize: 20,
           }}
-          className={"[&_.semi-table-pagination-outer]:min-h-12"}
+          className={
+            "[&_.semi-table-pagination-outer]:min-h-12 semi-light-scrollbar"
+          }
         >
           <Column title="name" dataIndex="name" key="name" onCell={onCell} />
           <Column
@@ -149,6 +142,7 @@ export const Component: FC = () => {
             onCell={onCell}
             render={() => (
               <Space>
+                <Button size={"small"} icon={<IconPulse />} />
                 <Button size={"small"} icon={<IconEyeOpenedStroked />} />
                 <Button size={"small"} icon={<IconEditStroked />} />
                 <Button size={"small"} icon={<IconDeleteStroked />} />
@@ -351,6 +345,16 @@ const ConfigForm: FC = () => {
                 Upload required JAR files and configuration bundles for executor
                 nodes.
               </Typography.Text>
+              <Form.RadioGroup
+                field={"storage_type"}
+                initValue={"1"}
+                noLabel
+                extraText={"where artifacts stored in"}
+              >
+                <Form.Radio value={"1"}>local</Form.Radio>
+                <Form.Radio value={"2"}>s3</Form.Radio>
+                <Form.Radio value={"3"}>hdfs</Form.Radio>
+              </Form.RadioGroup>
               <Form.Upload
                 noLabel
                 directory

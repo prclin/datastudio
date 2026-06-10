@@ -20,12 +20,12 @@ interface SideNavProps {
   items?: SideNavItem[];
   onItemClick?: (path: SideNavItem["path"]) => void;
 }
-interface SideNavItem {
+export interface SideNavItem {
   group?: string;
-  text: LocaleKey;
+  name: LocaleKey;
   path: string;
-  icon: ReactNode;
-  order?: number;
+  icon?: ReactNode;
+  order: number;
 }
 export const SideNav: FC<SideNavProps> = ({
   isOpen = true,
@@ -38,8 +38,7 @@ export const SideNav: FC<SideNavProps> = ({
     const defaultOpenKeys = Object.keys(groups).filter(x => x !== "");
     const entries = Object.entries(groups).sort(
       ([_1, x], [_2, y]) =>
-        Math.min(...x!.map(i => i.order || Number.MAX_VALUE)) -
-        Math.min(...y!.map(i => i.order || Number.MAX_VALUE)),
+        Math.min(...x!.map(i => i.order)) - Math.min(...y!.map(i => i.order)),
     );
     return { defaultOpenKeys, entries };
   }, [items]);
@@ -81,11 +80,11 @@ export const SideNav: FC<SideNavProps> = ({
           </Button>
         </Nav.Header>
         {entries.map(([group, item]) => {
-          const subitems = item?.map(({ path, text, icon }) => (
+          const subitems = item?.map(({ path, name, icon }) => (
             <NavItem
               key={path}
               itemKey={path}
-              text={msg(text)}
+              text={msg(name)}
               icon={icon}
               onClick={() => onItemClick && onItemClick(path)}
             />

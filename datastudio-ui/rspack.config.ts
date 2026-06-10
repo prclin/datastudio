@@ -1,7 +1,6 @@
 import { defineConfig } from "@rspack/cli";
 import { CopyRspackPlugin, rspack, type SwcLoaderOptions } from "@rspack/core";
 import { ReactRefreshRspackPlugin } from "@rspack/plugin-react-refresh";
-import { SemiRspackPlugin } from "@douyinfe/semi-rspack-plugin";
 import { rspackAlias } from "./setup/tsconfig.ts";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -70,10 +69,10 @@ export default defineConfig({
       template: "./index.html",
     }),
     isDev ? new ReactRefreshRspackPlugin() : null,
-    new SemiRspackPlugin({
-      cssLayer: true,
-      theme: "@semi-bot/semi-theme-datastudio",
-    }),
+    // new SemiRspackPlugin({
+    //   cssLayer: true,
+    //   theme: "@semi-bot/semi-theme-datastudio",
+    // }),
     new CopyRspackPlugin({
       patterns: ["public"],
     }),

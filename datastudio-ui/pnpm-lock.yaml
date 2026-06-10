@@ -236,9 +236,6 @@ importers:
       '@douyinfe/semi-ui':
         specifier: ^2.95.1
         version: 2.95.1(@floating-ui/dom@1.7.4)(@tiptap/suggestion@3.15.3(@tiptap/core@3.22.4(@tiptap/pm@3.22.4))(@tiptap/pm@3.22.4))(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@semi-bot/semi-theme-datastudio':
-        specifier: ^1.0.1
-        version: 1.0.1
       '@typefox/monaco-editor-react':
         specifier: ^7.7.0
         version: 7.7.0
@@ -1260,9 +1257,6 @@ packages:
     peerDependenciesMeta:
       webpack-hot-middleware:
         optional: true
-
-  '@semi-bot/semi-theme-datastudio@1.0.1':
-    resolution: {integrity: sha512-vcm3mbBcC/ZTGEXxTRFC3yjGjFXYEpYePDz7zcsDwI2fpQxbgEshHCf+15lY1/M3i/Neb9r0pJd6XAKn85m7bQ==}
 
   '@tiptap/core@3.22.4':
     resolution: {integrity: sha512-vGIGm/HpqLg8EAAQXQ+koV+/S828OEpzocfWcPOwo1u2QUVf9dQG47Yy6JJ8zFFaJwfv4dBcOXli+7BrJwsxDQ==}
@@ -5390,8 +5384,6 @@ snapshots:
       error-stack-parser: 2.1.4
       html-entities: 2.6.0
       react-refresh: 0.18.0
-
-  '@semi-bot/semi-theme-datastudio@1.0.1': {}
 
   '@tiptap/core@3.22.4(@tiptap/pm@3.22.4)':
     dependencies:
