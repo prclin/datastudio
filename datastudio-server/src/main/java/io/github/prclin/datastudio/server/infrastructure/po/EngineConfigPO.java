@@ -6,7 +6,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@TableName("data_capture.crawler_task_instance")
+@TableName("datastudio.engine_config")
 @Data
 public class EngineConfigPO {
     @TableId

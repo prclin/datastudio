@@ -36,12 +36,17 @@ public class FileSystemUtil {
         return dst;
     }
 
-    public void copy(InputStream in, String dst) throws IOException {
+    public void copy(InputStream in, Path dstPath) throws IOException {
         boolean overwrite = true;
         FileSystem dstFs = filesystems.get(AvailableFileSystem.Local);
-        Path dstPath = new Path(dst);
+
         checkDest(null, dstFs, dstPath, overwrite);
         OutputStream out = dstFs.create(dstPath, overwrite);
         IOUtils.copyBytes(in, out, IO_FILE_BUFFER_SIZE_DEFAULT, true);
+    }
+
+    public void copy(InputStream in, String dst) throws IOException {
+        Path dstPath = new Path(dst);
+        copy(in, dstPath);
     }
 }

@@ -15,8 +15,9 @@ public class EngineConfigRepositoryImpl implements EngineConfigRepository {
     private final EngineConfigInfraAssembler eciAssembler;
 
     @Override
-    public void save(EngineConfig engineConfig) {
+    public Long save(EngineConfig engineConfig) {
         EngineConfigPO po = eciAssembler.transfer(engineConfig);
         engineConfigMapper.insertOrUpdate(po);
+        return po.getId();
     }
 }
