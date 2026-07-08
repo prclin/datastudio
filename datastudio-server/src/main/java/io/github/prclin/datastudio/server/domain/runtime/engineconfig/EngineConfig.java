@@ -1,5 +1,6 @@
-package io.github.prclin.datastudio.server.domain.runtime.model.entity;
+package io.github.prclin.datastudio.server.domain.runtime.engineconfig;
 
+import io.github.prclin.datastuio.common.enums.BaseEnum;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.util.Map;
 
 @Data
 @Builder
-public class Cluster {
+public class EngineConfig {
     private Long id;
     private String name;
     private Kind kind;
@@ -25,7 +26,7 @@ public class Cluster {
 
     @RequiredArgsConstructor
     @Getter
-    public enum Kind {
+    public enum Kind implements BaseEnum {
         SPARK((byte) 0), FLINK((byte) 1);
         private final byte value;
     }

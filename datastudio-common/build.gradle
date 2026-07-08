@@ -1,0 +1,27 @@
+plugins {
+  id 'java-library'
+  id 'org.springframework.boot'
+  id 'io.spring.dependency-management'
+}
+
+description = "datastudio-common"
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation platform(libs.jackson.bom)
+  api "tools.jackson.core:jackson-databind"
+  api "tools.jackson.core:jackson-core"
+  api "com.fasterxml.jackson.core:jackson-annotations"
+  api libs.mapstruct
+  api libs.jakarta.annotation.api
+
+  compileOnly "org.springframework:spring-context"
+
+  annotationProcessor libs.mapstruct.processor
+}
+
+test {
+}

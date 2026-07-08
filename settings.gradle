@@ -5,7 +5,24 @@ dependencyResolutionManagement {
     mavenLocal()
     mavenCentral()
   }
+  versionCatalogs {
+    libs {
+      version("mapstruct", "1.6.3")
+
+      library('lombok', 'org.projectlombok:lombok:1.18.44')
+      library('mapstruct', 'org.mapstruct', "mapstruct").versionRef("mapstruct")
+      library('mapstruct-processor', 'org.mapstruct', "mapstruct-processor").versionRef("mapstruct")
+      library('jackson-bom', 'tools.jackson:jackson-bom:3.1.4')
+      library('jakarta-annotation-api', 'jakarta.annotation:jakarta.annotation-api:3.0.0')
+      library('mybatis-plus', "com.baomidou:mybatis-plus-spring-boot4-starter:3.5.16")
+      library('mybatis-plus-join', "com.github.yulichang:mybatis-plus-join-boot-starter:1.5.7")
+      library('hadoop-common', "org.apache.hadoop:hadoop-common:3.5.0")
+      library('jdbc', "com.mysql:mysql-connector-j:8.0.33")
+    }
+  }
 }
+
 
 include "datastudio-ui"
 include "datastudio-server"
+include 'datastudio-common'

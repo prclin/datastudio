@@ -1,21 +1,22 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration.converter;
 
+import io.github.prclin.datastuio.common.enums.BaseEnum;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
-public final class StringToEnumConverterFactory implements ConverterFactory<String, Enum> {
+public final class StringToEnumConverterFactory implements ConverterFactory<String, BaseEnum> {
 
     @Override
     @NonNull
-    public <T extends Enum> Converter<String, T> getConverter(@NonNull Class<T> targetType) {
+    public <T extends BaseEnum> Converter<String, T> getConverter(@NonNull Class<T> targetType) {
         return new StringToEnum<>(targetType);
     }
 
 
-    private record StringToEnum<T extends Enum>(Class<T> enumType) implements Converter<String, T> {
+    private record StringToEnum<T extends BaseEnum>(Class<T> enumType) implements Converter<String, T> {
 
         @Override
         @Nullable
@@ -24,7 +25,17 @@ public final class StringToEnumConverterFactory implements ConverterFactory<Stri
                 // It's an empty enum identifier: reset the enum value to null.
                 return null;
             }
-            return (T) Enum.valueOf(this.enumType, source.trim().toUpperCase());
+
+            if (NumberUtils.isParsable(source)) {
+                if (BaseEnum.class.isAssignableFrom(enumType)) {
+                    for (T enumConstant : enumType.getEnumConstants()) {
+                        byte value = enumConstant.getValue();
+                        if (String.valueOf(value).equals(source)) return enumConstant;
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }

@@ -1,5 +1,17 @@
 spring:
   application:
     name: datastudio-server
-server:
-  port: 8083
+  datasource:
+    hikari:
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+      pool-name: master-hikari-connection-pool
+      connection-timeout: 60000
+      maximum-pool-size: 20
+      max-lifetime: 1800000
+      keepalive-time: 1750000
+    url: jdbc:mysql://${MYSQL_MASTER_HOST}:${MYSQL_MASTER_PORT:3306}/data_capture
+    username: ${MYSQL_MASTER_USER}
+    password: ${MYSQL_MASTER_PASSWORD}
+datastudio:
+  engine-config:
+    artifacts-home: artifacts
