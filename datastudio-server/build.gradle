@@ -10,6 +10,7 @@ dependencies {
   implementation project(":datastudio-common")
   implementation 'org.springframework.boot:spring-boot-starter-web'
   implementation 'org.springframework.boot:spring-boot-autoconfigure'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
   implementation(libs.hadoop.common) {
     exclude group: "org.slf4j", module: "slf4j-reload4j"
     exclude group: "ch.qos.reload4j", module: "reload4j"

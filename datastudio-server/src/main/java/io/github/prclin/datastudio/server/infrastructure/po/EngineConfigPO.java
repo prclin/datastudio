@@ -12,6 +12,7 @@ public class EngineConfigPO {
     @TableId
     private Long id;
     private String name;
+    private Byte kind;
     private String configs;
     private String extra;
     private LocalDateTime createTime;

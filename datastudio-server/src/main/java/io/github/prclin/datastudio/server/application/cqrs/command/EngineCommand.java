@@ -5,8 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-public abstract class EngineCommands {
-    public record CreateConfig(String name, Kind kind, String configs,
-                               List<MultipartFile> artifacts) {
+public abstract class EngineCommand {
+    public record CreateConfigCommand(String name, Kind kind, String configs,
+                                      List<MultipartFile> artifacts) {
     }
 }

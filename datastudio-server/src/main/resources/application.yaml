@@ -12,6 +12,13 @@ spring:
     url: jdbc:mysql://${MYSQL_MASTER_HOST}:${MYSQL_MASTER_PORT:3306}/data_capture
     username: ${MYSQL_MASTER_USER}
     password: ${MYSQL_MASTER_PASSWORD}
+  sql:
+    init:
+      schema-locations: classpath:sql/schema.sql
+      mode: always
+  servlet:
+    multipart:
+      max-file-size: 100MB
 datastudio:
   engine-config:
     artifacts-home: artifacts

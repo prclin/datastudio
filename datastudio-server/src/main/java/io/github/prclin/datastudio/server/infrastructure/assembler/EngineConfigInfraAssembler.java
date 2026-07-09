@@ -6,8 +6,11 @@ import io.github.prclin.datastuio.common.assembler.BaseAssembler;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 
+import java.util.List;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public abstract class EngineConfigInfraAssembler extends BaseAssembler {
     public abstract EngineConfigPO transfer(EngineConfig engineConfig);
 
+    public abstract List<EngineConfig> transfer(List<EngineConfigPO> pos);
 }

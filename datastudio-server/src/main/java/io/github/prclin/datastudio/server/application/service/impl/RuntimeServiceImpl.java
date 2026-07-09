@@ -1,7 +1,10 @@
 package io.github.prclin.datastudio.server.application.service.impl;
 
 import io.github.prclin.datastudio.server.application.assembler.EngineConfigAppAssembler;
-import io.github.prclin.datastudio.server.application.cqrs.command.EngineCommands.CreateConfig;
+import io.github.prclin.datastudio.server.application.cqrs.command.EngineCommand.CreateConfigCommand;
+import io.github.prclin.datastudio.server.application.cqrs.query.CommonQuery.Pagination;
+import io.github.prclin.datastudio.server.application.dto.EngineConfigDTO.ConfigItem;
+import io.github.prclin.datastudio.server.application.dto.Page;
 import io.github.prclin.datastudio.server.application.dto.ResponseBody;
 import io.github.prclin.datastudio.server.application.service.RuntimeService;
 import io.github.prclin.datastudio.server.domain.runtime.engineconfig.EngineConfig;
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -33,7 +37,7 @@ public class RuntimeServiceImpl implements RuntimeService {
      * 2. 上传文件
      */
     @Override
-    public ResponseBody<Void> createEngineConfig(CreateConfig command) {
+    public ResponseBody<Void> createEngineConfig(CreateConfigCommand command) {
         EngineConfig engineConfig = assembler.transfer(command);
         Long id = engineConfigRepository.save(engineConfig);
         String artifactsHome = datastudioProperties.getEngineConfig().getArtifactsHome();
@@ -45,5 +49,12 @@ public class RuntimeServiceImpl implements RuntimeService {
             }
         }
         return ResponseBody.ok();
+    }
+
+    @Override
+    public ResponseBody<Page<ConfigItem>> getEngineConfigPage(Pagination pagination) {
+        List<EngineConfig> aggs = engineConfigRepository.queryLimited(pagination.offset(), pagination.size());
+        List<ConfigItem> items = assembler.transfer(aggs);
+        return ResponseBody.ok(Page.of(items));
     }
 }
