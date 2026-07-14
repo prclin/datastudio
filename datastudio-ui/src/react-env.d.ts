@@ -1,22 +1,14 @@
-import { ComponentType, ReactNode } from "react";
-
-interface View {
-  key: string;
-  group?: string;
-  default: ComponentType;
-  order: number;
-  text: string;
-  icon: ReactNode;
-  path: string;
-  children?: View[];
-  nested?: boolean;
-  level: number;
-}
-
 interface Context {
   keys: () => string[];
   (path: string): { default?: unknown };
 }
+
+declare namespace NodeJS {
+  interface ProcessEnv {
+    API_BASE: string;
+  }
+}
+
 declare global {
   interface ImportMeta {
     webpackContext: (

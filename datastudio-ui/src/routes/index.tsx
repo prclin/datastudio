@@ -42,13 +42,13 @@ export const views: Array<ViewObject> = [
     lazy: () => import("@views/EngineInstance/index.tsx"),
   },
   {
-    path: "/cluster-config",
+    path: "/engine-config",
     handle: {
-      name: "views.cluster-config",
+      name: "views.engine-config",
       icon: <IconDatastudio />,
       group: "views.group.infra",
     },
-    lazy: () => import("@views/ClusterConfig/index.tsx"),
+    lazy: () => import("@views/EngineConfig/index.tsx"),
     children: [
       {
         path: "sdd",

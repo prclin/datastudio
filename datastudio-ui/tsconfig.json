@@ -22,10 +22,13 @@
       "@components/*": ["src/components/*"],
       "@i18n/*": ["src/i18n/*"],
       "@icons/*": ["src/icons/*"],
+      "@models/*": ["src/models/*"],
       "@routes/*": ["src/routes/*"],
+      "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
-      "@views/*": ["src/views/*"]
+      "@views/*": ["src/views/*"],
+      "@workers/*": ["src/workers/*"]
     }
   },
-  "include": ["src","eslint.config.ts"]
+  "include": ["src", "eslint.config.ts"]
 }

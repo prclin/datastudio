@@ -22,7 +22,7 @@ public class RuntimeController {
     private final RuntimeService runtimeService;
 
     @PostMapping("/engine-config")
-    public ResponseBody<Void> postClusterConfig(CreateConfigCommand command) {
+    public ResponseBody<Void> postClusterConfig(@Validated CreateConfigCommand command) {
         return runtimeService.createEngineConfig(command);
     }
 

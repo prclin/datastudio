@@ -45,7 +45,7 @@ public class RuntimeServiceImpl implements RuntimeService {
             try {
                 fsUtil.copy(artifact.getInputStream(), new Path(new Path(artifactsHome, id.toString()), Objects.requireNonNull(artifact.getOriginalFilename())));
             } catch (IOException e) {
-                return ResponseBody.serverError(String.format("upload file %s failed!", artifact.getOriginalFilename()));
+                return ResponseBody.serverError(String.format("create succeed,upload file %s failed!", artifact.getOriginalFilename()));
             }
         }
         return ResponseBody.ok();

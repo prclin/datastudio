@@ -2,6 +2,8 @@ import { defineConfig } from "@rspack/cli";
 import { CopyRspackPlugin, rspack, type SwcLoaderOptions } from "@rspack/core";
 import { ReactRefreshRspackPlugin } from "@rspack/plugin-react-refresh";
 import { rspackAlias } from "./setup/tsconfig.ts";
+import { SemiRspackPlugin } from "@douyinfe/semi-rspack-plugin";
+import Dotenv from "dotenv-webpack";
 
 const isDev = process.env.NODE_ENV === "development";
 // Target browsers, see: https://github.com/browserslist/browserslist
@@ -65,14 +67,14 @@ export default defineConfig({
     ],
   },
   plugins: [
+    new Dotenv({}),
     new rspack.HtmlRspackPlugin({
       template: "./index.html",
     }),
     isDev ? new ReactRefreshRspackPlugin() : null,
-    // new SemiRspackPlugin({
-    //   cssLayer: true,
-    //   theme: "@semi-bot/semi-theme-datastudio",
-    // }),
+    new SemiRspackPlugin({
+      cssLayer: true,
+    }),
     new CopyRspackPlugin({
       patterns: ["public"],
     }),

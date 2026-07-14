@@ -1,8 +1,13 @@
 import { FC, RefObject, useEffect, useRef, useState } from "react";
 import { MonacoEditorReactComp } from "@typefox/monaco-editor-react";
-import { defaultViewsInit, MonacoVscodeApiConfig } from "monaco-languageclient/vscodeApiWrapper";
+import {
+  defaultViewsInit,
+  MonacoVscodeApiConfig,
+} from "monaco-languageclient/vscodeApiWrapper";
 import { EditorAppConfig } from "monaco-languageclient/editorApp";
-import getLogServiceOverride, { ILogger } from "@codingame/monaco-vscode-log-service-override";
+import getLogServiceOverride, {
+  ILogger,
+} from "@codingame/monaco-vscode-log-service-override";
 import getModelServiceOverride from "@codingame/monaco-vscode-model-service-override";
 import getNotificationServiceOverride from "@codingame/monaco-vscode-notifications-service-override";
 import getDialogsServiceOverride from "@codingame/monaco-vscode-dialogs-service-override";
@@ -19,8 +24,7 @@ import getSnippetServiceOverride from "@codingame/monaco-vscode-snippets-service
 import getOutputServiceOverride from "@codingame/monaco-vscode-output-service-override";
 import getSearchServiceOverride from "@codingame/monaco-vscode-search-service-override";
 import getMarkersServiceOverride from "@codingame/monaco-vscode-markers-service-override";
-import getLanguageDetectionWorkerServiceOverride
-  from "@codingame/monaco-vscode-language-detection-worker-service-override";
+import getLanguageDetectionWorkerServiceOverride from "@codingame/monaco-vscode-language-detection-worker-service-override";
 import getStorageServiceOverride from "@codingame/monaco-vscode-storage-service-override";
 import getExtensionServiceOverride from "@codingame/monaco-vscode-extensions-service-override";
 import getEnvironmentServiceOverride from "@codingame/monaco-vscode-environment-service-override";
@@ -51,7 +55,7 @@ import * as vscode from "vscode";
 import {
   createIndexedDBProviders,
   initFile,
-  registerHTMLFileSystemProvider
+  registerHTMLFileSystemProvider,
 } from "@codingame/monaco-vscode-files-service-override";
 import "@codingame/monaco-vscode-markdown-basics-default-extension";
 import "@codingame/monaco-vscode-python-default-extension";
@@ -70,7 +74,11 @@ import "@codingame/monaco-vscode-latex-default-extension";
 import "@codingame/monaco-vscode-log-default-extension";
 import "@codingame/monaco-vscode-prompt-basics-default-extension";
 import { LogLevel } from "@codingame/monaco-vscode-api/vscode/vs/platform/log/common/log";
-import { defineDefaultWorkerLoaders, useWorkerFactory, Worker as _Worker } from "monaco-languageclient/workerFactory";
+import {
+  defineDefaultWorkerLoaders,
+  useWorkerFactory,
+  Worker as _Worker,
+} from "monaco-languageclient/workerFactory";
 import "./extensions/jupyter-web.vsix";
 
 const configureDefaultWorkerFactory = (logger?: ILogger) => {

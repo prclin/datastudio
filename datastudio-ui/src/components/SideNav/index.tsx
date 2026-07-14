@@ -56,7 +56,7 @@ export const SideNav: FC<SideNavProps> = ({
           // sub nav title styles
           "[&_.semi-navigation-sub-title]:h-fit [&_.semi-navigation-sub-title]:py-1.5 [&_.semi-navigation-sub-title]:font-normal",
           "[&_.semi-navigation-sub-title]:leading-4 [&_.semi-navigation-sub-title]:mb-0.5",
-          "hover:[&_.semi-navigation-sub-title]:text-semi-color-primary-hover hover:[&_.semi-navigation-sub-title]:bg-semi-color-primary-light-hover",
+          "[&_.semi-navigation-sub-title:hover]:text-semi-color-primary-hover [&_.semi-navigation-sub-title:hover]:bg-semi-color-primary-light-hover",
           "[&_.semi-navigation-sub-title_.semi-navigation-item-icon]:opacity-0 [&_.semi-navigation-item-sub]:mb-0",
         ].join(" ")}
         defaultOpenKeys={defaultOpenKeys}

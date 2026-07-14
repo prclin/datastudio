@@ -10,13 +10,13 @@ const en_US = {
   "views.engine-instance": "Engine Instance",
   "views.engine-instance.desc":
     "Register and manage SQL-capable compute engines.",
-  "views.cluster-config": "Cluster Configuration",
-  "views.cluster-config.creation": "Creation",
-  "views.cluster-config.creation.title": "Create Cluster Config",
-  "views.cluster-config.detail": "Detail",
-  "views.cluster-config.detail.title": "Cluster Config Detail",
-  "views.cluster-config.detail.edit.title": "Edit Cluster Config",
-  "views.cluster-config.desc":
+  "views.engine-config": "Engine Configuration",
+  "views.engine-config.creation": "Creation",
+  "views.engine-config.creation.title": "Create Engine Config",
+  "views.engine-config.detail": "Detail",
+  "views.engine-config.detail.title": "Engine Config Detail",
+  "views.engine-config.detail.edit.title": "Edit Engine Config",
+  "views.engine-config.desc":
     "Manage Spark and Flink cluster templates and runtime configurations",
   "views.task": "Task Overview",
   "views.task.desc": "View all engine tasks and create new tasks.",

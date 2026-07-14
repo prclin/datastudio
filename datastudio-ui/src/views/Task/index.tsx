@@ -206,12 +206,7 @@ export const Component: FC = () => {
               <Tag color={statusTagMap[x].color}>{statusTagMap[x].text}</Tag>
             )}
           />
-          <Column
-            title="OWNER"
-            dataIndex="owner"
-            key="owner"
-            onCell={onCell}
-          />
+          <Column title="OWNER" dataIndex="owner" key="owner" onCell={onCell} />
           <Column
             title="CREATE TIME"
             dataIndex="create_time"
