@@ -8,5 +8,9 @@ public abstract class CommonQuery {
         public int offset() {
             return (page - 1) * size;
         }
+
+        public int getOffset() {
+            return offset();
+        }
     }
 }

@@ -2,6 +2,7 @@ package io.github.prclin.datastudio.server.facade.http;
 
 import io.github.prclin.datastudio.server.application.cqrs.command.EngineCommand.CreateConfigCommand;
 import io.github.prclin.datastudio.server.application.cqrs.query.CommonQuery.Pagination;
+import io.github.prclin.datastudio.server.application.cqrs.query.EngineConfigQuery.EngineConfigPageQuery;
 import io.github.prclin.datastudio.server.application.dto.EngineConfigDTO.ConfigItem;
 import io.github.prclin.datastudio.server.application.dto.Page;
 import io.github.prclin.datastudio.server.application.dto.ResponseBody;
@@ -27,7 +28,7 @@ public class RuntimeController {
     }
 
     @PostMapping("/engine-config/page")
-    public ResponseBody<Page<ConfigItem>> getEngineConfigPage(@Validated Pagination pagination) {
-        return runtimeService.getEngineConfigPage(pagination);
+    public ResponseBody<Page<ConfigItem>> getEngineConfigPage(EngineConfigPageQuery query, @Validated Pagination pagination) {
+        return runtimeService.getEngineConfigPage(query, pagination);
     }
 }
