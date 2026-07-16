@@ -42,6 +42,7 @@ public class RuntimeServiceImpl implements RuntimeService {
     @Override
     public ResponseBody<Void> createEngineConfig(CreateConfigCommand command) {
         EngineConfig engineConfig = assembler.transfer(command);
+        engineConfig.init();
         Long id = engineConfigRepository.save(engineConfig);
         String artifactsHome = datastudioProperties.getEngineConfig().getArtifactsHome();
         for (MultipartFile artifact : command.artifacts()) {

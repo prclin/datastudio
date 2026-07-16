@@ -24,6 +24,10 @@ public class EngineConfig {
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 
+    public void init() {
+        createTime = LocalDateTime.now();
+    }
+
     @RequiredArgsConstructor
     @Getter
     public enum Kind implements BaseEnum {

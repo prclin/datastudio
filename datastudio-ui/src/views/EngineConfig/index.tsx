@@ -4,7 +4,6 @@ import {
   Col,
   Form,
   Row,
-  SideSheet,
   Space,
   Table,
   Tag,
@@ -141,16 +140,7 @@ export const Component: FC = () => {
           />
         </Table>
       </div>
-      <SideSheet
-        title={"Register New Engine"}
-        visible={visible}
-        onCancel={() => setVisible(false)}
-        className={
-          "semi-light-scrollbar [&_.semi-sidesheet-body]:scrollbar-gutter-stable"
-        }
-      >
-        <ConfigForm />
-      </SideSheet>
+      <ConfigForm visible={visible} onCancel={() => setVisible(false)} />
     </div>
   );
 };
