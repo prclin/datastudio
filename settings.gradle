@@ -18,6 +18,10 @@ dependencyResolutionManagement {
       library('mybatis-plus-join', "com.github.yulichang:mybatis-plus-join-boot-starter:1.5.7")
       library('hadoop-common', "org.apache.hadoop:hadoop-common:3.5.0")
       library('jdbc', "com.mysql:mysql-connector-j:8.0.33")
+      library('jackson-datatype-jsr310', "tools.jackson.datatype:jackson-datatype-jsr310:3.0.0-rc2")
+      library('nimbus-jose-jwt', 'com.nimbusds:nimbus-jose-jwt:10.9')
+      library('oauth2-oidc-sdk', 'com.nimbusds:oauth2-oidc-sdk:11.38.2')
+
     }
   }
 }

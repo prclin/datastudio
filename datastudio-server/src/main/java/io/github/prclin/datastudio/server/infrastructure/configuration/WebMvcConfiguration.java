@@ -3,15 +3,24 @@ package io.github.prclin.datastudio.server.infrastructure.configuration;
 
 import io.github.prclin.datastudio.server.facade.http.JupyterController;
 import io.github.prclin.datastudio.server.infrastructure.configuration.converter.StringToEnumConverterFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
+
+    @Bean
+    public RestClient restClient() {
+        return RestClient.builder().build();
+    }
+
+
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverterFactory(new StringToEnumConverterFactory());

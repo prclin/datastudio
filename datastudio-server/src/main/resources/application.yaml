@@ -31,3 +31,21 @@ mybatis-plus:
     use-generated-keys: true
 server:
   port: 8083
+  tomcat:
+    max-http-response-header-size: 32KB
+logging:
+  level:
+    org.springframework.security: debug
+
+oauth2:
+  client:
+    providers:
+      keycloak:
+        issuer-uri: http://localhost:8084/realms/master
+    registrations:
+      datastudio:
+        client-id: datastudio
+        client-secret: ${DATASTUDIO_CLIENT_SECRET}
+        authorization-grant-type: authorization_code
+        scope: openid,profile
+        provider: keycloak

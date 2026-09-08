@@ -15,6 +15,7 @@ dependencies {
   api "tools.jackson.core:jackson-databind"
   api "tools.jackson.core:jackson-core"
   api "com.fasterxml.jackson.core:jackson-annotations"
+  api libs.jackson.datatype.jsr310
   api libs.mapstruct
   api libs.jakarta.annotation.api
 
