@@ -40,12 +40,12 @@ logging:
 oauth2:
   client:
     providers:
-      keycloak:
-        issuer-uri: http://localhost:8084/realms/master
+      zitadel:
+        issuer-uri: https://zitadel.k8s.dev
     registrations:
       datastudio:
-        client-id: datastudio
+        client-id: 394917405190586372
         client-secret: ${DATASTUDIO_CLIENT_SECRET}
         authorization-grant-type: authorization_code
-        scope: openid,profile
-        provider: keycloak
+        scope: openid,profile,offline_access
+        provider: zitadel

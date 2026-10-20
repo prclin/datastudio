@@ -1,3 +1,5 @@
+import java.time.Duration
+
 plugins {
   id 'java'
   id 'org.springframework.boot' version '4.0.3' apply false
@@ -17,5 +19,99 @@ allprojects {
     options.compilerArgs += [
     "-Amapstruct.unmappedTargetPolicy=IGNORE"
     ]
+  }
+}
+
+ext {
+  k8sVersion = "v1.37.0"
+}
+
+tasks.register("minikube") {
+  group = TaskGroups.INFRA
+  doLast {
+    //k8s集群是否已启动
+    def output = providers.exec {
+      commandLine "sudo", "minikube", "status"
+      ignoreExitValue true
+    }
+    if (output.result.get().exitValue == 0) {
+      logger.info("k8s already started!")
+      return 0
+    }
+    logger.warn output.standardError.asText.get()
+
+    //启动k8s
+    output = providers.exec {
+      commandLine "sudo", "minikube", "start", "--force", "--kubernetes-version=$k8sVersion"
+      ignoreExitValue true
+    }
+    if (output.result.get().exitValue != 0) {
+      logger.warn output.standardError.asText.get()
+      output.result.get().assertNormalExitValue()
+    }
+    logger.info("k8s started!")
+
+    //启用Ingress
+    output = providers.exec {
+      commandLine "sudo", "minikube", "addons", "enable", "traefik"
+    }
+    if (output.result.get().exitValue != 0) {
+      logger.warn output.standardError.asText.get()
+      output.result.get().assertNormalExitValue()
+    }
+    logger.info("k8s ingress enabled!")
+  }
+}
+
+
+tasks.register("zitadel") {
+  group = TaskGroups.INFRA
+  description = "install zitadel on k8s;when done,need set hosts file for ingress domain"
+  dependsOn minikube
+  //启动zitadel
+  doLast {
+    def result = providers.exec {
+      workingDir "$rootDir/$group/zitadel"
+      commandLine "bash", "-c", """
+        sudo helm repo add zitadel https://charts.zitadel.com
+        sudo helm repo update
+        sudo helm upgrade --install zitadel zitadel/zitadel --version 10.4.0 -f values.yaml
+      """
+      ignoreExitValue true
+      timeout = Duration.ofSeconds(60)
+    }.standardError.asText.get()
+
+    logger.warn result
+  }
+}
+
+tasks.register("zitadel-uninstall") {
+  group = TaskGroups.INFRA
+  dependsOn minikube
+  doLast {
+    //卸载
+    def result = providers.exec {
+      workingDir "$rootDir/$group/zitadel"
+      commandLine "sudo", "helm", "uninstall", "zitadel"
+      ignoreExitValue true
+      timeout = Duration.ofSeconds(60)
+    }.standardError.asText.get()
+
+    logger.warn result
+
+    //清除资源
+    result = providers.exec {
+      workingDir "$rootDir/$group/zitadel"
+      commandLine "bash", "-c", """
+        for k8sresourcetype in job configmap secret rolebinding role serviceaccount statefulset; do
+          sudo minikube kubectl -- delete \$k8sresourcetype --selector app.kubernetes.io/instance=zitadel,app.kubernetes.io/managed-by=Helm
+        done
+      """
+      ignoreExitValue true
+      timeout = Duration.ofSeconds(60)
+    }.standardError.asText.get()
+
+    logger.warn result
+
   }
 }
