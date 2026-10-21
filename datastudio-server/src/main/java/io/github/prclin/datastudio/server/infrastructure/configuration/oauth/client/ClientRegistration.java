@@ -1,7 +1,6 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client;
 
 import com.nimbusds.jwt.JWT;
-import com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod;
 import com.nimbusds.openid.connect.sdk.OIDCScopeValue;
 import io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.AuthorizationRequest.AuthorizationRequestBuilder;
 import jakarta.servlet.http.HttpServletRequest;

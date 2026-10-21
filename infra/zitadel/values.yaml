@@ -29,9 +29,9 @@ zitadel:
   masterkey: "MasterkeyNeedsToHave32Characters"
 
   configmapConfig:
-    ExternalDomain: zitadel.k8s.dev   # replace with your domain or IP
+    ExternalDomain: zitadel.k8s.minikube   # replace with your domain or IP
     ExternalPort: 80            # replace with the port your ingress controller listens on
-    ExternalSecure: true
+    ExternalSecure: false
     TLS:
       Enabled: false
     FirstInstance:
@@ -39,7 +39,7 @@ zitadel:
         Name: datastudio
         Human:
           UserName: admin
-          Email: admin@zitadel.k8s.dev
+          Email: admin@zitadel.k8s.minikube
           Password: "Password!1"
           PasswordChangeRequired: false
 
@@ -50,7 +50,7 @@ ingress:
   enabled: true
   # className: traefik
   hosts:
-    - host: zitadel.k8s.dev
+    - host: zitadel.k8s.minikube
       paths:
         - path: /
           pathType: Prefix
@@ -60,7 +60,7 @@ login:
     enabled: true
     # className: traefik
     hosts:
-      - host: zitadel.k8s.dev
+      - host: zitadel.k8s.minikube
         paths:
           - path: /ui/v2/login
             pathType: Prefix

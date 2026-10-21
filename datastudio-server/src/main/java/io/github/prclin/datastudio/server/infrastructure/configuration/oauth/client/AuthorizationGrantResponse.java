@@ -21,19 +21,19 @@ public class AuthorizationGrantResponse {
     public static final boolean HTTP_ONLY = true;
     public static final String SAME_SITE = "Lax";
     private JWT idToken;
-    private JWT accessToken;
-    private JWT refreshToken;
+    private String accessToken;
+    private Integer expireIn;
+    private String refreshToken;
     private ObjectNode body;
 
 
     public static AuthorizationGrantResponse from(JwtDecoder jwtDecoder, ObjectNode body) throws OAuthException {
         JWT idToken = jwtDecoder.decode(body.path(OidcParameterNames.ID_TOKEN).asString());
-        JWT accessToken = jwtDecoder.decode(body.path(OidcParameterNames.ACCESS_TOKEN).asString());
-        JWT refreshToken = jwtDecoder.decode(body.path(OidcParameterNames.REFRESH_TOKEN).asString(), false);
         return builder()
                 .idToken(idToken)
-                .accessToken(accessToken)
-                .refreshToken(refreshToken)
+                .accessToken(body.path(OidcParameterNames.ACCESS_TOKEN).asString())
+                .expireIn(body.path(OidcParameterNames.EXPIRES_IN).asInt())
+                .refreshToken(body.path(OidcParameterNames.REFRESH_TOKEN).asString())
                 .body(body)
                 .build();
 
@@ -50,21 +50,21 @@ public class AuthorizationGrantResponse {
                 .toString();
         response.addHeader(HttpHeaders.SET_COOKIE, idValue);
 
-        String accessValue = ResponseCookie.from(OidcParameterNames.ACCESS_TOKEN, accessToken.serialize())
+        String accessValue = ResponseCookie.from(OidcParameterNames.ACCESS_TOKEN, accessToken)
                 .path(COOKIE_PATH)
                 .httpOnly(HTTP_ONLY)
                 .sameSite(SAME_SITE)
-                .maxAge(Duration.between(Instant.now(), accessToken.getJWTClaimsSet().getExpirationTime().toInstant()))
+                .maxAge(expireIn)
                 .build()
                 .toString();
         response.addHeader(HttpHeaders.SET_COOKIE, accessValue);
 
 
-        String refreshValue = ResponseCookie.from(OidcParameterNames.REFRESH_TOKEN, refreshToken.serialize())
+        String refreshValue = ResponseCookie.from(OidcParameterNames.REFRESH_TOKEN, refreshToken)
                 .path(COOKIE_PATH)
                 .httpOnly(HTTP_ONLY)
                 .sameSite(SAME_SITE)
-                .maxAge(Duration.between(Instant.now(), refreshToken.getJWTClaimsSet().getExpirationTime().toInstant()))
+                .maxAge(-1)
                 .build()
                 .toString();
         response.addHeader(HttpHeaders.SET_COOKIE, refreshValue);

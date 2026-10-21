@@ -1,6 +1,6 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.autoconfigure;
 
-import com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod;
+import io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.ClientAuthenticationMethod;
 import io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.ClientRegistration;
 import io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.ClientRegistration.ClientRegistrationBuilder;
 import io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.OAuth2ClientManager;
@@ -25,17 +25,19 @@ import java.util.stream.StreamSupport;
 @Configuration
 public class OAuth2Configuration {
 
+    /**
+     * set default
+     */
     private static ClientAuthenticationMethod getClientAuthenticationMethod(
-            List<com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod> metadataAuthMethods) {
-        if (metadataAuthMethods == null || metadataAuthMethods
-                .contains(com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod.CLIENT_SECRET_BASIC)) {
+            List<ClientAuthenticationMethod> supportedMethods) {
+        if (supportedMethods == null || supportedMethods.contains(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)) {
             // If null, the default includes client_secret_basic
             return ClientAuthenticationMethod.CLIENT_SECRET_BASIC;
         }
-        if (metadataAuthMethods.contains(com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod.CLIENT_SECRET_POST)) {
+        if (supportedMethods.contains(ClientAuthenticationMethod.CLIENT_SECRET_POST)) {
             return ClientAuthenticationMethod.CLIENT_SECRET_POST;
         }
-        if (metadataAuthMethods.contains(com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod.NONE)) {
+        if (supportedMethods.contains(ClientAuthenticationMethod.NONE)) {
             return ClientAuthenticationMethod.NONE;
         }
         return null;
@@ -69,19 +71,18 @@ public class OAuth2Configuration {
             builder.serviceProvider(provider);
             JsonNode methodsNode = provider.getConfigurationMetadata().path(ProviderMetadataKeys.TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED);
             if (methodsNode.isArray()) {
-                List<ClientAuthenticationMethod> methods = StreamSupport.stream(
+                List<ClientAuthenticationMethod> supportedMethods = StreamSupport.stream(
                                 Spliterators.spliteratorUnknownSize(methodsNode.iterator(), Spliterator.ORDERED),
                                 false
                         ).map(x -> ClientAuthenticationMethod.parse(x.asString()))
                         .toList();
-                ClientAuthenticationMethod method = getClientAuthenticationMethod(methods);
-                builder.clientAuthenticationMethod(method);
+                boolean supported = supportedMethods.contains(registrationProps.getClientAuthenticationMethod());
+                if (!supported) throw new RuntimeException("unsupported client authentication method!");
             }
 
             map.from(registrationProps::getClientId).to(builder::clientId);
             map.from(registrationProps::getClientSecret).to(builder::clientSecret);
             map.from(registrationProps::getClientAuthenticationMethod)
-                    .as(ClientAuthenticationMethod::new)
                     .to(builder::clientAuthenticationMethod);
             map.from(registrationProps::getAuthorizationGrantType).to(builder::authorizationGrantType);
             map.from(registrationProps::getRedirectUri).to(builder::redirectUri);

@@ -41,10 +41,10 @@ oauth2:
   client:
     providers:
       zitadel:
-        issuer-uri: https://zitadel.k8s.dev
+        issuer-uri: http://zitadel.k8s.minikube
     registrations:
       datastudio:
-        client-id: 394917405190586372
+        client-id: ${DATASTUDIO_CLIENT_ID}
         client-secret: ${DATASTUDIO_CLIENT_SECRET}
         authorization-grant-type: authorization_code
         scope: openid,profile,offline_access

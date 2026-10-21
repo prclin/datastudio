@@ -1,6 +1,7 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.autoconfigure;
 
 import io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.AuthorizationGrantType;
+import io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.ClientAuthenticationMethod;
 import lombok.Data;
 import org.jspecify.annotations.Nullable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -43,7 +44,7 @@ public class OAuth2ClientProperties {
         /**
          * Client authentication method.
          */
-        private String clientAuthenticationMethod;
+        private ClientAuthenticationMethod clientAuthenticationMethod = ClientAuthenticationMethod.CLIENT_SECRET_BASIC;
 
         /**
          * Authorization grant type.

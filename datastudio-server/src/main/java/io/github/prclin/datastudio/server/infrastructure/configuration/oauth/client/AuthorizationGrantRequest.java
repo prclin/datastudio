@@ -1,6 +1,5 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client;
 
-import com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
