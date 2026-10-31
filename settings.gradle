@@ -21,6 +21,7 @@ dependencyResolutionManagement {
       library('jackson-datatype-jsr310', "tools.jackson.datatype:jackson-datatype-jsr310:3.0.0-rc2")
       library('nimbus-jose-jwt', 'com.nimbusds:nimbus-jose-jwt:10.9')
       library('oauth2-oidc-sdk', 'com.nimbusds:oauth2-oidc-sdk:11.38.2')
+      library('zitadel-sdk', 'io.github.zitadel:client:4.1.4')
 
     }
   }

@@ -125,6 +125,7 @@ public class AuthorizationRequest {
             }
         });
         return UriComponentsBuilder.fromUriString(authorizationUri).queryParams(queryParams)
+                .queryParam("prompt", "consent")
                 .encode(StandardCharsets.UTF_8)
                 .build(true)
                 .toUriString();

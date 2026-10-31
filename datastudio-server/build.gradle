@@ -1,3 +1,9 @@
+import io.github.prclin.gradle.common.ExecUtils
+import io.github.prclin.gradle.common.TaskGroups
+
+import java.nio.charset.StandardCharsets
+import java.time.Duration
+
 plugins {
   id 'java'
   id 'org.springframework.boot'
@@ -21,13 +27,14 @@ dependencies {
   implementation libs.jdbc
   implementation libs.nimbus.jose.jwt
   implementation libs.oauth2.oidc.sdk
+  implementation libs.zitadel.sdk
 
   compileOnly libs.lombok
 
   annotationProcessor libs.lombok
   annotationProcessor libs.mapstruct.processor
 
-  testImplementation 'org.springframework.boot:spring-boot-starter-web-test'
+//  testImplementation 'org.springframework.boot:spring-boot-starter-web-test'
   testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
   testCompileOnly libs.lombok
   testAnnotationProcessor libs.lombok
@@ -39,4 +46,205 @@ springBoot {
 
 test {
   useJUnitPlatform()
+}
+
+
+ext {
+  k8sVersion = "v1.37.0"
+  zitadelChartVersion = "10.4.0"
+}
+
+tasks.register("minikube") {
+  group = TaskGroups.INFRA
+  description = "start a k8s cluster and enable ingress"
+  doLast {
+    ////启动k8s
+    def output = providers.exec {
+      commandLine "bash", "-c", """
+      set -e
+      if sudo minikube status; then
+        echo 'k8s already started!'
+      else
+        sudo minikube start --force --kubernetes-version=$k8sVersion --image-mirror-country=cn
+      fi
+    """
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+
+    //启用Ingress
+    output = providers.exec {
+      commandLine "bash", "-c", """
+        if sudo minikube addons list | grep -qE 'traefik.*enabled'; then
+          echo 'traefik ingress already enabled!'
+        else
+          sudo minikube addons enable traefik
+        fi
+      """
+      ignoreExitValue = true
+      timeout = Duration.ofSeconds(120)
+    }
+    ExecUtils.print(output)
+  }
+}
+
+
+def zitadelResourceDir = sourceSets.main.resources.srcDirs.first().absolutePath + "/zitadel"
+
+tasks.register("zitadel") {
+  group = TaskGroups.INFRA
+  description = "install zitadel on k8s;when done,need set hosts file for ingress domain"
+  dependsOn minikube
+
+  inputs.files("$zitadelResourceDir/values.yaml")
+  outputs.file("/etc/hosts")
+
+  //启动zitadel
+  doLast {
+    def output = providers.exec {
+      workingDir = zitadelResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        if sudo helm status zitadel >/dev/null 2>&1; then
+          echo 'zitadel already installed'
+        else
+          sudo helm repo add zitadel https://charts.zitadel.com
+          sudo helm repo update
+          sudo helm upgrade --install zitadel zitadel/zitadel --version $zitadelChartVersion -f values.yaml
+        fi
+      """
+      ignoreExitValue = true
+      timeout = Duration.ofSeconds(60)
+    }
+    ExecUtils.print(output)
+
+    //增加hosts映射
+    output = providers.exec {
+      workingDir = zitadelResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        entry="\$(sudo minikube ip) \$(yq -r '.zitadel.configmapConfig.ExternalDomain' values.yaml)"
+        if ! grep -qE "\$entry" "/etc/hosts"; then
+          echo "\$entry" | sudo tee -a /etc/hosts
+        fi
+      """
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+  }
+}
+
+tasks.register("zitadel-uninstall") {
+  group = TaskGroups.INFRA
+  description = "uninstall zitadel, and remove hosts file entry"
+  dependsOn minikube
+  doLast {
+    //卸载
+    def output = providers.exec {
+      workingDir = zitadelResourceDir
+      commandLine "sudo", "helm", "uninstall", "zitadel"
+      ignoreExitValue = true
+      timeout = Duration.ofSeconds(60)
+    }
+    ExecUtils.print(output)
+
+
+    //清除资源
+    output = providers.exec {
+      workingDir = zitadelResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        for k8sresourcetype in job configmap secret rolebinding role serviceaccount statefulset; do
+          sudo minikube kubectl -- delete \$k8sresourcetype --selector app.kubernetes.io/instance=zitadel,app.kubernetes.io/managed-by=Helm
+        done
+      """
+      ignoreExitValue = true
+      timeout = Duration.ofSeconds(60)
+    }
+    ExecUtils.print(output)
+
+    //删除hosts映射
+    output = providers.exec {
+      workingDir = zitadelResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        entry="\$(sudo minikube ip) \$(yq -r '.zitadel.configmapConfig.ExternalDomain' values.yaml)"
+        grep -Fxv "\$entry" "/etc/hosts" | sudo tee "/etc/hosts" > /dev/null
+      """
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+  }
+}
+
+tasks.register("zitadel-env") {
+  group = TaskGroups.SETUP
+  description = "get zitadel related variables and set in .env"
+  dependsOn zitadel
+  inputs.file("$zitadelResourceDir/values.yaml")
+  outputs.file("$projectDir/.env")
+  doLast {
+    def output = providers.exec {
+      workingDir = zitadelResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        if [ "\$(yq -r '.zitadel.configmapConfig.ExternalSecure' values.yaml)" = "true" ]; then
+            protocl="https"
+        else
+            protocl="http"
+        fi
+        host=\$(yq -r '.zitadel.configmapConfig.ExternalDomain' values.yaml)
+        pat=\$(sudo minikube kubectl -- get secret iam-admin-pat -o jsonpath='{ .data.pat}' | base64 -d)
+        cd $projectDir
+        envs=\$([ -f .env ] && grep -vE '^(ZITADEL_HOST|ZITADEL_ADMIN_PAT)=' .env)
+        echo "\$envs" > .env
+        cat << EOF >> .env
+        ZITADEL_HOST=\$protocl://\$host
+        ZITADEL_ADMIN_PAT=\$pat
+        EOF
+      """.stripIndent()
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+  }
+}
+
+tasks.register("zitadel-resources", JavaExec) {
+  group = TaskGroups.SETUP
+  dependsOn "zitadel-env"
+  description = "create zitaldel resources for datastudio"
+  classpath = sourceSets.main.runtimeClasspath
+  mainClass = "io.github.prclin.datastudio.setup.ZitadelSetup"
+  doFirst {
+    Map<String, ?> envs = file("$projectDir/.env").readLines().findAll { !it.trim().startsWith("#") }
+    .collectEntries {
+      def (key, value) = it.split('=', 2)
+      [(key): value]
+    }
+    environment = envs
+  }
+  def std = new ByteArrayOutputStream()
+  standardOutput = std
+  doLast {
+    def conf = std.toString(StandardCharsets.UTF_8)
+    .lines().filter { it.startsWith("DATASTUDIO_CLIENT_ID=") || it.startsWith("DATASTUDIO_CLIENT_SECRET=") }
+    .reduce { x, y -> x + "\n" + y }.orElse("").trim()
+    println(conf)
+    def output = providers.exec {
+      workingDir = projectDir
+      commandLine "bash", "-c", """
+        set -e
+        if [ -z "$conf" ]; then
+          echo 'no config set!'
+          exit 0
+        fi
+        
+        envs=\$([ -f .env ] && grep -vE '^(DATASTUDIO_CLIENT_ID|DATASTUDIO_CLIENT_SECRET)=' .env)
+        echo "\$envs" > .env
+        echo "$conf" >> .env
+      """.trim().stripIndent()
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+  }
 }

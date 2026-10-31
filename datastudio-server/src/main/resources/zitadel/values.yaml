@@ -36,7 +36,7 @@ zitadel:
       Enabled: false
     FirstInstance:
       Org:
-        Name: datastudio
+        Name: ZITADEL
         Human:
           UserName: admin
           Email: admin@zitadel.k8s.minikube
