@@ -78,7 +78,6 @@ public class AuthorizationRequest {
 
         AuthorizationRequest req;
         try {
-            //            todo 解析问题
             req = mapper.readValue(new String(Base64.getUrlDecoder().decode(first.get().getValue().getBytes(StandardCharsets.UTF_8))), AuthorizationRequest.class);
         } catch (Exception e) {
             log.info("invalid authorization request cookie value!", e);

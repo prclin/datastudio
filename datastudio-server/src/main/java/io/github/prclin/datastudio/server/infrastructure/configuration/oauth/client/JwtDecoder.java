@@ -13,7 +13,7 @@ import com.nimbusds.jwt.proc.ConfigurableJWTProcessor;
 import com.nimbusds.jwt.proc.DefaultJWTProcessor;
 
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
 import java.util.Date;
 import java.util.Set;
 
@@ -28,7 +28,7 @@ public class JwtDecoder {
     private void init() throws MalformedURLException {
         if (this.processor != null) return;
         // 从远程 JWK Set 获取公钥
-        JWKSource<SecurityContext> keySource = JWKSourceBuilder.create(new URL(this.jwtSetUri)).build();
+        JWKSource<SecurityContext> keySource = JWKSourceBuilder.create(URI.create(this.jwtSetUri).toURL()).build();
 
         DefaultJWTProcessor<SecurityContext> processor = new DefaultJWTProcessor<>();
 
@@ -42,18 +42,19 @@ public class JwtDecoder {
         this.processor = processor;
     }
 
-    public JWT decode(String token) throws OAuthException {
+    public Jwt decode(String token) throws OAuthException {
         return decode(token, true);
     }
 
-    public JWT decode(String token, boolean verify) throws OAuthException {
+    public Jwt decode(String token, boolean verify) throws OAuthException {
         try {
             JWT jwt = JWTParser.parse(token);
+            Jwt jwtWrapper = new Jwt(jwt);
             if (verify) {
                 init();
                 processor.process(token, null);
             }
-            return jwt;
+            return jwtWrapper;
         } catch (Exception e) {
             throw new OAuthException("parse and verify jwt failed!", e);
         }

@@ -57,8 +57,7 @@ public class ServiceProvider {
                     .tokenUri(metadata.path(ProviderMetadataKeys.TOKEN_ENDPOINT).asString(null))
                     .userInfoUri(metadata.path(ProviderMetadataKeys.USERINFO_ENDPOINT).asString(null))
                     .jwkSetUri(metadata.path(ProviderMetadataKeys.JWKS_URI).asString(null))
-                    //todo 使用nimbusds的常量
-                    .userNameAttributeName("sub")
+                    .userNameAttributeName(OidcClaims.SUB)
                     .userInfoAuthenticationMethod("Bearer")
                     .issuerUri(issuer);
         };

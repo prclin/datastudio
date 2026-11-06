@@ -8,9 +8,7 @@ class ExecUtils {
     def err = output.standardError.asText.get()
     System.out.println("command exit with code:${output.result.get().exitValue}")
     if (!std.isEmpty()) System.out.println(std)
-    if (!err.isEmpty()) {
-      System.err.println(err)
-      output.result.get().assertNormalExitValue()
-    }
+    if (!err.isEmpty()) System.err.println(err)
+    output.result.get().assertNormalExitValue()
   }
 }

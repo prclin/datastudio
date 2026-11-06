@@ -1,6 +1,5 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client;
 
-import com.nimbusds.jwt.JWT;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +8,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import tools.jackson.databind.node.ObjectNode;
 
-import java.text.ParseException;
 import java.time.Duration;
 import java.time.Instant;
 
@@ -20,7 +18,7 @@ public class AuthorizationGrantResponse {
     public static final String COOKIE_PATH = "/";
     public static final boolean HTTP_ONLY = true;
     public static final String SAME_SITE = "Lax";
-    private JWT idToken;
+    private Jwt idToken;
     private String accessToken;
     private Integer expireIn;
     private String refreshToken;
@@ -28,7 +26,7 @@ public class AuthorizationGrantResponse {
 
 
     public static AuthorizationGrantResponse from(JwtDecoder jwtDecoder, ObjectNode body) throws OAuthException {
-        JWT idToken = jwtDecoder.decode(body.path(OidcParameterNames.ID_TOKEN).asString());
+        Jwt idToken = jwtDecoder.decode(body.path(OidcParameterNames.ID_TOKEN).asString());
         return builder()
                 .idToken(idToken)
                 .accessToken(body.path(OidcParameterNames.ACCESS_TOKEN).asString())
@@ -40,12 +38,12 @@ public class AuthorizationGrantResponse {
     }
 
 
-    public void saveToken(HttpServletResponse response) throws ParseException {
+    public void saveToken(HttpServletResponse response) {
         String idValue = ResponseCookie.from(OidcParameterNames.ID_TOKEN, idToken.serialize())
                 .path(COOKIE_PATH)
                 .httpOnly(HTTP_ONLY)
                 .sameSite(SAME_SITE)
-                .maxAge(Duration.between(Instant.now(), idToken.getJWTClaimsSet().getExpirationTime().toInstant()))
+                .maxAge(Duration.between(Instant.now(), Instant.ofEpochSecond(idToken.getClaim(OidcClaims.EXP))))
                 .build()
                 .toString();
         response.addHeader(HttpHeaders.SET_COOKIE, idValue);

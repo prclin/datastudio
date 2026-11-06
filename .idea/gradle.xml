@@ -17,7 +17,6 @@
         </compositeConfiguration>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="$USER_HOME$/Programs/sdkman/candidates/gradle/current" />
-        <option name="gradleJvm" value="graalvm-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />

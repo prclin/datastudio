@@ -1,6 +1,5 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client;
 
-import com.nimbusds.jwt.JWT;
 import com.nimbusds.openid.connect.sdk.OIDCScopeValue;
 import io.github.prclin.datastudio.server.infrastructure.configuration.oauth.client.AuthorizationRequest.AuthorizationRequestBuilder;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +15,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.text.ParseException;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,11 +54,11 @@ public class ClientRegistration {
         return Base64.getUrlEncoder().withoutPadding().encodeToString(digest);
     }
 
-    public static boolean validateNonce(AuthorizationRequest authorizationRequest, JWT idToken) throws ParseException {
+    public static boolean validateNonce(AuthorizationRequest authorizationRequest, Jwt idToken) {
         String requestNonce = (String) authorizationRequest.getAttributes().get(OidcParameterNames.NONCE);
         if (requestNonce == null) return true;
         String nonceHash = createHash(requestNonce);
-        String nonceHashClaim = idToken.getJWTClaimsSet().getStringClaim(OidcParameterNames.NONCE);
+        String nonceHashClaim = idToken.getClaim(OidcClaims.NONCE);
         return nonceHashClaim.equals(nonceHash);
     }
 

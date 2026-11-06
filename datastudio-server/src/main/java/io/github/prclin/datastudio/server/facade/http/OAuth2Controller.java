@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.Optional;
 
 @Slf4j
@@ -95,20 +94,12 @@ public class OAuth2Controller {
         }
 
         // validate nonce
-        try {
-            boolean nonceValid = ClientRegistration.validateNonce(req, grantResponse.getIdToken());
-            if (!nonceValid) return ResponseBody.clientError("nonce value invalid!");
-        } catch (ParseException e) {
-            return ResponseBody.serverError("validate nonce failed!");
-        }
+        boolean nonceValid = ClientRegistration.validateNonce(req, grantResponse.getIdToken());
+        if (!nonceValid) return ResponseBody.clientError("nonce value invalid!");
 
         //set cookies
-        try {
-            grantResponse.saveToken(response);
-        } catch (ParseException e) {
-            log.warn("set cookies failed!", e);
-            return ResponseBody.serverError("set credential failed!");
-        }
+        grantResponse.saveToken(response);
+
         return ResponseBody.ok();
     }
 }
