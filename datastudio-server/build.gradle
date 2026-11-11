@@ -52,6 +52,7 @@ test {
 ext {
   k8sVersion = "v1.37.0"
   zitadelChartVersion = "10.4.0"
+  spicedbVersion = "v1.27.0"
 }
 
 tasks.register("minikube") {
@@ -88,8 +89,9 @@ tasks.register("minikube") {
   }
 }
 
+def resourceDir = sourceSets.main.resources.srcDirs.first().absolutePath
 
-def zitadelResourceDir = sourceSets.main.resources.srcDirs.first().absolutePath + "/zitadel"
+def zitadelResourceDir = "$resourceDir/zitadel"
 
 tasks.register("zitadel") {
   group = TaskGroups.INFRA
@@ -172,6 +174,63 @@ tasks.register("zitadel-uninstall") {
         grep -Fxv "\$entry" "/etc/hosts" | sudo tee "/etc/hosts" > /dev/null
       """
       ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+  }
+}
+
+def spicedbResourceDir = "$resourceDir/spicedb"
+
+tasks.register("spicedb") {
+  group = TaskGroups.INFRA
+  description = "install spicedb"
+  dependsOn minikube
+
+  doLast {
+    def output = providers.exec {
+      workingDir = spicedbResourceDir
+      commandLine "bash", "-c", """
+        if sudo minikube kubectl -- get crd | grep -q spicedbclusters.authzed.com ; then
+          echo 'spicedb operator already installed!'
+        else
+          sudo minikube kubectl -- apply -f crd.yaml
+        fi
+        
+        cluster_name=\$(yq -r 'select(.kind == "SpiceDBCluster") | .metadata.name' manifest.yaml) 
+        if sudo minikube kubectl -- get spicedbclusters | grep -q "\$cluster_name"; then
+          echo 'spicedb cluster already installed'
+        else 
+          sudo minikube kubectl -- apply -f manifest.yaml
+        fi
+      """
+    }
+    ExecUtils.print(output)
+  }
+}
+
+tasks.register("spicedb-uninstall") {
+  group = TaskGroups.INFRA
+  description = "uninstall spicedb"
+  dependsOn minikube
+
+  doLast {
+    def output = providers.exec {
+      workingDir = spicedbResourceDir
+      commandLine "sudo", "minikube", "kubectl", "--", "delete", "-f manifest.yaml"
+    }
+    ExecUtils.print(output)
+  }
+}
+
+tasks.register("spicedb-operator-uninstall") {
+  group = TaskGroups.INFRA
+  description = "uninstall spicedb operator"
+  dependsOn minikube
+
+  doLast {
+    def output = providers.exec {
+      workingDir = spicedbResourceDir
+      commandLine "sudo", "minikube", "kubectl", "--", "delete", "-f crd.yaml"
     }
     ExecUtils.print(output)
   }

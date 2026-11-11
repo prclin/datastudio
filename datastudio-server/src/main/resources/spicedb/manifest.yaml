@@ -1,0 +1,33 @@
+apiVersion: authzed.com/v1alpha1
+kind: SpiceDBCluster
+metadata:
+  name: dev
+spec:
+  config:
+    datastoreEngine: memory
+    httpEnabled: true
+  secretName: dev-spicedb-config
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dev-spicedb-config
+stringData:
+  preshared_key: "averysecretpresharedkey"
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dev-spicedb
+spec:
+  rules:
+    - host: spicedb.k8s.minikube
+      http:
+        paths:
+          - backend:
+              service:
+                name: dev
+                port:
+                  number: 8443
+            path: /
+            pathType: Prefix
