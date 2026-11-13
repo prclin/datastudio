@@ -22,9 +22,9 @@ dependencies {
     exclude group: "org.slf4j", module: "slf4j-reload4j"
     exclude group: "ch.qos.reload4j", module: "reload4j"
   }
+  implementation libs.postgresql
   implementation libs.mybatis.plus
   implementation libs.mybatis.plus.join
-  implementation libs.jdbc
   implementation libs.nimbus.jose.jwt
   implementation libs.oauth2.oidc.sdk
   implementation libs.zitadel.sdk
@@ -53,7 +53,10 @@ ext {
   k8sVersion = "v1.37.0"
   zitadelChartVersion = "10.4.0"
   spicedbVersion = "v1.27.0"
+  postgresqlChartVersion = "18.12.19"
 }
+
+def resourceDir = sourceSets.main.resources.srcDirs.first().absolutePath
 
 tasks.register("minikube") {
   group = TaskGroups.INFRA
@@ -89,14 +92,84 @@ tasks.register("minikube") {
   }
 }
 
-def resourceDir = sourceSets.main.resources.srcDirs.first().absolutePath
+
+def postgresResourceDir = "$resourceDir/postgresql"
+
+tasks.register("postgresql") {
+  group = TaskGroups.INFRA
+  description = "install postgresql"
+  dependsOn minikube
+
+  inputs.files("$postgresResourceDir/values.yaml")
+  outputs.file("/etc/hosts")
+  doLast {
+    //安装
+    def output = providers.exec {
+      workingDir = postgresResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        if sudo helm status postgresql >/dev/null 2>&1; then
+          echo 'postgresql already installed'
+        else
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          sudo helm repo update
+          sudo helm upgrade --install postgresql bitnami/postgresql --version $postgresqlChartVersion -f values.yaml 
+        fi
+      """
+    }
+    ExecUtils.print(output)
+
+    //增加hosts映射
+    output = providers.exec {
+      workingDir = postgresResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        entry="\$(sudo minikube ip) postgresql.k8s.minikube"
+        if ! grep -qE "\$entry" "/etc/hosts"; then
+          echo "\$entry" | sudo tee -a /etc/hosts
+        fi
+      """
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+  }
+}
+
+tasks.register("postgresql-uninstall") {
+  group = TaskGroups.INFRA
+  description = "uninstall postgresql, and remove hosts file entry"
+  dependsOn minikube
+  doLast {
+    //卸载
+    def output = providers.exec {
+      workingDir = postgresResourceDir
+      commandLine "sudo", "helm", "uninstall", "postgresql"
+      ignoreExitValue = true
+      timeout = Duration.ofSeconds(60)
+    }
+    ExecUtils.print(output)
+
+    //删除hosts映射
+    output = providers.exec {
+      workingDir = postgresResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        entry="\$(sudo minikube ip) postgresql.k8s.minikube"
+        grep -Fxv "\$entry" "/etc/hosts" | sudo tee "/etc/hosts" > /dev/null
+      """
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+  }
+}
+
 
 def zitadelResourceDir = "$resourceDir/zitadel"
 
 tasks.register("zitadel") {
   group = TaskGroups.INFRA
   description = "install zitadel on k8s;when done,need set hosts file for ingress domain"
-  dependsOn minikube
+  dependsOn postgresql
 
   inputs.files("$zitadelResourceDir/values.yaml")
   outputs.file("/etc/hosts")
@@ -230,7 +303,41 @@ tasks.register("spicedb-operator-uninstall") {
   doLast {
     def output = providers.exec {
       workingDir = spicedbResourceDir
-      commandLine "sudo", "minikube", "kubectl", "--", "delete", "-f crd.yaml"
+      commandLine "sudo", "minikube", "kubectl", "--", "delete", "-f", "crd.yaml"
+    }
+    ExecUtils.print(output)
+  }
+}
+
+
+tasks.register("postgresql-env") {
+  group = TaskGroups.SETUP
+  description = "get postgresql related variables and set in .env"
+  dependsOn postgresql
+  inputs.file("$postgresResourceDir/values.yaml")
+  outputs.file("$projectDir/.env")
+  doLast {
+    def output = providers.exec {
+      workingDir = postgresResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        host=postgresql.k8s.minikube
+        port=\$(yq -r '.primary.service.nodePorts.postgresql' values.yaml)
+        database=\$(yq -r '.auth.database' values.yaml)
+        user=\$(yq -r '.auth.username' values.yaml)
+        password=\$(yq -r '.auth.password' values.yaml)
+        cd $projectDir
+        envs=\$([ -f .env ] && grep -vE '^DATASTUDIO_POSTGRES_' .env)
+        echo "\$envs" > .env
+        cat << EOF >> .env
+        DATASTUDIO_POSTGRES_HOST=\$host
+        DATASTUDIO_POSTGRES_PORT=\$port
+        DATASTUDIO_POSTGRES_DATABASE=\$database
+        DATASTUDIO_POSTGRES_USER=\$user
+        DATASTUDIO_POSTGRES_PASSWORD=\$password
+        EOF
+      """.stripIndent()
+      ignoreExitValue = true
     }
     ExecUtils.print(output)
   }
@@ -255,7 +362,7 @@ tasks.register("zitadel-env") {
         host=\$(yq -r '.zitadel.configmapConfig.ExternalDomain' values.yaml)
         pat=\$(sudo minikube kubectl -- get secret iam-admin-pat -o jsonpath='{ .data.pat}' | base64 -d)
         cd $projectDir
-        envs=\$([ -f .env ] && grep -vE '^(ZITADEL_HOST|ZITADEL_ADMIN_PAT)=' .env)
+        envs=\$([ -f .env ] && grep -vE '^(DATASTUDIO_ZITADEL_HOST|DATASTUDIO_ZITADEL_ADMIN_PAT)=' .env)
         echo "\$envs" > .env
         cat << EOF >> .env
         ZITADEL_HOST=\$protocl://\$host

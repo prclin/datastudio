@@ -1,0 +1,12 @@
+auth:
+  database: datastudio
+  username: datastudio
+  password: datastudio
+  postgresPassword: postgres
+primary:
+  persistence:
+    enabled: false
+  service:
+    type: NodePort
+    nodePorts:
+      postgresql: 30000

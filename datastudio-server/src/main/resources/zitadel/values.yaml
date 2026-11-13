@@ -6,21 +6,9 @@
 # Deploy PostgreSQL as a subchart. The chart auto-populates the ZITADEL
 # database host, port, credentials, and SSL mode from the values below.
 postgresql:
-  enabled: true
-  # Make postgresql resources pre-install hooks so they are created BEFORE the
-  # init/setup jobs (which run at hook weights 1 and 2). This solves the ordering
-  # problem: without this, subcharts deploy as regular resources (after all hooks),
-  # so the init job would fire before postgresql exists.
-  commonAnnotations:
-    helm.sh/hook: pre-install
-    helm.sh/hook-weight: "-1"
-  auth:
-    database: zitadel
-    username: zitadel
-    password: zitadel
-    postgresPassword: zitadel
+  enabled: false
   primary:
-    persistence:
+    service:
       enabled: false
 
 zitadel:
@@ -34,6 +22,18 @@ zitadel:
     ExternalSecure: false
     TLS:
       Enabled: false
+    Database:
+      postgres:
+        Host: postgresql-hl.default.svc.cluster.local
+        Port: 5432
+        Database: zitadel
+        User:
+          Username: zitadel
+          Password: zitadel
+        Admin:
+          ExistingDatabase: postgres
+          Username: postgres
+          Password: postgres
     FirstInstance:
       Org:
         Name: ZITADEL
