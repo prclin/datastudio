@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class RuntimeController {
     private final RuntimeService runtimeService;
 
     @PostMapping("/engine-config")
-    public ResponseBody<Void> postClusterConfig(@Validated CreateConfigCommand command) {
+    public ResponseBody<Void> postClusterConfig(@Validated @RequestBody CreateConfigCommand command) {
         return runtimeService.createEngineConfig(command);
     }
 

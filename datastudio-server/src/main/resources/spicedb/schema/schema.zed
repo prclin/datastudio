@@ -1,0 +1,18 @@
+definition iam/account{}
+
+definition iam/account_group{
+    relation member: iam/account
+}
+
+definition iam/account_role{
+    relation parent: iam/account_role
+    relation member: iam/account | iam/account_group#member
+}
+
+definition runtime/engine_config{
+    relation reader: iam/account | iam/account_role#member | iam/account_group#member
+    relation writer: iam/account | iam/account_role#member | iam/account_group#member
+
+    permission view=reader+writer
+    permission write=writer
+}

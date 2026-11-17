@@ -18,6 +18,9 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-autoconfigure'
   implementation 'org.springframework.boot:spring-boot-starter-validation'
   implementation 'org.springframework.boot:spring-boot-starter-actuator'
+  implementation libs.authzed
+  implementation libs.grpc.api
+  implementation libs.grpc.stub
   implementation(libs.hadoop.common) {
     exclude group: "org.slf4j", module: "slf4j-reload4j"
     exclude group: "ch.qos.reload4j", module: "reload4j"
@@ -28,6 +31,8 @@ dependencies {
   implementation libs.nimbus.jose.jwt
   implementation libs.oauth2.oidc.sdk
   implementation libs.zitadel.sdk
+  implementation libs.uuid.creator
+  implementation libs.spring.boot.starter.aop
 
   compileOnly libs.lombok
 
@@ -116,6 +121,7 @@ tasks.register("postgresql") {
           sudo helm upgrade --install postgresql bitnami/postgresql --version $postgresqlChartVersion -f values.yaml 
         fi
       """
+      ignoreExitValue = true
     }
     ExecUtils.print(output)
 
@@ -258,7 +264,7 @@ tasks.register("spicedb") {
   group = TaskGroups.INFRA
   description = "install spicedb"
   dependsOn minikube
-
+  inputs.files("$spicedbResourceDir/crd.yaml", "$spicedbResourceDir/manifest.yaml")
   doLast {
     def output = providers.exec {
       workingDir = spicedbResourceDir
@@ -276,6 +282,21 @@ tasks.register("spicedb") {
           sudo minikube kubectl -- apply -f manifest.yaml
         fi
       """
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+
+    //增加hosts映射
+    output = providers.exec {
+      workingDir = spicedbResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        entry="\$(sudo minikube ip) \$(yq -r 'select(.kind == "Ingress") | .spec.rules[0].host' manifest.yaml)"
+        if ! grep -qE "\$entry" "/etc/hosts"; then
+          echo "\$entry" | sudo tee -a /etc/hosts
+        fi
+      """
+      ignoreExitValue = true
     }
     ExecUtils.print(output)
   }
@@ -289,7 +310,20 @@ tasks.register("spicedb-uninstall") {
   doLast {
     def output = providers.exec {
       workingDir = spicedbResourceDir
-      commandLine "sudo", "minikube", "kubectl", "--", "delete", "-f manifest.yaml"
+      commandLine "sudo", "minikube", "kubectl", "--", "delete", "-f", "manifest.yaml"
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+
+    //删除hosts映射
+    output = providers.exec {
+      workingDir = spicedbResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        entry="\$(sudo minikube ip) \$(yq -r 'select(.kind == "Ingress") | .spec.rules[0].host' manifest.yaml)"
+        grep -Fxv "\$entry" "/etc/hosts" | sudo tee "/etc/hosts" > /dev/null
+      """
+      ignoreExitValue = true
     }
     ExecUtils.print(output)
   }
@@ -304,6 +338,7 @@ tasks.register("spicedb-operator-uninstall") {
     def output = providers.exec {
       workingDir = spicedbResourceDir
       commandLine "sudo", "minikube", "kubectl", "--", "delete", "-f", "crd.yaml"
+      ignoreExitValue = true
     }
     ExecUtils.print(output)
   }
@@ -374,6 +409,34 @@ tasks.register("zitadel-env") {
     ExecUtils.print(output)
   }
 }
+
+tasks.register("spicedb-env") {
+  group = TaskGroups.SETUP
+  description = "get spicedb related variables and set in .env"
+  dependsOn spicedb
+  inputs.files("$spicedbResourceDir/crd.yaml", "$spicedbResourceDir/manifest.yaml")
+  outputs.file("$projectDir/.env")
+  doLast {
+    def output = providers.exec {
+      workingDir = spicedbResourceDir
+      commandLine "bash", "-c", """
+        set -e
+        grpc=\$(yq -r 'select(.kind == "Ingress") | .spec.rules[0].host' manifest.yaml)\$(yq -r 'select(.kind == "Ingress") | .spec.rules[0].http.paths[1].path' manifest.yaml)
+        pat=\$(yq -r 'select(.kind == "Secret") | .stringData.preshared_key' manifest.yaml)
+        cd $projectDir
+        envs=\$([ -f .env ] && grep -vE '^(DATASTUDIO_SPICEDB_GRPC_ENDPOINT|DATASTUDIO_SPICEDB_ADMIN_PAT)=' .env)
+        echo "\$envs" > .env
+        cat << EOF >> .env
+        DATASTUDIO_SPICEDB_GRPC_ENDPOINT=\$grpc
+        DATASTUDIO_SPICEDB_ADMIN_PAT=\$pat
+        EOF
+      """.stripIndent()
+      ignoreExitValue = true
+    }
+    ExecUtils.print(output)
+  }
+}
+
 
 tasks.register("zitadel-resources", JavaExec) {
   group = TaskGroups.SETUP

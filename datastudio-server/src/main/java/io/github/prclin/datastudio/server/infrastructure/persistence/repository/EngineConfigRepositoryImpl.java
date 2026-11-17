@@ -1,4 +1,4 @@
-package io.github.prclin.datastudio.server.infrastructure.repository;
+package io.github.prclin.datastudio.server.infrastructure.persistence.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -6,8 +6,8 @@ import io.github.prclin.datastudio.server.domain.runtime.engineconfig.EngineConf
 import io.github.prclin.datastudio.server.domain.runtime.repository.EngineConfigRepository;
 import io.github.prclin.datastudio.server.domain.runtime.repository.spec.EngineConfigSpec.EngineConfigPageSpec;
 import io.github.prclin.datastudio.server.infrastructure.assembler.EngineConfigInfraAssembler;
-import io.github.prclin.datastudio.server.infrastructure.mapper.EngineConfigMapper;
-import io.github.prclin.datastudio.server.infrastructure.po.EngineConfigPO;
+import io.github.prclin.datastudio.server.infrastructure.persistence.mapper.EngineConfigMapper;
+import io.github.prclin.datastudio.server.infrastructure.persistence.po.EngineConfigPO;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
@@ -22,10 +22,9 @@ public class EngineConfigRepositoryImpl implements EngineConfigRepository {
     private final EngineConfigInfraAssembler eciAssembler;
 
     @Override
-    public Long save(EngineConfig engineConfig) {
+    public int save(EngineConfig engineConfig) {
         EngineConfigPO po = eciAssembler.transfer(engineConfig);
-        engineConfigMapper.insertOrUpdate(po);
-        return po.getId();
+        return engineConfigMapper.insert(po);
     }
 
 

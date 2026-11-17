@@ -5,6 +5,7 @@ import io.github.prclin.datastuio.common.enums.BaseEnum;
 import jakarta.annotation.Resource;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.ObjectFactory;
 import org.mapstruct.TargetType;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.JsonNode;
@@ -12,11 +13,21 @@ import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.node.ObjectNode;
 
 import java.util.Map;
+import java.util.UUID;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public abstract class BaseAssembler {
     @Resource
     protected ObjectMapper objectMapper;
+
+    @ObjectFactory
+    public ObjectNode createObjectNode() {
+        return objectMapper.createObjectNode();
+    }
+
+    public UUID mapUUID(String uuid) {
+        return uuid == null ? null : UUID.fromString(uuid);
+    }
 
     public JsonNode mapNode(String value) {
         return value == null ? null : objectMapper.readTree(value);

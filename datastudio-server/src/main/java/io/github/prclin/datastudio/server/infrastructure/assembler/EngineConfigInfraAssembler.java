@@ -1,7 +1,7 @@
 package io.github.prclin.datastudio.server.infrastructure.assembler;
 
 import io.github.prclin.datastudio.server.domain.runtime.engineconfig.EngineConfig;
-import io.github.prclin.datastudio.server.infrastructure.po.EngineConfigPO;
+import io.github.prclin.datastudio.server.infrastructure.persistence.po.EngineConfigPO;
 import io.github.prclin.datastuio.common.assembler.BaseAssembler;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

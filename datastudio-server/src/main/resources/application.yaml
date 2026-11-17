@@ -18,7 +18,7 @@ spring:
   sql:
     init:
       schema-locations: classpath:sql/runtime.schema.sql
-      mode: always
+      mode: never
   servlet:
     multipart:
       max-file-size: 100MB
@@ -32,6 +32,7 @@ mybatis-plus:
     default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
     use-generated-keys: true
+  type-handlers-package: io.github.prclin.datastudio.server.infrastructure.mybatis
 server:
   port: 8083
   tomcat:
@@ -67,3 +68,10 @@ zitadel:
     development-mode: true
     access-token-type: oidc_token_type_bearer
     client_secret_file: ${java.io.tmpdir}/datastudio/zitadel-secret
+hadoop:
+  confs:
+    local:
+    oss:
+spicedb:
+  grpc-endpoint: ${DATASTUDIO_SPICEDB_GRPC_ENDPOINT:}
+  admin-pat: ${DATASTUDIO_SPICEDB_ADMIN_PAT:}

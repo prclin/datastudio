@@ -7,22 +7,23 @@ import io.github.prclin.datastudio.server.application.cqrs.query.EngineConfigQue
 import io.github.prclin.datastudio.server.application.dto.EngineConfigDTO.ConfigItem;
 import io.github.prclin.datastudio.server.application.dto.Page;
 import io.github.prclin.datastudio.server.application.dto.ResponseBody;
+import io.github.prclin.datastudio.server.application.event.EngineConfigEvents.EngineConfigCreated;
 import io.github.prclin.datastudio.server.application.service.RuntimeService;
 import io.github.prclin.datastudio.server.domain.runtime.engineconfig.EngineConfig;
 import io.github.prclin.datastudio.server.domain.runtime.repository.EngineConfigRepository;
 import io.github.prclin.datastudio.server.domain.runtime.repository.spec.EngineConfigSpec.EngineConfigPageSpec;
+import io.github.prclin.datastudio.server.infrastructure.configuration.hadoop.HadoopConfHolder;
 import io.github.prclin.datastudio.server.infrastructure.configuration.properties.DatastudioProperties;
-import io.github.prclin.datastudio.server.infrastructure.util.FileSystemUtil;
+import io.github.prclin.datastudio.server.infrastructure.context.Identity;
+import io.github.prclin.datastudio.server.infrastructure.context.RequestContext;
+import io.github.prclin.datastudio.server.infrastructure.persistence.mapper.EngineConfigMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.hadoop.fs.Path;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 
 
 @Slf4j
@@ -31,27 +32,23 @@ import java.util.Objects;
 public class RuntimeServiceImpl implements RuntimeService {
     private final EngineConfigAppAssembler assembler;
     private final EngineConfigRepository engineConfigRepository;
-    private final FileSystemUtil fsUtil;
+    private final EngineConfigMapper ecMapper;
     private final DatastudioProperties datastudioProperties;
+    private final HadoopConfHolder hadoopConfHolder;
 
-    /**
-     * 1. 创建记录
-     * <p>
-     * 2. 上传文件
-     */
     @Override
     public ResponseBody<Void> createEngineConfig(CreateConfigCommand command) {
+        Identity identity = RequestContext.IDENTITY.get();
         EngineConfig engineConfig = assembler.transfer(command);
+        //初始化并保存
         engineConfig.init();
-        Long id = engineConfigRepository.save(engineConfig);
-        String artifactsHome = datastudioProperties.getEngineConfig().getArtifactsHome();
-        for (MultipartFile artifact : command.artifacts()) {
-            try {
-                fsUtil.copy(artifact.getInputStream(), new Path(new Path(artifactsHome, id.toString()), Objects.requireNonNull(artifact.getOriginalFilename())));
-            } catch (IOException e) {
-                return ResponseBody.serverError(String.format("create succeed,upload file %s failed!", artifact.getOriginalFilename()));
-            }
-        }
+        engineConfig.setCreatorId(identity.getId());
+        String artifactsHome = datastudioProperties.getEngineConfig().getArtifactsHome(Map.of("orgId", identity.getOrganizationId(), "id", engineConfig.getId()));
+        engineConfig.setArtifactsHome(artifactsHome);
+        engineConfigRepository.save(engineConfig);
+        //发送事件
+        RequestContext.pushEvent(new EngineConfigCreated(engineConfig.getId(), engineConfig.getCreatorId()));
+
         return ResponseBody.ok();
     }
 

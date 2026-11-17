@@ -6,8 +6,9 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 
+@SuppressWarnings("all")
 public interface EngineConfigRepository {
-    Long save(EngineConfig engineConfig);
+    int save(EngineConfig engineConfig);
 
     Pair<Long, List<EngineConfig>> queryPage(EngineConfigPageSpec spec);
 }

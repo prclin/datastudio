@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -23,7 +24,13 @@ public class DatastudioProperties {
 
     @Data
     public static class EngineConfigProperties {
-        private String artifactsHome = "artifacts";
+        private String artifactsHome = "datastudio/engine-configs/{orgId}/{id}/artifacts";
+
+        public String getArtifactsHome(Map<String, ?> variables) {
+            return UriComponentsBuilder.fromUriString(this.artifactsHome)
+                    .buildAndExpand(variables)
+                    .toUriString();
+        }
     }
 
     @Data
