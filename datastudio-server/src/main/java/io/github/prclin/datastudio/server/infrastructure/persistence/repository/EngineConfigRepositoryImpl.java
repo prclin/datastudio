@@ -14,6 +14,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
@@ -27,6 +28,17 @@ public class EngineConfigRepositoryImpl implements EngineConfigRepository {
         return engineConfigMapper.insert(po);
     }
 
+    @Override
+    public EngineConfig queryById(String id) {
+        EngineConfigPO po = engineConfigMapper.selectById(UUID.fromString(id));
+        return po == null ? null : eciAssembler.transfer(po);
+    }
+
+    @Override
+    public int update(EngineConfig engineConfig) {
+        return engineConfigMapper.updateById(eciAssembler.transfer(engineConfig));
+    }
+
 
     @Override
     public Pair<Long, List<EngineConfig>> queryPage(EngineConfigPageSpec spec) {
@@ -34,7 +46,8 @@ public class EngineConfigRepositoryImpl implements EngineConfigRepository {
                 .eq(StringUtils.isNotBlank(spec.name()), EngineConfigPO::getName, spec.name())
                 .eq(spec.kind() != null, EngineConfigPO::getKind, spec.kind());
         Long total = engineConfigMapper.selectCount(wrapper);
-        List<EngineConfigPO> pos = engineConfigMapper.selectList(wrapper.last("limit " + spec.offset() + "," + spec.size()));
+        wrapper.last("limit %d offset %d".formatted(spec.size(), spec.offset()));
+        List<EngineConfigPO> pos = engineConfigMapper.selectList(wrapper);
         return Pair.of(total, eciAssembler.transfer(pos));
     }
 }

@@ -58,7 +58,7 @@ public abstract class BaseAssembler {
     }
 
     public Map<String, String> map(String value) {
-        return objectMapper.readValue(value, new TypeReference<Map<String, String>>() {
+        return value == null ? null : objectMapper.readValue(value, new TypeReference<Map<String, String>>() {
         });
     }
 

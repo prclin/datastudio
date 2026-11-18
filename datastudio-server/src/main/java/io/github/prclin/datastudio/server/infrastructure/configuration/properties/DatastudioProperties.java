@@ -1,15 +1,12 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration.properties;
 
 import io.github.prclin.datastudio.server.infrastructure.context.AvailableFileSystem;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -19,12 +16,12 @@ import java.util.stream.Collectors;
 @Data
 public class DatastudioProperties {
     private EngineConfigProperties engineConfig = new EngineConfigProperties();
-    private Map<AvailableFileSystem, FileSystemProperties> filesystems = Arrays.stream(AvailableFileSystem.values())
-            .collect(Collectors.toMap(Function.identity(), fs -> new FileSystemProperties(fs.getValue())));
+    private Map<AvailableFileSystem, Map<String, String>> hadoop = Arrays.stream(AvailableFileSystem.values())
+            .collect(Collectors.toMap(Function.identity(), AvailableFileSystem::getValue));
 
     @Data
     public static class EngineConfigProperties {
-        private String artifactsHome = "datastudio/engine-configs/{orgId}/{id}/artifacts";
+        private String artifactsHome = "/tmp/datastudio/{orgId}/runtime/engine-config/{id}/artifacts";
 
         public String getArtifactsHome(Map<String, ?> variables) {
             return UriComponentsBuilder.fromUriString(this.artifactsHome)
@@ -33,10 +30,4 @@ public class DatastudioProperties {
         }
     }
 
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class FileSystemProperties {
-        private Map<String, String> hadoopConfigs = Collections.emptyMap();
-    }
 }

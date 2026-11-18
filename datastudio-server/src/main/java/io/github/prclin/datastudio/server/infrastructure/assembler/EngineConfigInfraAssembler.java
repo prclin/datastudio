@@ -12,5 +12,7 @@ import java.util.List;
 public abstract class EngineConfigInfraAssembler extends BaseAssembler {
     public abstract EngineConfigPO transfer(EngineConfig engineConfig);
 
+    public abstract EngineConfig transfer(EngineConfigPO po);
+
     public abstract List<EngineConfig> transfer(List<EngineConfigPO> pos);
 }

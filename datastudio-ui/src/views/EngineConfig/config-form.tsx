@@ -1,144 +1,100 @@
 import { FC } from "react";
+import { Button, Col, Form, Row, SideSheet, Space } from "@douyinfe/semi-ui";
+import { FormattedMessage } from "react-intl";
+import { useQueryClient } from "@tanstack/react-query";
 import {
-  ArrayField,
-  Button,
-  Col,
-  Form,
-  Row,
-  SideSheet,
-  Space,
-  Typography,
-} from "@douyinfe/semi-ui";
-import { IconMinusCircle, IconPlusCircle } from "@douyinfe/semi-icons";
-import { CreateConfigCommand } from "@models/engine-config.ts";
-import { useNewConfig } from "@services/engine-config.ts";
-import { FileItem } from "@douyinfe/semi-ui/lib/es/upload";
-import { SideSheetReactProps } from "@douyinfe/semi-ui/lib/es/sideSheet";
+  configPageKey,
+  useFileSystems,
+  useNewConfig,
+} from "@services/engine-config.ts";
+import { isOk } from "@services/common.ts";
+import {
+  ConfigRows,
+  CreateDraft,
+  toConfigs,
+} from "@views/EngineConfig/configs.tsx";
+import { kinds } from "@views/EngineConfig/kind.tsx";
 
 const { Option } = Form.Select;
-const { Section } = Form;
-export const ConfigForm: FC<SideSheetReactProps> = props => {
-  const mutation = useNewConfig();
+
+export const ConfigForm: FC<{ visible: boolean; onClose: () => void }> = ({
+  visible,
+  onClose,
+}) => {
+  const queryClient = useQueryClient();
+  const { data: fileSystems, isPending } = useFileSystems();
+  const mutation = useNewConfig({
+    onSuccess: async res => {
+      if (!isOk(res)) return;
+      await queryClient.invalidateQueries({ queryKey: [configPageKey] });
+      onClose();
+    },
+  });
   return (
     <SideSheet
-      {...props}
-      title={"Register New Engine"}
+      visible={visible}
+      onCancel={onClose}
+      title={<FormattedMessage id={"views.engine-config.creation.title"} />}
+      width={560}
+      footer={null}
       className={
         "semi-light-scrollbar [&_.semi-sidesheet-body]:scrollbar-gutter-stable"
       }
-      footer={
-        <Space className={"mt-auto mb-2"}>
-          <Button htmlType={"submit"}>submit</Button>
-          <Button htmlType={"reset"} type={"warning"}>
-            reset
-          </Button>
-          <Button type={"tertiary"}>cancel</Button>
-        </Space>
-      }
     >
-      <Form
-        initValues={
-          {} as Omit<CreateConfigCommand, "configs" | "artifacts"> & {
-            configs?: { key: string; value: string }[];
-            artifacts?: FileItem[];
-          }
-        }
-        className={"[&_.semi-form-section-text]:text-sm h-full flex flex-col"}
+      <Form<CreateDraft>
         labelPosition={"inset"}
-        onSubmit={values => {
-          const configs = values.configs
-            ?.map(x => ({ [x.key]: x.value }))
-            .reduce((x, y) => ({ ...x, ...y }));
-          const artifacts = values.artifacts?.map(
-            artifact => artifact.fileInstance!,
-          );
-          console.log(values);
-          mutation.mutate({
-            ...values,
-            configs: JSON.stringify(configs),
-            artifacts,
-          });
-        }}
+        initValues={{ name: "", kind: 0 }}
+        className={"[&_.semi-form-section-text]:text-sm"}
+        onSubmit={({ configs, ...command }) =>
+          mutation.mutate({ ...command, configs: toConfigs(configs) })
+        }
       >
-        <Section text={"Basic Info"}>
-          <Form.Input field={"name"} label={"Config Name"} />
-          <Form.Select
-            field={"kind"}
-            label={"Kind"}
-            className={"w-full"}
-            showClear
-            initValue={"0"}
+        <Form.Section text={"Basic Info"}>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Input
+                field={"name"}
+                label={"Config Name"}
+                rules={[{ required: true }]}
+              />
+            </Col>
+            <Col span={12}>
+              <Form.Select
+                field={"dstFs"}
+                label={"Target FS"}
+                loading={isPending}
+              >
+                {fileSystems?.data?.map(fs => (
+                  <Option key={fs} value={fs}>
+                    {fs}
+                  </Option>
+                ))}
+              </Form.Select>
+            </Col>
+          </Row>
+          <Form.RadioGroup field={"kind"} label={"Kind"}>
+            {kinds.map(({ value, label }) => (
+              <Form.Radio key={value} value={value}>
+                {label}
+              </Form.Radio>
+            ))}
+          </Form.RadioGroup>
+        </Form.Section>
+        <Form.Section text={"Configs"}>
+          <ConfigRows />
+        </Form.Section>
+        <Space className={"mt-6"}>
+          <Button
+            theme={"solid"}
+            htmlType={"submit"}
+            loading={mutation.isPending}
           >
-            <Option value={"0"}>spark</Option>
-            <Option value={"1"}>flink</Option>
-          </Form.Select>
-        </Section>
-        <Section text={"Configs"}>
-          <div className={"overflow-y-auto max-h-42 scrollbar-gutter-stable"}>
-            <ArrayField field={"configs"}>
-              {({ add, arrayFields }) => {
-                if (arrayFields.length == 0)
-                  return (
-                    <Button onClick={() => add()} block>
-                      添加
-                    </Button>
-                  );
-                return (
-                  <>
-                    {arrayFields.map(({ field, key, remove }) => (
-                      <Row
-                        className={"w-full"}
-                        gutter={8}
-                        key={key}
-                        type={"flex"}
-                        align={"middle"}
-                        justify={"end"}
-                      >
-                        <Col span={10}>
-                          <Form.Input noLabel field={`${field}[key]`} />
-                        </Col>
-                        <Col span={9}>
-                          <Form.Input noLabel field={`${field}[value]`} />
-                        </Col>
-                        <Col span={5}>
-                          <Button
-                            theme="borderless"
-                            icon={<IconPlusCircle />}
-                            onClick={() => add()}
-                          />
-                          <Button
-                            type="danger"
-                            theme="borderless"
-                            icon={<IconMinusCircle />}
-                            onClick={remove}
-                          />
-                        </Col>
-                      </Row>
-                    ))}
-                  </>
-                );
-              }}
-            </ArrayField>
-          </div>
-        </Section>
-        <Section text="Artifacts">
-          <Typography.Text type={"tertiary"}>
-            Upload required JAR files and configuration bundles for executor
-            nodes.
-          </Typography.Text>
-          <Form.Upload
-            noLabel
-            directory
-            draggable
-            action={""}
-            field={"artifacts"}
-            uploadTrigger="custom"
-            dragMainText={"点击上传文件或拖拽文件到这里"}
-            className={
-              "[&_.semi-upload-file-list-main]:overflow-auto [&_.semi-upload-file-list-main]:max-h-44 [&_.semi-upload-file-card]:w-full"
-            }
-          />
-        </Section>
+            Submit
+          </Button>
+          <Button type={"tertiary"} htmlType={"button"} onClick={onClose}>
+            Cancel
+          </Button>
+        </Space>
       </Form>
     </SideSheet>
   );

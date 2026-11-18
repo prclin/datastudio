@@ -8,7 +8,7 @@ dependencyResolutionManagement {
   versionCatalogs {
     libs {
       version("mapstruct", "1.6.3")
-      version("grpc", "1.72.0")
+      version("grpc", "1.84.1")
 
 
       library("lombok", "org.projectlombok:lombok:1.18.44")

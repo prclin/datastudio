@@ -10,5 +10,9 @@ import java.util.List;
 public interface EngineConfigRepository {
     int save(EngineConfig engineConfig);
 
+    EngineConfig queryById(String id);
+
+    int update(EngineConfig engineConfig);
+
     Pair<Long, List<EngineConfig>> queryPage(EngineConfigPageSpec spec);
 }

@@ -6,7 +6,12 @@ import axios, {
   HttpStatusCode,
   Method,
 } from "axios";
-import { MutationOptions, useMutation } from "@tanstack/react-query";
+import {
+  MutationOptions,
+  useMutation,
+  useQuery,
+  type UseQueryOptions,
+} from "@tanstack/react-query";
 
 const onFullFilled = (
   response: AxiosResponse<Response<unknown>>,
@@ -26,6 +31,13 @@ const onRejected = (error: { message: string }): Response<unknown> => {
   } as unknown as Response<null>;
 };
 
+/**
+ * 失败也会被 resolve 掉:业务失败带 AxiosResponse 外壳,HTTP 失败直接是 ResponseBody,
+ * 故两处 code 都取,判断是否真的成功
+ */
+export const isOk = (res: { code?: number; data?: { code?: number } }) =>
+  (res?.data?.code ?? res?.code) === HttpStatusCode.Ok.valueOf();
+
 export const newAxios = (base: string, url: string = ""): AxiosInstance => {
   const instance = axios.create({
     baseURL: base + url,
@@ -36,6 +48,29 @@ export const newAxios = (base: string, url: string = ""): AxiosInstance => {
   });
   instance.interceptors.response.use(onFullFilled, onRejected);
   return instance;
+};
+
+export const newQuery = <V, R>(
+  server: AxiosInstance,
+  method: Extract<Method, "GET" | "POST">,
+  url: string,
+  queryKey: string,
+) => {
+  return (
+    params?: V,
+    options?: Omit<
+      UseQueryOptions<Response<R>, Error, Response<R>>,
+      "queryKey" | "queryFn"
+    >,
+  ) =>
+    useQuery({
+      queryKey: [queryKey, params],
+      queryFn: () =>
+        server
+          .request<Response<R>>({ method, url, params })
+          .then(res => res.data),
+      ...options,
+    });
 };
 
 export const newMutation = <V, R>(

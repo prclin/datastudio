@@ -1,8 +1,8 @@
 package io.github.prclin.datastudio.server.infrastructure.configuration;
 
 import io.github.prclin.datastudio.server.infrastructure.configuration.properties.DatastudioProperties;
-import io.github.prclin.datastudio.server.infrastructure.configuration.properties.DatastudioProperties.FileSystemProperties;
 import io.github.prclin.datastudio.server.infrastructure.context.AvailableFileSystem;
+import io.github.prclin.datastudio.server.infrastructure.support.hadoop.HadoopContext;
 import lombok.RequiredArgsConstructor;
 import org.apache.hadoop.fs.FileSystem;
 import org.springframework.context.annotation.Bean;
@@ -19,13 +19,17 @@ public class DatastudioConfiguration {
     private final DatastudioProperties properties;
 
     @Bean
-    public Map<AvailableFileSystem, FileSystem> filesystems() throws IOException {
-        Map<AvailableFileSystem, FileSystem> filesystems = new HashMap<>(properties.getFilesystems().size());
-        for (Entry<AvailableFileSystem, FileSystemProperties> entry : properties.getFilesystems().entrySet()) {
+    public HadoopContext hadoopContext() throws IOException {
+        Map<AvailableFileSystem, Map<String, String>> confs = properties.getHadoop();
+        Map<AvailableFileSystem, org.apache.hadoop.conf.Configuration> configs = new HashMap<>();
+        Map<AvailableFileSystem, FileSystem> fileSystems = new HashMap<>();
+        for (Entry<AvailableFileSystem, Map<String, String>> entry : confs.entrySet()) {
             org.apache.hadoop.conf.Configuration conf = new org.apache.hadoop.conf.Configuration();
-            entry.getValue().getHadoopConfigs().forEach(conf::set);
-            filesystems.put(entry.getKey(), FileSystem.get(conf));
+            entry.getValue().forEach(conf::set);
+            configs.put(entry.getKey(), conf);
+            fileSystems.put(entry.getKey(), FileSystem.get(conf));
         }
-        return filesystems;
+
+        return HadoopContext.builder().configs(configs).fileSystems(fileSystems).build();
     }
 }

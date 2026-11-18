@@ -1,6 +1,7 @@
 package io.github.prclin.datastudio.server.domain.runtime.engineconfig;
 
 import com.github.f4b6a3.uuid.UuidCreator;
+import io.github.prclin.datastudio.server.infrastructure.context.AvailableFileSystem;
 import io.github.prclin.datastuio.common.enums.BaseEnum;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class EngineConfig {
     private Kind kind;
     private String version;
     private ObjectNode configs;
-    private String dstFs;
+    private AvailableFileSystem dstFs;
     private String artifactsHome;
     private String creatorId;
     private ObjectNode extra;
