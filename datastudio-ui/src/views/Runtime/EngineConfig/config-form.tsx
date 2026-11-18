@@ -12,8 +12,8 @@ import {
   ConfigRows,
   CreateDraft,
   toConfigs,
-} from "@views/EngineConfig/configs.tsx";
-import { kinds } from "@views/EngineConfig/kind.tsx";
+} from "@views/Runtime/EngineConfig/configs.tsx";
+import { kinds } from "@views/Runtime/EngineConfig/kind.tsx";
 
 const { Option } = Form.Select;
 
@@ -34,7 +34,9 @@ export const ConfigForm: FC<{ visible: boolean; onClose: () => void }> = ({
     <SideSheet
       visible={visible}
       onCancel={onClose}
-      title={<FormattedMessage id={"views.engine-config.creation.title"} />}
+      title={
+        <FormattedMessage id={"views.runtime.engine-config.creation.title"} />
+      }
       width={560}
       footer={null}
       className={

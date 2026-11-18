@@ -7,16 +7,15 @@ const en_US = {
   "side.new": "New",
   "views.home": "Home",
   "views.studio": "Studio",
-  "views.engine-instance": "Engine Instance",
-  "views.engine-instance.desc":
+  "views.runtime": "Runtime",
+  "views.runtime.engine-instance": "Engine Instance",
+  "views.runtime.engine-instance.desc":
     "Register and manage SQL-capable compute engines.",
-  "views.engine-config": "Engine Configuration",
-  "views.engine-config.creation": "Creation",
-  "views.engine-config.creation.title": "Create Engine Config",
-  "views.engine-config.detail": "Detail",
-  "views.engine-config.detail.title": "Engine Config Detail",
-  "views.engine-config.detail.edit.title": "Edit Engine Config",
-  "views.engine-config.desc":
+  "views.runtime.engine-config": "Engine Configuration",
+  "views.runtime.engine-config.creation": "Creation",
+  "views.runtime.engine-config.creation.title": "Create Engine Config",
+  "views.runtime.engine-config.detail": "Detail",
+  "views.runtime.engine-config.desc":
     "Manage Spark and Flink cluster templates and runtime configurations",
   "views.task": "Task Overview",
   "views.task.desc": "View all engine tasks and create new tasks.",

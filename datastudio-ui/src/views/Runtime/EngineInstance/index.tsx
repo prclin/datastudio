@@ -11,7 +11,6 @@ import {
   Tag,
   Typography,
 } from "@douyinfe/semi-ui";
-import { FormattedMessage } from "react-intl";
 import {
   IconDeleteStroked,
   IconEditStroked,
@@ -96,29 +95,7 @@ export const Component: FC = () => {
   const onCell = () => ({ className: "py-3" });
   const [visible, setVisible] = useState(false);
   return (
-    <div className={"h-full p-2 flex flex-col space-y-6"}>
-      <Row type="flex" justify="space-between" align="middle">
-        <Col span={18}>
-          <Typography.Title heading={3}>
-            <FormattedMessage id={"views.engine-instance"} />
-          </Typography.Title>
-          <Typography.Text type={"secondary"}>
-            <FormattedMessage id={"views.engine-instance.desc"} />
-          </Typography.Text>
-        </Col>
-        <Col span={6}>
-          <Space className={"w-full justify-end"}>
-            <Button
-              theme={"solid"}
-              icon={<IconPlus />}
-              className={"bg-[#ff6a3d] border-[#ff6a3d] hover:bg-[#ff5a2b]"}
-              onClick={() => setVisible(true)}
-            >
-              Register Engine
-            </Button>
-          </Space>
-        </Col>
-      </Row>
+    <div className={"h-full flex flex-col space-y-6"}>
       <Form
         layout={"horizontal"}
         labelPosition={"inset"}
@@ -156,6 +133,17 @@ export const Component: FC = () => {
           <Button htmlType={"submit"}>提交</Button>
           <Button htmlType={"reset"}>重置</Button>
         </Space>
+        <Button
+          theme={"solid"}
+          icon={<IconPlus />}
+          className={[
+            "ms-auto self-center",
+            "bg-[#ff6a3d] border-[#ff6a3d] hover:bg-[#ff5a2b]",
+          ].join(" ")}
+          onClick={() => setVisible(true)}
+        >
+          Register Engine
+        </Button>
       </Form>
       <div ref={ref} className={"flex-1 overflow-hidden"}>
         <Table

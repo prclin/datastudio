@@ -106,6 +106,14 @@ public class RuntimeServiceImpl implements RuntimeService {
     }
 
     @Override
+    public ResponseBody<ConfigItem> getEngineConfig(String id) {
+        EngineConfig engineConfig = engineConfigRepository.queryById(id);
+        if (engineConfig == null) return ResponseBody.clientError("Engine config not found!");
+
+        return ResponseBody.ok(assembler.transfer(engineConfig));
+    }
+
+    @Override
     public ResponseBody<List<String>> getFileSystems() {
         List<String> fileSystems = Arrays.stream(AvailableFileSystem.values()).map(Enum::name).toList();
         return ResponseBody.ok(fileSystems);

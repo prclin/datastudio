@@ -20,6 +20,8 @@ public interface RuntimeService {
 
     ResponseBody<Page<ConfigItem>> getEngineConfigPage(EngineConfigPageQuery query, Pagination pagination);
 
+    ResponseBody<ConfigItem> getEngineConfig(String id);
+
     ResponseBody<List<String>> getFileSystems();
 
     ResponseBody<Void> uploadEngineConfigArtifacts(String id, List<MultipartFile> artifacts) throws IOException;

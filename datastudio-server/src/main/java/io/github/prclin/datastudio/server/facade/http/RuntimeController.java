@@ -48,6 +48,11 @@ public class RuntimeController {
         return runtimeService.getEngineConfigPage(query, pagination);
     }
 
+    @GetMapping("/engine-config/{id}")
+    public ResponseBody<ConfigItem> getEngineConfig(@PathVariable String id) {
+        return runtimeService.getEngineConfig(id);
+    }
+
     @GetMapping("/filesystems")
     public ResponseBody<List<String>> getFileSystems() {
         return runtimeService.getFileSystems();

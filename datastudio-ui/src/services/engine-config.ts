@@ -15,6 +15,9 @@ const server = newAxios(process.env.API_BASE, "/api");
 /** 列表 query 的 key,创建成功后按前缀失效 */
 export const configPageKey = "engine-config-page";
 
+/** 详情 query 的 key,按配置 id 区分 */
+export const configKey = "engine-config-detail";
+
 /** 产物列表 query 的 key,上传成功后按配置 id 失效 */
 export const artifactsKey = "engine-config-artifacts";
 
@@ -30,6 +33,16 @@ export const useConfigPage = newQuery<
   EngineConfigPageQuery,
   Page<EngineConfigItem>
 >(server, "POST", "runtime/engine-config/page", configPageKey);
+
+/** 路径里有 id,newQuery 的固定 url 表达不了,单独写 */
+export const useConfig = (id: string) =>
+  useQuery({
+    queryKey: [configKey, id],
+    queryFn: () =>
+      server
+        .get<Response<EngineConfigItem>>(configUrl(id))
+        .then(res => res.data),
+  });
 
 export const useFileSystems = newQuery<void, string[]>(
   server,

@@ -17,6 +17,8 @@ public abstract class EngineConfigAppAssembler extends BaseAssembler {
 
     public abstract EngineConfig transfer(CreateConfigCommand command);
 
+    public abstract ConfigItem transfer(EngineConfig agg);
+
     public abstract List<ConfigItem> transfer(List<EngineConfig> aggs);
 
     public abstract EngineConfigPageSpec transfer(EngineConfigPageQuery query, Pagination pagination);
